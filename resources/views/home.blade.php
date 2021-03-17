@@ -1,4 +1,4 @@
-@extends('layouts.app', ['title' => 'HRI-HOTEL | Dashboard'])
+@extends('layouts.app', ['title' => 'KPR | Dashboard'])
 @section('content')
 <div class="container-fluid">
     <div class="row second-chart-list third-news-update">

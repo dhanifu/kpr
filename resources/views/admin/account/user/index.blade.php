@@ -1,21 +1,14 @@
-@extends('layouts.app', ['title' => 'KPR | Register'])
+@extends('layouts.app', ['title' => 'KPR | User Account'])
 @section('content')
     <div class="row">
         <div class="col-md-12">
             <div class="card">
-                <div class="card-header">
-                  @include('layouts.partials.error')
-                  <div class="d-flex justify-content-between">
-                    <button type="submit" class="btn btn-primary btn-md" data-toggle="modal" data-target="#addModal">Add</button>
-                  </div>
-                </div>
                 <div class="card-body">
                     <div class="table-responsive">
                         <table class="table table-hover">
                             <thead>
                                 <tr>
                                     <th>#</th>
-                                    <th>Role</th>
                                     <th>Avatar</th>
                                     <th>Name</th>
                                     <th>E-Mail</th>
@@ -27,8 +20,7 @@
                             @forelse ($accounts as $account)
                             <tbody>
                                 <tr>
-                                    <th>{{ $loop->iteration + $accounts->firstItem() - 1 . '.' }}</th>
-                                    <td>{!! $account->RoleSection !!}</td>
+                                    <th>{{ $loop->iteration + $accounts->firstItem() - 1 . '.' }}</th>  
                                     <td>
                                       @empty($account->avatar)
                                           <img class="rounded-circle" src="{{ asset('assets/images/avatar/avatar-default.png') }}" width="60" alt="avatar">
@@ -102,7 +94,8 @@
                       <select name="role" id="role" class="form-control custom-select" required>
                         <option disabled selected>Select Role</option>
                         <option value="admin">Admin</option>
-                        <option value="user">User</option>
+                        <option value="customer">Customer</option>
+                        <option value="boss">Boss</option>
                       </select>
                     </div>
                   </div>

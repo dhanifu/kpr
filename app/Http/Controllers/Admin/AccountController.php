@@ -16,6 +16,22 @@ class AccountController extends Controller
         ]);
     }
 
+    public function admin_index_account()
+    {
+        $account = User::where('id', '!=', auth()->user()->id)->where('role', 'admin')->paginate(5);
+        return view('admin.account.admin.index', [
+            'accounts' => $account
+        ]);
+    }
+
+    public function user_index_account()
+    {
+        $account = User::where('id', '!=', auth()->user()->id)->where('role', 'user')->paginate(5);
+        return view('admin.account.user.index', [
+            'accounts' => $account
+        ]);
+    }
+
     public function store(RegisterRequest $request)
     {
         $attr = $request->all();
@@ -59,5 +75,16 @@ class AccountController extends Controller
         $attr['avatar'] = $thumbnail;
         $user->update($attr);
         return redirect()->route('admin.account.register.index');
+    }
+
+    public function destroy($id)
+    {
+        $user = User::findOrFail($id);
+        if($user->avatar)
+        {
+            \Storage::delete($user->avatar);
+        }
+        $user->delete();
+        return back();
     }
 }

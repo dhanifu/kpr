@@ -2,9 +2,15 @@
 
 use Illuminate\Support\Facades\Route;
 
-Route::get('/', function () {
-    return view('auth.login');
-})->middleware('guest');
+// login & register
+Route::middleware('guest')->group(function(){
+    Route::get('/register', function () {
+        return view('auth.register');
+    });
+    Route::get('/', function () {
+        return view('auth.login');
+    });
+});
 Auth::routes();
 
 Route::middleware('auth')->group(function(){
@@ -26,8 +32,7 @@ Route::middleware('auth')->group(function(){
         Route::prefix('account')->name('account.')->group(function(){
             // per view & role
             Route::get('/admin', 'AccountController@admin_index_account')->name('admin');
-            Route::get('/customer', 'AccountController@costumer_index_account')->name('customer');
-            Route::get('/boss', 'AccountController@boss_index_account')->name('boss');
+            Route::get('/customer', 'AccountController@user_index_account')->name('user');
             // register account
             Route::resource('register', 'AccountController')->except(['admin_index_account', 'costumer_index_account', 'boss_index_account']);
         });
