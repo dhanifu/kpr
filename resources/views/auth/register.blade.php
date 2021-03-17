@@ -11,7 +11,7 @@
           <div class="col-md-8">
             <div class="mb-4">
             <h3>Register</h3>
-            <p class="mb-4">Lorem ipsum dolor sit amet elit. Sapiente sit aut eos consectetur adipisicing.</p>
+            <p class="mb-4">Isilah data dengan baik dan benar.</p>
           </div>
           <form method="POST" action="{{ route('register') }}" class="theme-form">
               @csrf
@@ -59,8 +59,7 @@
                         <label class="col-form-label" for="password-confirm">Confirm Password:</label>
                         <input class="form-control" type="password" name="password_confirmation" id="password-confirm" autocomplete="new-password" required>         
                     </div>
-                    
-                    <a href="{{ route('login') }}" class="btn btn-danger btn-sm" style="color: white; text-decoration: none;">Back</a>
+                    <a href="{{ route('login') }}" class="btn btn-danger btn-sm" style="color: white; text-decoration: none; padding: 15px;">Back</a>
                     <button type="submit" class="btn btn-primary btn-sm" type="submit">Register</button>
             </form>
           </div>
