@@ -1,17 +1,23 @@
-@extends('layouts.loglayout', ['title' => 'KPR | Register'])
+@extends('layouts.loglayout', ['title' => 'Register'])
 @section('content')
-<!-- login page start-->
-  <div class="row">
-    <div class="col-12">
-      <div class="login-card">
-        <div>
-          <div class="login-main">
-            <form method="POST" action="{{ route('register') }}" class="theme-form">
+<div class="content">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-6">
+        <img src="{{asset('assets/images/ditkuad.png')}}" alt="Image" class="img-fluid">
+      </div>
+      <div class="col-md-6 contents">
+        <div class="row justify-content-center">
+          <div class="col-md-8">
+            <div class="mb-4">
+            <h3>Register</h3>
+            <p class="mb-4">Lorem ipsum dolor sit amet elit. Sapiente sit aut eos consectetur adipisicing.</p>
+          </div>
+          <form method="POST" action="{{ route('register') }}" class="theme-form">
               @csrf
-                <h3 class="text-center mb-4"><u>Register Account</u></h3>
                     <div class="form-group">
                       <label class="col-form-label" for="name">Name:</label>
-                      <input class="form-control @error('name') is-invalid @enderror" type="text" name="name" value="{{ old('name') }}" id="name" placeholder="your name" required autofocus>
+                      <input class="form-control @error('name') is-invalid @enderror" type="text" name="name" value="{{ old('name') }}" id="name" required autofocus>
                         @error('name')
                             <span class="invalid-feedback" role="alert">
                                 <strong>{{ $message }}</strong>
@@ -21,7 +27,7 @@
 
                     <div class="form-group">
                       <label class="col-form-label" for="email">E-Mail:</label>
-                      <input class="form-control @error('email') is-invalid @enderror" type="email" name="email" value="{{ old('email') }}" id="email" placeholder="your email" required>
+                      <input class="form-control @error('email') is-invalid @enderror" type="email" name="email" value="{{ old('email') }}" id="email" required>
                         @error('email')
                             <span class="invalid-feedback" role="alert">
                                 <strong>{{ $message }}</strong>
@@ -31,7 +37,7 @@
                 
                     <div class="form-group">
                       <label class="col-form-label" for="username">Username:</label>
-                      <input class="form-control @error('username') is-invalid @enderror" type="text" name="username" value="{{ old('username') }}" id="username" placeholder="username" required>
+                      <input class="form-control @error('username') is-invalid @enderror" type="text" name="username" value="{{ old('username') }}" id="username" required>
                         @error('username')
                             <span class="invalid-feedback" role="alert">
                                 <strong>{{ $message }}</strong>
@@ -39,9 +45,9 @@
                         @enderror
                     </div>
                 
-                    <div class="form-group mb-4">
+                    <div class="form-group">
                       <label class="col-form-label" for="password">Password:</label>
-                      <input class="form-control @error('password') is-invalid @enderror" type="password" name="password" id="password" autocomplete="new-password" placeholder="********" required>
+                      <input class="form-control @error('password') is-invalid @enderror" type="password" name="password" id="password" autocomplete="new-password" required>
                         @error('password')
                             <span class="invalid-feedback" role="alert">
                                 <strong>{{ $message }}</strong>
@@ -49,18 +55,20 @@
                         @enderror           
                     </div>
 
-                    <div class="form-group mb-4">
+                    <div class="form-group last mb-4">
                         <label class="col-form-label" for="password-confirm">Confirm Password:</label>
-                        <input class="form-control" type="password" name="password_confirmation" id="password-confirm" autocomplete="new-password" placeholder="********" required>         
+                        <input class="form-control" type="password" name="password_confirmation" id="password-confirm" autocomplete="new-password" required>         
                     </div>
-                <div class="form-group">
-                    <a href="{{ route('login') }}" class="btn btn-danger">Back</a>
-                    <button type="submit" class="btn btn-primary" type="submit">Register</button>
-                </div>
+                    
+                    <a href="{{ route('login') }}" class="btn btn-danger btn-sm" style="color: white; text-decoration: none;">Back</a>
+                    <button type="submit" class="btn btn-primary btn-sm" type="submit">Register</button>
             </form>
           </div>
         </div>
+        
       </div>
+      
     </div>
   </div>
+</div>
 @endsection
