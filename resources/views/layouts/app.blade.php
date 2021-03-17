@@ -68,7 +68,6 @@
     </div>
     <!-- page-wrapper End-->
     <!-- swal vendor-->
-    @include('sweetalert::alert')
     {{-- vanilla js --}}
     @stack('script')
     <!-- latest jquery-->
