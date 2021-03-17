@@ -12,7 +12,7 @@
 
  */
 :root {
-  --theme-deafult: #7366ff;
+  --theme-deafult: #305744;
   --theme-secondary: #f73164; }
 
 /**=====================
@@ -9251,7 +9251,7 @@ table.dataTable.display tbody tr.odd > .sorting_1 {
   color: #fff; }
 
 .nav-primary .nav-link, .nav-pills.nav-primary .nav-link {
-  color: var(--theme-deafult); }
+  color: #fff; }
 
 .nav-primary .nav-link.active, .nav-primary .show > .nav-link, .nav-pills.nav-primary .nav-link.active, .nav-pills.nav-primary .show > .nav-link {
   background-color: var(--theme-deafult);
@@ -16256,17 +16256,11 @@ footer {
   position: relative;
   background-position: right top;
   background-size: cover;
-  background: linear-gradient(90deg, #f1f0ff 21px, transparent 1%) center, linear-gradient(#eae7ff 21px, transparent 1%) center, #7366ff59;
   background-size: 23px 23px; }
-  .landing-home .content h1 {
+  .landing-home .content {
     font-weight: 600;
-    color: var(--theme-deafult);
     font-weight: 700;
-    -webkit-text-fill-color: transparent;
-    background: -o-linear-gradient(transparent, transparent);
-    -webkit-background-clip: text;
-    background-image: -webkit-linear-gradient(rgba(158, 107, 248, 0.5), rgba(119, 101, 250, 0.5)), url(../../assets/images/landing/title.gif);
-    background-position: left;
+    color: #305744;
     line-height: 1;
     font-size: calc(25px + (57 - 25) * ((100vw - 300px) / (1920 - 300))); }
   .landing-home .content h2 {
@@ -16669,7 +16663,6 @@ footer {
       content: "";
       position: absolute;
       left: 0;
-      background-image: url(../images/landing/left-left.png);
       height: 165px;
       width: 250px;
       top: 0; }
@@ -16677,7 +16670,6 @@ footer {
       content: "";
       position: absolute;
       right: 0;
-      background-image: url(../images/landing/leaf-right.png);
       height: 208px;
       width: 250px;
       top: 0; }
@@ -16689,7 +16681,6 @@ footer {
         position: absolute;
         height: 100%;
         width: 100%;
-        background: linear-gradient(10deg, rgba(44, 50, 63, 0.8) 0%, transparent 80%);
         border-radius: 15px;
         text-align: center;
         display: -webkit-box;

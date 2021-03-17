@@ -681,7 +681,7 @@ $landing-color : var(--theme-deafult);
     .cuba-demo-content {
       .couting {
         h2 {
-          color: var(--theme-deafult);
+          color: green;
           font-weight: 500;
           font-size: calc(35px + (70 - 35) * ((100vw - 300px) / (1920 - 300)));
           background: -webkit-linear-gradient(var(--theme-deafult), #966afb);
