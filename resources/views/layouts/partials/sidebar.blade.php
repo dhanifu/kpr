@@ -15,10 +15,7 @@
                     <a href="#"><img class="img-fluid" src="{{ asset('assets/images/logo/logowebdark.png') }}" alt=""></a>
                     <div class="mobile-back text-right"><span>Back</span><i class="fa fa-angle-right pl-2" aria-hidden="true"></i></div>
                 </li>
-                @role('boss')
-                    <li class="sidebar-list"><a class="sidebar-link sidebar-title link-nav" href="{{ route('home') }}"><i data-feather="home"> </i><span>Dashboard</span></a></li>  
-                @endrole
-                @role('admin')
+                @if(auth()->user()->role == 'admin')
                     <li class="sidebar-list"><a class="sidebar-link sidebar-title link-nav" href="{{ route('home') }}"><i data-feather="home"> </i><span>Dashboard</span></a></li>  
                     <li class="sidebar-list"><a class="sidebar-link sidebar-title" href="#"><i data-feather="user"></i><span>Management Account</span></a>
                         <ul class="sidebar-submenu">
@@ -33,7 +30,7 @@
                             <li><a href="#">Apex Chart</a></li>
                         </ul>
                     </li>
-                @endrole
+                @endif
             </ul>
         </div>
         <div class="right-arrow" id="right-arrow"><i data-feather="arrow-right"></i></div>

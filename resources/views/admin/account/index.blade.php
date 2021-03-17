@@ -4,18 +4,10 @@
         <div class="col-md-12">
             <div class="card">
                 <div class="card-header">
+                  @include('layouts.partials.error')
                   <div class="d-flex justify-content-between">
                     <button type="submit" class="btn btn-primary btn-md" data-toggle="modal" data-target="#addModal">Add</button>
-                    something
                   </div>
-                    @if (session()->has('success'))
-                      <b>{{ session()->get('success') }}</b>
-                    @endif
-                    @if($errors->any())
-                      @foreach ($errors->all() as $err)
-                          {{ $err }}
-                      @endforeach
-                    @endif
                 </div>
                 <div class="card-body">
                     <div class="table-responsive">
@@ -110,8 +102,7 @@
                       <select name="role" id="role" class="form-control custom-select" required>
                         <option disabled selected>Select Role</option>
                         <option value="admin">Admin</option>
-                        <option value="customer">Customer</option>
-                        <option value="boss">Boss</option>
+                        <option value="user">User</option>
                       </select>
                     </div>
                   </div>

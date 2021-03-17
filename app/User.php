@@ -16,7 +16,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password',
+        'name', 'email', 'username', 'password', 'role', 'avatar'
     ];
 
     /**
@@ -36,4 +36,21 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    public function getImgProfileAttribute()
+    {
+        return "/storage/".$this->avatar;
+    }
+    public function getRoleSectionAttribute()
+    {
+        if($this->role == 'admin')
+        {
+            return '<span class="badge badge-danger">ADMIN<span>';
+        } else if($this->role == 'user')
+        {
+            return '<span class="badge badge-info">USER<span>';
+        } else {
+            return '<span class="badge badge-light">Not Have Role<span>';
+        }
+    }
 }
