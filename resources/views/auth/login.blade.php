@@ -32,7 +32,7 @@
                   <input id="checkbox1" type="checkbox" name="remember">
                   <label class="text-muted" for="checkbox1">Remember Me</label>
                 </div>
-                  <a class="link" href="{{ route('register') }}">Register Account</a>
+                  <a class="link" style="color: rgb(0, 152, 253);" href="{{ route('register') }}">Register Account</a>
                 <button class="btn btn-primary btn-block" type="submit">Sign in</button>
               </div>
             </form>
