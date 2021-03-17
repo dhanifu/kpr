@@ -1,11 +1,11 @@
 <div class="sidebar-wrapper">
     <div class="logo-wrapper">
-        <a href="{{ route('home') }}"><img class="img-fluid for-light" src="{{ asset('assets/images/logo/logoweb.png') }}" alt="logowebsite" style="height: 50px; width: 200px; object-fit: cover;"><img class="img-fluid for-dark" src="{{ asset('assets/images/logo/logowebdark.png') }}" alt="logowebsite" style="height: 50px; width: 200px; object-fit: cover;"></a>
+        <a href="{{ route('home') }}"><img class="img-fluid for-light" src="{{ asset('assets/images/logo/logoweb.png') }}" alt="logowebsite" style="height: 100px; width: 200px; object-fit: cover;"><img class="img-fluid for-dark" src="{{ asset('assets/images/logo/logowebdark.png') }}" alt="logowebsite" style="height: 100px; width: 200px; object-fit: cover;"></a>
         <div class="back-btn"><i class="fa fa-angle-left"></i></div>
         <div class="toggle-sidebar"><i class="status_toggle middle sidebar-toggle" data-feather="grid"> </i></div>
     </div>
     <div class="logo-icon-wrapper">
-        <a href="{{ route('home') }}"><img class="img-fluid" src="{{ asset('assets/images/logo/logowebdark.png') }}" alt="logowebsite" style="height: 50px; width: 50px; object-fit: cover;"></a>
+        <a href="{{ route('home') }}"><img class="img-fluid" src="{{ asset('assets/images/logo/logoweb.png') }}" alt="logowebsite" style="height: 20px; width: 20px; object-fit: cover;"></a>
     </div>
     <nav class="sidebar-main">
         <div class="left-arrow" id="left-arrow"><i data-feather="arrow-left"></i></div>

@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="keywords" content="KPR">
     <meta name="author" content="pixelstrap">
-    <link rel="icon" href="{{asset ('assets/images/logo-tni.png')}}" type="image/x-icon">
+    <link rel="icon" href="{{ asset('assets/images/logo-tni.png') }}" type="image/x-icon">
     <link rel="shortcut icon" href="{{asset ('assets/images/logo-tni.png')}}" type="image/x-icon">
     <title>Aplikasi KPR</title>
     <!-- Google font-->
@@ -67,7 +67,7 @@
                     <li class="nav-item"><a class="nav-link" href="#dashboards">Home</a></li>
                     <li class="nav-item"><a class="nav-link" href="#tentangkami">Tentang Kami</a></li>
                     <li class="nav-item"><a class="nav-link" href="#kontakkami">Hubungi Kami</a></li>
-                    <li class="nav-item buy-btn"><a class="nav-link" href="" >Sign in</a></li>
+                    <li class="nav-item buy-btn"><a class="nav-link" href="{{ route('login') }}">Sign in</a></li>
                   </ul>
                 </div>
               </nav>
