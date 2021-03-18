@@ -19,7 +19,7 @@ class AccountController extends Controller
 
     public function admin_index_account()
     {
-        $account = User::where('id', '!=', auth()->user()->id)->where('role', 'admin')->paginate(5);
+        $account = User::where('id', '!=', auth()->user()->id)->where('role', '0')->paginate(5);
         return view('admin.account.admin.index', [
             'accounts' => $account
         ]);
@@ -27,7 +27,7 @@ class AccountController extends Controller
 
     public function user_index_account()
     {
-        $account = User::where('id', '!=', auth()->user()->id)->where('role', 'user')->paginate(5);
+        $account = User::where('id', '!=', auth()->user()->id)->where('role', '2')->paginate(5);
         return view('admin.account.user.index', [
             'accounts' => $account
         ]);

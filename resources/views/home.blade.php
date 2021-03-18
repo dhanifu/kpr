@@ -1,6 +1,15 @@
 @extends('layouts.app', ['title' => 'KPR | Dashboard'])
 @section('content')
 <div class="container-fluid">
+    @if(auth()->user()->role == "2" &&  auth()->user()->email_verified_at == null)
+        <div class="card p-3">
+            <h1>untuk melanjutkan silahkan verifikasi email anda.</h1>
+            <form class="d-inline" method="POST" action="{{ route('verification.resend') }}">
+                @csrf
+                <button type="submit" class="btn btn-link p-0 m-0 align-baseline"><h3>Verifikasi Ulang Sekarang</h3></button>.
+            </form>
+        </div>
+    @else
     <div class="row second-chart-list third-news-update">
         <div class="col-xl-9 xl-100 chart_data_left box-col-12">
             <div class="card">
@@ -157,5 +166,6 @@
             </div>
         </div>
     </div>
+    @endif
 </div>
 @endsection

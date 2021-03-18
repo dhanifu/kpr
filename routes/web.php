@@ -15,12 +15,16 @@ Route::middleware('guest')->group(function(){
     Route::get('/login', function () {
         return view('auth.login');
     });
+    Route::prefix('user')->namespace('User')->name('user.')->group(function(){
+        Route::get('/register', 'RegisterUser@index')->name('register');
+    });
 });
-Auth::routes();
+
+Auth::routes(['verify' => true]);
 
 Route::middleware('auth')->group(function(){
     // dashboard
-    Route::get('/dashboard', 'HomeController@index')->name('home');
+    Route::get('/home', 'HomeController@index')->name('home');
     // profil user
     Route::prefix('profile')->name('profile.')->group(function(){
         Route::get('/setting', 'UserController@edit')->name('setting');
@@ -54,5 +58,10 @@ Route::middleware('auth')->group(function(){
         });
 
         Route::get('/search/{data[]}','AccountController@search')->name('search');
+        Route::resource('pangkat', 'PangkatController');
     });
+
+
+
+
 });
