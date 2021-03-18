@@ -34,6 +34,20 @@
                             </span>
                         @enderror
                     </div>
+                    
+                    <div class="form-group">
+                      <select class="form-control" name="pangkat_id" id="pangkat_id" required>
+                        <option disabled selected>Pilih Pangkat</option>
+                        @foreach ($pangkats as $pangkat)
+                            <option value="{{ $pangkat->id }}">{{ $pangkat->pangkat }}</option>
+                        @endforeach
+                        @error('pangkat_id')
+                            <span class="invalid-feedback" role="alert">
+                                <strong>{{ $message }}</strong>
+                            </span>
+                        @enderror
+                      </select>
+                    </div>
                 
                     <div class="form-group">
                       <label class="col-form-label" for="username">Username:</label>

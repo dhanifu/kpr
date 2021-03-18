@@ -12,6 +12,11 @@
             <div class="mb-4">
             <h3>Sign In</h3>
             <p class="mb-4">Silahkan login untuk melanjutkan.</p>
+            @if(session()->has('success'))
+            <div class="alert alert-success">
+              <span>{{ session()->get('success') }}</span>
+            </div>
+            @endif
           </div>
           <form action="{{ route('login') }}" method="post">
             @csrf
@@ -39,7 +44,7 @@
                 <input type="checkbox" name="remember" checked="checked"/>
                 <div class="control__indicator"></div>
               </label>
-              <span class="ml-auto"><a href="{{ route('register') }}" class="forgot-pass">Register Account</a></span> 
+              <span class="ml-auto"><a href="{{ route('user.register') }}" class="forgot-pass">Register Account</a></span> 
             </div>
             <input type="submit" value="Log In" class="btn btn-block btn-primary">
           </form>

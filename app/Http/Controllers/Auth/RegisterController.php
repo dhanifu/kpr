@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
+use App\Pangkat;
 use App\Providers\RouteServiceProvider;
 use App\User;
 use Illuminate\Foundation\Auth\RegistersUsers;
@@ -38,6 +39,13 @@ class RegisterController extends Controller
         $this->middleware('guest');
     }
 
+    // public function index()
+    // {
+    //     dd('asd');
+    //     return view('auth.register', [
+    //         'pangkats' => Pangkat::get()
+    //     ]);
+    // }
     /**
      * Get a validator for an incoming registration request.
      *
@@ -51,6 +59,7 @@ class RegisterController extends Controller
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users,email'],
             'username' => ['required', 'string', 'min:3', 'max:255', 'unique:users,username'],
             'password' => ['required', 'min:8', 'confirmed'],
+            'pangkat_id' => ['required']
         ]);
     }
 
@@ -65,9 +74,18 @@ class RegisterController extends Controller
         return User::create([
             'name' => $data['name'],
             'email' => $data['email'],
-            'role' => 'user',
+            'role' => "2",
             'username' => $data['username'],
             'password' => Hash::make($data['password']),
+            'status_verif' => 0,
+            'pangkat_id' => $data['pangkat_id']
         ]);
+    }
+
+    // cegah login dari registrasi
+    protected function registered()
+    {
+        $this->guard()->logout();
+        return redirect()->route('login')->with('success', 'untuk melanjutkan silahkan verifikasi email anda.');
     }
 }
