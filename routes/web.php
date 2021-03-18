@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
+
 // login & register
 Route::middleware('guest')->group(function(){
     // user landing page
@@ -15,12 +16,16 @@ Route::middleware('guest')->group(function(){
     Route::get('/login', function () {
         return view('auth.login');
     });
+    Route::prefix('user')->namespace('User')->name('user.')->group(function(){
+        Route::get('/register', 'RegisterUser@index')->name('register');
+    });
 });
-Auth::routes();
+
+Auth::routes(); 
 
 Route::middleware('auth')->group(function(){
     // dashboard
-    Route::get('/dashboard', 'HomeController@index')->name('home');
+    Route::get('/home', 'HomeController@index')->name('home');
     // profil user
     Route::prefix('profile')->name('profile.')->group(function(){
         Route::get('/setting', 'UserController@edit')->name('setting');
@@ -39,7 +44,7 @@ Route::middleware('auth')->group(function(){
             Route::get('/admin', 'AccountController@admin_index_account')->name('admin');
             Route::get('/customer', 'AccountController@user_index_account')->name('customer');
             // register account
-            Route::resource('register', 'AccountController')->except(['admin_index_account', 'costumer_index_account', 'boss_index_account']);
+            Route::resource('register', 'AccountController');
         });
         Route::prefix('rekapdata')->name('rekapdata.')->group(function () {
             Route::get('/Bulan', 'RekapdataController@getBulan')->name('bulan');
