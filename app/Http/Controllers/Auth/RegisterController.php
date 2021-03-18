@@ -78,7 +78,6 @@ class RegisterController extends Controller
     // cegah login dari registrasi
     protected function registered()
     {
-        $this->guard()->logout();
-        return redirect()->route('login')->with('success', 'untuk melanjutkan silahkan verifikasi email anda.');
+        return redirect()->route('home');
     }
 }
