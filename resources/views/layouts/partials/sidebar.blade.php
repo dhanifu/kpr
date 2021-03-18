@@ -22,6 +22,7 @@
                             <li><a href="{{ route('admin.account.register.index') }}">Daftar Akun</a></li>
                             <li><a href="{{ route('admin.account.admin') }}">Admin</a></li>
                             <li><a href="{{ route('admin.account.customer') }}">User</a></li>
+                            <li><a href="{{ route('admin.pangkat.index') }}">Daftar Pangkat</a></li>
                         </ul>
                     </li>
                     <li class="sidebar-list"><a class="sidebar-link sidebar-title" href="#"><i data-feather="book-open"></i><span>Rekap Data KPR</span></a>
