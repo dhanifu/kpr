@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\RegisterRequest;
 use App\User;
+use Illuminate\Support\Facades\DB;
 
 class AccountController extends Controller
 {
@@ -28,6 +29,14 @@ class AccountController extends Controller
     {
         $account = User::where('id', '!=', auth()->user()->id)->where('role', 'user')->paginate(5);
         return view('admin.account.user.index', [
+            'accounts' => $account
+        ]);
+    }
+
+    public function kelola_index_account()
+    {
+        $account = User::where('id', '!=', auth()->user()->id)->where('role', 'kelola')->paginate(5);
+        return view('admin.account.kelola.index', [
             'accounts' => $account
         ]);
     }
@@ -74,7 +83,7 @@ class AccountController extends Controller
         }
         $attr['avatar'] = $thumbnail;
         $user->update($attr);
-        return redirect()->route('admin.account.register.index');
+        return redirect()->route('admin.account.register.index')->with('success','Data User Berhasil Di tambahkan');
     }
 
     public function destroy($id)
@@ -87,4 +96,9 @@ class AccountController extends Controller
         $user->delete();
         return back();
     }
+    public function search($data)
+    {
+        echo $data[0];
+    }
+
 }

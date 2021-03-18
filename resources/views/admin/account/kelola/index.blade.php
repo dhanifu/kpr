@@ -1,27 +1,22 @@
-@extends('layouts.app', ['title' => 'KPR | '.request()->path() ])
+@extends('layouts.app', ['title' => 'KPR | Kelola Account'])
 @section('content')
 <div class="row">
     <div class="col-md-12">
         <div class="card">
-            <div class="card-header b-l-primary border-3">
-                <h5>Tahun</h5>
-                <div class="pt-4">
-                    <button type="button" class="btn btn-secondary btn-md" data-toggle="tooltip" data-placement="top" title="Total Tunggakan"><i data-feather="book-open"></i></button>
-                    <button type="button" class="btn btn-success btn-md" data-toggle="tooltip" data-placement="right" title="Statisk Customer"><i data-feather="bar-chart"></i></button>
-                    <button type="button" class="btn btn-info btn-md" data-toggle="tooltip" data-placement="bottom" title="Total Customer"><i data-feather="users"></i></button>
-                    <button type="button" class="btn btn-warning btn-md" data-toggle="tooltip" data-placement="left" title="Total Pinjaman"><i data-feather="book"></i></button>
-                </div>
-                <div class="d-flex justify-content-end">
-                        <div class="input-group pt-4">
-                            <div class="row">
-                                <div class="col-md-12">
+            <div class="card-header">
+                <form action="" method="post">
+                    <div class="d-flex justify-content-end">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="input-group">
                                     <input class="form-control" id="validationTooltip02" type="text" placeholder="Search" required="">
                                     <div class="valid-tooltip">Looks good!</div>
+                                    <button class="btn btn-secondary ml-2">Search</button>
                                 </div>
                             </div>
-                            <button class="btn btn-secondary ml-2">Search</button>
                         </div>
                     </div>
+                </form>
             </div>
             <div class="card-body">
                 <div class="table-responsive">
@@ -37,14 +32,43 @@
                                 <th>Action</th>
                             </tr>
                         </thead>
+                        @forelse ($accounts as $account)
                         <tbody>
-
+                            <tr>
+                                <th>{{ $loop->iteration + $accounts->firstItem() - 1 . '.' }}</th>
+                                <td>
+                                    @empty($account->avatar)
+                                    <img class="rounded-circle" src="{{ asset('assets/images/avatar/avatar-default.png') }}" width="60" alt="avatar">
+                                    @else
+                                    <img class="rounded-circle" src="{{ $account->ImgProfile }}" style="width: 60px; height: 60px; object-fit: cover; object-position: center;" alt="avatar">
+                                    @endempty
+                                </td>
+                                <td>{{ $account->name }}</td>
+                                <td>{{ $account->email }}</td>
+                                <td>{{ $account->username }}</td>
+                                <td><span class="badge badge-light">DILINDUNGI<span></td>
+                                <td>
+                                    <a href="{{ route('admin.account.register.edit', $account->id) }}" style="float: left;" class="mr-1"><i class="fa fa-pencil-square-o" style="color: rgb(0, 241, 12);"></i></a>
+                                    <form action="{{ route('admin.account.register.destroy', $account->id) }}" method="post">
+                                        @csrf
+                                        @method('DELETE')
+                                        <button type="submit" onclick="return confirm('Sure for delete this data?')" style="background-color: transparent; border: none;"><i class="icon-trash" style="color: red;"></i></button>
+                                    </form>
+                                </td>
+                            </tr>
                         </tbody>
+                        @empty
+                        <tbody>
+                            <tr>
+                                <th colspan="8" style="color: red; text-align: center;">Data Empty!</th>
+                            </tr>
+                        </tbody>
+                        @endforelse
                     </table>
                 </div>
             </div>
             <div class="card-footer">
-
+                {{ $accounts->links() }}
             </div>
         </div>
     </div>

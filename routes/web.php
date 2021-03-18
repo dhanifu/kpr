@@ -35,10 +35,10 @@ Route::middleware('auth')->group(function(){
     Route::prefix('admin')->name('admin.')->namespace('Admin')->group(function(){
         // management account
         Route::prefix('account')->name('account.')->group(function () {
-            // per view & role
             Route::get('/admin', 'AccountController@admin_index_account')->name('admin');
-            Route::get('/customer', 'AccountController@user_index_account')->name('customer');
-            // register account
+            Route::get('/kelola', 'AccountController@kelola_index_account')->name('kelola');
+            Route::get('/user', 'AccountController@user_index_account')->name('user');
+            Route::get('/enduser', 'AccountController@user_index_account')->name('enduser');
             Route::resource('register', 'AccountController')->except(['admin_index_account', 'costumer_index_account', 'boss_index_account']);
         });
         Route::prefix('rekapdata')->name('rekapdata.')->group(function () {
@@ -52,5 +52,7 @@ Route::middleware('auth')->group(function(){
             Route::get('/BesarAngsuran','DetaildataController@getBesarAngsuran')->name('besarangsuran');
             Route::get('/SisaAngsuran','DetaildataController@getSisaAngsuran')->name('sisaangsuran');
         });
+
+        Route::get('/search/{data[]}','AccountController@search')->name('search');
     });
 });

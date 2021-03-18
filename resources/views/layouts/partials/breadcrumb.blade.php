@@ -20,16 +20,22 @@
                         <li class="breadcrumb-item">Change Password</li>
                     @endif
                     @if(request()->is('admin/account/register'))
-                        <li class="breadcrumb-item">Management Account</li>
+                        <li class="breadcrumb-item">Kelola Akun</li>
+                        <li class="breadcrumb-item">Daftar</li>
                     @endif
                     @if(request()->is('admin/account/admin'))
-                        <li class="breadcrumb-item">Management Account</li>
+                        <li class="breadcrumb-item">Kelola Akun</li>
+                        <li class="breadcrumb-item">Admin</li>
                     @endif
                     @if(request()->is('admin/account/customer'))
-                        <li class="breadcrumb-item">Management Account</li>
+                        <li class="breadcrumb-item">Kelola Akun</li>
+                        <li class="breadcrumb-item">Customer</li>
                     @endif
                     @if(request()->is('admin/account/boss'))
-                        <li class="breadcrumb-item">Management Account</li>
+                        <li class="breadcrumb-item">Kelola Akun</li>
+                    @endif
+                    @if(request()->is('admin/account/boss'))
+                        <li class="breadcrumb-item">Kelola Akun</li>
                     @endif
                 </ol>
             </div>

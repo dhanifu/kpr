@@ -21,10 +21,12 @@
                         <ul class="sidebar-submenu">
                             <li><a href="{{ route('admin.account.register.index') }}">Daftar Akun</a></li>
                             <li><a href="{{ route('admin.account.admin') }}">Admin</a></li>
-                            <li><a href="{{ route('admin.account.customer') }}">User</a></li>
+                            <li><a href="{{ route('admin.account.kelola') }}">Kelola</a></li>
+                            <li><a href="{{ route('admin.account.user') }}">User</a></li>
+                            <li><a href="{{ route('admin.account.enduser') }}">End User</a></li>
                         </ul>
                     </li>
-                    <li class="sidebar-list"><a class="sidebar-link sidebar-title" href="#"><i data-feather="book-open"></i><span>Rekap Data KPR</span></a>
+                    <li class="sidebar-list"><a class="sidebar-link sidebar-title active" href="#"><i data-feather="book-open"></i><span>Rekap Data KPR</span></a>
                         <ul class="sidebar-submenu">
                             <li><a href="{{ route('admin.rekapdata.bulan') }}">Perbulan</a></li>
                             <li><a href="{{ route('admin.rekapdata.tahun') }}">Pertahun</a></li>
