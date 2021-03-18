@@ -1,7 +1,7 @@
 @extends('layouts.app', ['title' => 'KPR | Dashboard'])
 @section('content')
 <div class="container-fluid">
-    @if(auth()->user()->role == "2" &&  auth()->user()->email_verified_at == null)
+    @if(auth()->user()->role == "3" &&  auth()->user()->email_verified_at == null)
         <div class="card p-3">
             <h1>untuk melanjutkan silahkan verifikasi email anda.</h1>
             <form class="d-inline" method="POST" action="{{ route('verification.resend') }}">
