@@ -84,8 +84,9 @@ class PangkatController extends Controller
      * @param  \App\Pangkat  $pangkat
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Pangkat $pangkat)
+    public function destroy($id)
     {
+        $pangkat = Pangkat::findOrFail($id);
         $pangkat->delete();
         return back();
     }
