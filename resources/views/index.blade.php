@@ -43,7 +43,7 @@
         background: linear-gradient(to right, #71B280, #134E5E); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
       }
   </style>
-  <body class="landing-page">
+  <body class="landing-page" id="body">
     <!-- page-wrapper Start-->
     <div class="page-wrapper landing-page">
       <!-- Page Body Start           -->
@@ -59,7 +59,7 @@
         </ul>
         <div class="container-fluid">
           <div class="sticky-header">
-            <header>                       
+            <header>
               <nav class="navbar navbar-b navbar-trans navbar-expand-xl fixed-top nav-padding" id="sidebar-menu"><a class="navbar-brand p-0" href="#"><img src="{{asset('assets/images/ditkuad.png')}}" alt=""></a>
                 <button class="navbar-toggler navabr_btn-set custom_nav" type="button" data-toggle="collapse" data-target="#navbarDefault" aria-controls="navbarDefault" aria-expanded="false" aria-label="Toggle navigation"><span></span><span></span><span></span></button>
                 <div class="navbar-collapse justify-content-end collapse hidenav" id="navbarDefault">
@@ -83,7 +83,7 @@
                 </div>
               </div>
             </div>
-            <div class="col-xl-7 col-lg-6">                 
+            <div class="col-xl-7 col-lg-6">
               <div class="wow fadeIn"><img class="screen1" style="margin-top: 30px;" src="{{asset('assets/images/rumah.png')}}" alt=""></div>
               <div class="wow fadeIn"><img class="screen2" style="width:50%; height:50%;" src="{{asset('assets/images/tentara.png')}}" alt=""></div>
             </div>
@@ -132,7 +132,7 @@
         </div>
       </section>
     </div>
-    
+
     <!-- latest jquery-->
     <script src="{{ asset('assets/js/jquery-3.5.1.min.js')}}"></script>
     <!-- Bootstrap js-->

@@ -20,7 +20,7 @@
                             @forelse ($accounts as $account)
                             <tbody>
                                 <tr>
-                                    <th>{{ $loop->iteration + $accounts->firstItem() - 1 . '.' }}</th>  
+                                    <th>{{ $loop->iteration + $accounts->firstItem() - 1 . '.' }}</th>
                                     <td>
                                       @empty($account->avatar)
                                           <img class="rounded-circle" src="{{ asset('assets/images/avatar/avatar-default.png') }}" width="60" alt="avatar">
