@@ -64,9 +64,9 @@
                 <button class="navbar-toggler navabr_btn-set custom_nav" type="button" data-toggle="collapse" data-target="#navbarDefault" aria-controls="navbarDefault" aria-expanded="false" aria-label="Toggle navigation"><span></span><span></span><span></span></button>
                 <div class="navbar-collapse justify-content-end collapse hidenav" id="navbarDefault">
                   <ul class="navbar-nav navbar_nav_modify" id="scroll-spy">
-                    <li class="nav-item"><a class="nav-link" href="#dashboards">Home</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#tentangkami">Tentang Kami</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#kontakkami">Hubungi Kami</a></li>
+                    <li class="nav-item" style="margin-right: 20px;"><a class="nav-link" href="#dashboards">Home</a></li>
+                    <li class="nav-item" style="margin-right: 20px;"><a class="nav-link" href="#tentangkami">Tentang Kami</a></li>
+                    <li class="nav-item" style="margin-right: 20px;"><a class="nav-link" href="#kontakkami">Hubungi Kami</a></li>
                     <li class="nav-item buy-btn"><a class="nav-link" href="{{ route('login') }}">Sign in</a></li>
                   </ul>
                 </div>
@@ -125,7 +125,7 @@
             <div class="card">
               <div class="card-body">
                   <h5 style="float: left;">Kantor Pusat:</h5>
-                <p class="mt-3 wow fadeIn text-secondary" style="float: left; margin-left:100px;"> Jl. Dr. Wahidin I No 6, Ps Baru, Kecamatan Sawah Besar, Kota Jakarta Pusat, Daerah khusus Ibukota Jakarta 10710</p>
+                <p class="mt-3 wow fadeIn text-secondary" style="float: left; margin-left:100px;"><i class="icofont icofont-social-google-map"></i> Jl. Dr. Wahidin I No 6, Ps Baru, Kecamatan Sawah Besar, Kota Jakarta Pusat, Daerah khusus Ibukota Jakarta 10710</p>
               </div>
             </div>
           </div>
