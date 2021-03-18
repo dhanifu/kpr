@@ -1,4 +1,5 @@
 <div class="sidebar-wrapper">
+    {{-- style="background-image: linear-gradient(#134E5E, #71B280);" --}}
     <div class="logo-wrapper">
         <a href="{{ route('home') }}"><img class="img-fluid for-light" src="{{ asset('assets/images/logo/logoweb.png') }}" alt="logowebsite" style="height: 100px; width: 200px; object-fit: cover;"><img class="img-fluid for-dark" src="{{ asset('assets/images/logo/logowebdark.png') }}" alt="logowebsite" style="height: 100px; width: 200px; object-fit: cover;"></a>
         <div class="back-btn"><i class="fa fa-angle-left"></i></div>
@@ -15,7 +16,7 @@
                     <a href="#"><img class="img-fluid" src="{{ asset('assets/images/logo/logowebdark.png') }}" alt=""></a>
                     <div class="mobile-back text-right"><span>Back</span><i class="fa fa-angle-right pl-2" aria-hidden="true"></i></div>
                 </li>
-                @if(auth()->user()->role == 'admin')
+                {{-- @if(auth()->user()->role == 'admin') --}}
                     <li class="sidebar-list"><a class="sidebar-link sidebar-title link-nav" href="{{ route('home') }}"><i data-feather="home"> </i><span>Dashboard</span></a></li>
                     <li class="sidebar-list"><a class="sidebar-link sidebar-title" href="#"><i data-feather="users"></i><span>Kelola User</span></a>
                         <ul class="sidebar-submenu">
@@ -41,7 +42,7 @@
                             <li><a href="{{ route('admin.detaildata.sisaangsuran') }}">Sisa Angsuran</a></li>
                         </ul>
                     </li>
-                @endif
+                {{-- @endif --}}
                 <li class="sidebar-list"><a class="sidebar-link sidebar-title" href="#"><i data-feather="user"></i><span>My Profile</span>
                 </a>
                 <ul class="sidebar-submenu">
