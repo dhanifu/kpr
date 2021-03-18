@@ -16,31 +16,38 @@
                     <div class="mobile-back text-right"><span>Back</span><i class="fa fa-angle-right pl-2" aria-hidden="true"></i></div>
                 </li>
                 @if(auth()->user()->role == 'admin')
-                <li class="sidebar-list"><a class="sidebar-link sidebar-title link-nav" href="{{ route('home') }}"><i data-feather="home"> </i><span>Dashboard</span></a></li>
-                <li class="sidebar-list"><a class="sidebar-link sidebar-title" href="#"><i data-feather="user"></i><span>Kelola User</span></a>
-                    <ul class="sidebar-submenu">
-                        <li><a href="{{ route('admin.account.register.index') }}">Daftar Akun</a></li>
-                        <li><a href="{{ route('admin.account.admin') }}">Admin</a></li>
-                        <li><a href="{{ route('admin.account.customer') }}">User</a></li>
-                    </ul>
-                </li>
-                <li class="sidebar-list"><a class="sidebar-link sidebar-title" href="#"><i data-feather="book-open"></i><span>Rekap Data KPR</span></a>
-                    <ul class="sidebar-submenu">
-                        <li><a href="{{ route('admin.rekapdata.bulan') }}">Perbulan</a></li>
-                        <li><a href="{{ route('admin.rekapdata.tahun') }}">Pertahun</a></li>
-                    </ul>
-                </li>
-                <li class="sidebar-list"><a class="sidebar-link sidebar-title" href="#"><i data-feather="book"></i><span>Detail Data Angsuran</span>
-                    </a>
-                    <ul class="sidebar-submenu">
-                        <li><a href="{{ route('admin.detaildata.angsuranke') }}">Angsuran Ke</a></li>
-                        <li><a href="{{ route('admin.detaildata.pokok') }}">Pokok</a></li>
-                        <li><a href="{{ route('admin.detaildata.bunga') }}">Bunga</a></li>
-                        <li><a href="{{ route('admin.detaildata.besarangsuran') }}">Besar Angsuran</a></li>
-                        <li><a href="{{ route('admin.detaildata.sisaangsuran') }}">Sisa Angsuran</a></li>
-                    </ul>
-                </li>
+                    <li class="sidebar-list"><a class="sidebar-link sidebar-title link-nav" href="{{ route('home') }}"><i data-feather="home"> </i><span>Dashboard</span></a></li>
+                    <li class="sidebar-list"><a class="sidebar-link sidebar-title" href="#"><i data-feather="users"></i><span>Kelola User</span></a>
+                        <ul class="sidebar-submenu">
+                            <li><a href="{{ route('admin.account.register.index') }}">Daftar Akun</a></li>
+                            <li><a href="{{ route('admin.account.admin') }}">Admin</a></li>
+                            <li><a href="{{ route('admin.account.customer') }}">User</a></li>
+                        </ul>
+                    </li>
+                    <li class="sidebar-list"><a class="sidebar-link sidebar-title" href="#"><i data-feather="book-open"></i><span>Rekap Data KPR</span></a>
+                        <ul class="sidebar-submenu">
+                            <li><a href="{{ route('admin.rekapdata.bulan') }}">Perbulan</a></li>
+                            <li><a href="{{ route('admin.rekapdata.tahun') }}">Pertahun</a></li>
+                        </ul>
+                    </li>
+                    <li class="sidebar-list"><a class="sidebar-link sidebar-title" href="#"><i data-feather="book"></i><span>Detail Data Angsuran</span>
+                        </a>
+                        <ul class="sidebar-submenu">
+                            <li><a href="{{ route('admin.detaildata.angsuranke') }}">Angsuran Ke</a></li>
+                            <li><a href="{{ route('admin.detaildata.pokok') }}">Pokok</a></li>
+                            <li><a href="{{ route('admin.detaildata.bunga') }}">Bunga</a></li>
+                            <li><a href="{{ route('admin.detaildata.besarangsuran') }}">Besar Angsuran</a></li>
+                            <li><a href="{{ route('admin.detaildata.sisaangsuran') }}">Sisa Angsuran</a></li>
+                        </ul>
+                    </li>
                 @endif
+                <li class="sidebar-list"><a class="sidebar-link sidebar-title" href="#"><i data-feather="user"></i><span>My Profile</span>
+                </a>
+                <ul class="sidebar-submenu">
+                    <li><a href="{{ route('profile.setting') }}">Setting</a></li>
+                    <li><a data-toggle="modal" data-target="#exampleModalCenter" href="#">Log out</a></li>
+                </ul>
+            </li>
             </ul>
         </div>
         <div class="right-arrow" id="right-arrow"><i data-feather="arrow-right"></i></div>
