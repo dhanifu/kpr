@@ -22,14 +22,8 @@
                         <ul class="sidebar-submenu">
                             <li><a href="{{ route('admin.account.register.index') }}">Daftar Akun</a></li>
                             <li><a href="{{ route('admin.account.admin') }}">Admin</a></li>
-<<<<<<< HEAD
-                            <li><a href="{{ route('admin.account.kelola') }}">Kelola</a></li>
-                            <li><a href="{{ route('admin.account.user') }}">User</a></li>
-                            <li><a href="{{ route('admin.account.enduser') }}">End User</a></li>
-=======
                             <li><a href="{{ route('admin.account.customer') }}">User</a></li>
                             <li><a href="{{ route('admin.pangkat.index') }}">Daftar Pangkat</a></li>
->>>>>>> 0a17cc8bb7ef31e74e21a485a9dd08c5de50b1bf
                         </ul>
                     </li>
                     <li class="sidebar-list"><a class="sidebar-link sidebar-title active" href="#"><i data-feather="book-open"></i><span>Rekap Data KPR</span></a>
