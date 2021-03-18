@@ -38,14 +38,7 @@ class RegisterController extends Controller
     {
         $this->middleware('guest');
     }
-
-    // public function index()
-    // {
-    //     dd('asd');
-    //     return view('auth.register', [
-    //         'pangkats' => Pangkat::get()
-    //     ]);
-    // }
+    
     /**
      * Get a validator for an incoming registration request.
      *

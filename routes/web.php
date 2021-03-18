@@ -3,7 +3,6 @@
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
-
 // login & register
 Route::middleware('guest')->group(function(){
     // user landing page
@@ -21,7 +20,7 @@ Route::middleware('guest')->group(function(){
     });
 });
 
-Auth::routes(); 
+Auth::routes(['verify' => true]);
 
 Route::middleware('auth')->group(function(){
     // dashboard
