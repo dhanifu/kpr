@@ -19,7 +19,7 @@ class CreateUsersTable extends Migration
             $table->string('email')->unique();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('username')->unique();
-            $table->string('nrp')->unique();
+            $table->string('nrp')->unique()->nullable();//nullable for developer
             $table->string('password');
             $table->string('role'); //untuk role 0(admin), 1(pengelola), 2(user verif & tidak)
             $table->string('avatar')->nullable();

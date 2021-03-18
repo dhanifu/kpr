@@ -100,5 +100,8 @@ class AccountController extends Controller
     {
         echo $data[0];
     }
-
+    public function verifikasi()
+    {
+        return view('admin.account.verifikasi.index');
+    }
 }
