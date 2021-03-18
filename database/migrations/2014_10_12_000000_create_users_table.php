@@ -19,11 +19,11 @@ class CreateUsersTable extends Migration
             $table->string('email')->unique();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('username')->unique();
-            $table->string('nrp')->unique();
+            $table->string('nrp')->unique()->nullable(); //untuk user 
             $table->string('password');
             $table->string('role');
             $table->string('avatar')->nullable();
-            $table->foreignId('pangkat_id')->references('id')->on('pangkat')->onDelete('cascade');
+            $table->foreignId('pangkat_id')->nullable()->references('id')->on('pangkat')->onDelete('cascade'); //untuk user
             $table->rememberToken();
             $table->timestamps();
         });

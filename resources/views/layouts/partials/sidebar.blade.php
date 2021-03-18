@@ -16,19 +16,30 @@
                     <div class="mobile-back text-right"><span>Back</span><i class="fa fa-angle-right pl-2" aria-hidden="true"></i></div>
                 </li>
                 @if(auth()->user()->role == 'admin')
-                    <li class="sidebar-list"><a class="sidebar-link sidebar-title link-nav" href="{{ route('home') }}"><i data-feather="home"> </i><span>Dashboard</span></a></li>  
-                    <li class="sidebar-list"><a class="sidebar-link sidebar-title" href="#"><i data-feather="user"></i><span>Management Account</span></a>
-                        <ul class="sidebar-submenu">
-                            <li><a href="{{ route('admin.account.register.index') }}">Register Account</a></li>
-                            <li><a href="{{ route('admin.account.admin') }}">Admin Account</a></li>
-                            <li><a href="{{ route('admin.account.user') }}">User Account</a></li>
-                        </ul>
-                    </li>   
-                    <li class="sidebar-list"><a class="sidebar-link sidebar-title" href="#"><i data-feather="bar-chart"></i><span>Report</span></a>
-                        <ul class="sidebar-submenu">
-                            <li><a href="#">Apex Chart</a></li>
-                        </ul>
-                    </li>
+                <li class="sidebar-list"><a class="sidebar-link sidebar-title link-nav" href="{{ route('home') }}"><i data-feather="home"> </i><span>Dashboard</span></a></li>
+                <li class="sidebar-list"><a class="sidebar-link sidebar-title" href="#"><i data-feather="user"></i><span>Kelola Akun</span></a>
+                    <ul class="sidebar-submenu">
+                        <li><a href="{{ route('admin.account.register.index') }}">Daftar Akun</a></li>
+                        <li><a href="{{ route('admin.account.admin') }}">Admin Akun</a></li>
+                        <li><a href="{{ route('admin.account.customer') }}">Customer Akun</a></li>
+                    </ul>
+                </li>
+                <li class="sidebar-list"><a class="sidebar-link sidebar-title" href="#"><i data-feather="book-open"></i><span>Rekap Data KRP</span></a>
+                    <ul class="sidebar-submenu">
+                        <li><a href="{{ route('admin.rekapdata.bulan') }}">Perbulan</a></li>
+                        <li><a href="{{ route('admin.rekapdata.tahun') }}">Pertahun</a></li>
+                    </ul>
+                </li>
+                <li class="sidebar-list"><a class="sidebar-link sidebar-title active" href="#"><i data-feather="book"></i><span">Detail Data Angsuran</span>
+                    </a>
+                    <ul class="sidebar-submenu">
+                        <li><a href="{{ route('admin.detaildata.angsuranke') }}">Angsuran Ke</a></li>
+                        <li><a href="{{ route('admin.detaildata.pokok') }}">Pokok</a></li>
+                        <li><a href="{{ route('admin.detaildata.bunga') }}">Bunga</a></li>
+                        <li><a href="{{ route('admin.detaildata.besarangsuran') }}">Besar Angsuran</a></li>
+                        <li><a href="{{ route('admin.detaildata.sisaangsuran') }}">Sisa Angsuran</a></li>
+                    </ul>
+                </li>
                 @endif
             </ul>
         </div>
