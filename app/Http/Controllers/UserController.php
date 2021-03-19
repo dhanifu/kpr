@@ -77,4 +77,9 @@ class UserController extends Controller
         ]);
         return back();
     }
+    public function pinjaman()
+    {
+        return view('user.pinjaman.index');
+    }
 }
+

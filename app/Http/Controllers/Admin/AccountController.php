@@ -3,8 +3,8 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\RegisterRequest;
 use App\User;
+use Illuminate\Support\Facades\DB;
 
 class AccountController extends Controller
 {
@@ -20,7 +20,7 @@ class AccountController extends Controller
     public function pengelola_index_account()
     {
         $account = User::where('id', '!=', auth()->user()->id)->where('role', '1')->paginate(5);
-        return view('admin.account.user.index', [
+        return view('admin.account.kelola.index', [
             'accounts' => $account
         ]);
     }
@@ -89,7 +89,7 @@ class AccountController extends Controller
         }
         $attr['avatar'] = $thumbnail;
         $user->update($attr);
-        return redirect()->route('admin.account.admin');
+        return redirect()->route('admin.account.admin')->with('success','Data User Berhasil Di tambahkan');
     }
 
     public function destroy($id)
@@ -101,5 +101,17 @@ class AccountController extends Controller
         }
         $user->delete();
         return back();
+    }
+    public function search($data)
+    {
+        echo $data[0];
+    }
+    public function verifikasi()
+    {
+        $account = User::where('id', '!=', auth()->user()->id)->where('role', '2')->paginate(5);
+
+        return view('admin.account.verifikasi.index',[
+            'accounts' => $account
+        ]);
     }
 }
