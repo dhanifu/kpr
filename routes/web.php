@@ -56,8 +56,11 @@ Route::middleware('auth')->group(function(){
             Route::get('/BesarAngsuran','DetaildataController@getBesarAngsuran')->name('besarangsuran');
             Route::get('/SisaAngsuran','DetaildataController@getSisaAngsuran')->name('sisaangsuran');
         });
+        
         Route::resource('pangkat', 'PangkatController');
     });
+
+    Route::get('/kalkulator','HomeController@kalkulator')->name('kalkulator');
     
     
 

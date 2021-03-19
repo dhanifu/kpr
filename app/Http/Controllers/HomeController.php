@@ -27,4 +27,9 @@ class HomeController extends Controller
         // $cek_role = User::where('role', auth()->user()->role == 2);
         return view('home');
     }
+
+    public function kalkulator()
+    {
+        return view('admin.kalkulator.index');
+    }
 }
