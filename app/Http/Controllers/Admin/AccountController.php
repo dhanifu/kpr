@@ -58,13 +58,14 @@ class AccountController extends Controller
         return back();
     }
 
-    // public function enduser_index_account()
-    // {
-    //     $account = User::where('id', '!=', auth()->user()->id)->where('role', '3')->where('email_verified_at', null)->paginate(5);
-    //     return view('admin.account.user.index', [
-    //         'accounts' => $account
-    //     ]);
-    // }
+    public function verified($id)
+    {
+        User::findOrFail($id)->update([
+            'role' => '2',
+            'status_verif' => '1'
+        ]);
+        return back();
+    }
 
     public function store()
     {

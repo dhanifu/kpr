@@ -51,10 +51,10 @@
                                 <td>{{ $account->nrp }}</td>
                                 <td><span class="badge badge-light">DILINDUNGI<span></td>
                                 <td>
-                                    <form action="{}" method="post">
+                                    <form action="{{ route('admin.account.verified', $account->id) }}" method="post">
                                         @csrf
                                         @method('PATCH')
-                                        <button type="button" class="btn btn-success btn-sm"><i class="fa fa-check"></i> VERIFIED</button>
+                                        <button type="submit" class="btn btn-success btn-sm"><i class="fa fa-check"></i> VERIFIED</button>
                                     </form>
                                 </td>
                             </tr>

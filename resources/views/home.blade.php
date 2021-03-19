@@ -50,7 +50,7 @@
                         <p>Approval Pengelola</p>
                     </div>
                     @endif
-                    @if(auth()->user()->role == "2" && auth()->user()->pinjaman->status == 1)
+                    @if(auth()->user()->role == "2")
                     <div class="f1-step active">
                         <div class="f1-step-icon"><i class="fa fa-money"></i></div>
                         <p>Pinjaman</p>

@@ -36,7 +36,7 @@
             
             <div class="d-flex mb-5 mt-2 align-items-center">
               <label class="control control--checkbox mb-0"><span class="caption">Remember me</span>
-                <input type="checkbox" name="remember" checked="checked"/>
+                <input type="checkbox" name="remember" />
                 <div class="control__indicator"></div>
               </label>
               <span class="ml-auto"><a href="{{ route('user.register') }}" class="forgot-pass">Register Account</a></span> 
