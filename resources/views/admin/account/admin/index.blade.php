@@ -42,14 +42,10 @@
                                 <td><span class="badge badge-light">DILINDUNGI<span></td>
                                 <td>
                                     <a href="{{ route('admin.account.register.edit', $account->id) }}" style="float: left;" class="mr-1"><i class="fa fa-pencil-square-o" style="color: rgb(0, 241, 12);"></i></a>
-                                    <form action="{{ route('admin.account.register.destroy', $account->id) }}" method="post">
-                                        @csrf
-                                        @method('DELETE')
-                                    </form>
+                                    <button onclick="return deleteUser('{{$account->id}}')" style="background-color: transparent; border: none;"><i class="icon-trash" style="color: red;"></i></button>
                                     <form method="post" id="DeleteUser{{$account->id}}" action="{{ route('admin.account.register.destroy', $account->id) }}">
                                         @csrf
                                         @method('delete')
-                                        <button type="submit" onclick="return deleteUser('{{$account->id}}')" style="background-color: transparent; border: none;"><i class="icon-trash" style="color: red;"></i></button>
                                     </form>
                                     <script>
                                         function deleteUser(id) {

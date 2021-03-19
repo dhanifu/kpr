@@ -40,7 +40,7 @@
                         <p>Email</p>
                     </div>
                     @endif
-                    @if(auth()->user()->role == "2")
+                    @if(auth()->user()->role == "2" && auth()->user()->status_verif == 1)
                     <div class="f1-step active">
                         <div class="f1-step-icon"><i class="fa fa-user"></i></div>
                         <p>Approval Pengelola</p>
@@ -51,7 +51,7 @@
                         <p>Approval Pengelola</p>
                     </div>
                     @endif
-                    @if(auth()->user()->role == "2")
+                    @if(auth()->user()->role == "2" && auth()->user()->pinjaman)
                     <div class="f1-step active">
                         <div class="f1-step-icon"><i class="fa fa-money"></i></div>
                         <p>Pinjaman</p>
@@ -116,6 +116,7 @@
         </div>
     </div>
     @endif
+    @if(auth()->user()->role == "0")
     <div class="row second-chart-list third-news-update">
         <div class="col-xl-9 xl-100 chart_data_left box-col-12">
             <div class="card">
@@ -272,5 +273,6 @@
             </div>
         </div>
     </div>
+    @endif
 </div>
 @endsection

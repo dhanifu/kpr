@@ -49,11 +49,30 @@
                                 <td><span class="badge badge-light">DILINDUNGI<span></td>
                                 <td>
                                     <a href="{{ route('admin.account.register.edit', $account->id) }}" style="float: left;" class="mr-1"><i class="fa fa-pencil-square-o" style="color: rgb(0, 241, 12);"></i></a>
-                                    <form action="{{ route('admin.account.register.destroy', $account->id) }}" method="post">
+                                    <button onclick="return deleteUser('{{$account->id}}')" style="background-color: transparent; border: none;"><i class="icon-trash" style="color: red;"></i></button>
+                                    <form method="post" id="DeleteUser{{$account->id}}" action="{{ route('admin.account.register.destroy', $account->id) }}">
                                         @csrf
-                                        @method('DELETE')
-                                        <button type="submit" onclick="return confirm('Sure for delete this data?')" style="background-color: transparent; border: none;"><i class="icon-trash" style="color: red;"></i></button>
+                                        @method('delete')
                                     </form>
+                                    <script>
+                                        function deleteUser(id) {
+                                            swal({
+                                                    title: "Are you sure?",
+                                                    text: "Once deleted, you will not be able to recover this imaginary file!",
+                                                    icon: "warning",
+                                                    buttons: true,
+                                                    dangerMode: true,
+                                                })
+                                                .then((willDelete) => {
+                                                    if (willDelete) {
+                                                        event.preventDefault();
+                                                        document.getElementById(`DeleteUser${id}`).submit();
+                                                    } else {
+                                                        swal("okay :)");
+                                                    }
+                                                });
+                                        }
+                                    </script>
                                 </td>
                             </tr>
                         </tbody>

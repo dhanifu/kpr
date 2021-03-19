@@ -16,7 +16,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'username', 'password', 'role', 'nrp', 'avatar'
+        'name', 'email', 'username', 'nrp', 'password', 'role', 'avatar', 'status_verif', 'pangkat_id'
     ];
 
     public function bunga()
@@ -24,6 +24,14 @@ class User extends Authenticatable
         return $this->hasOne(Bunga::class);
     }
 
+    public function pangkat()
+    {
+        return $this->belongsTo(Pangkat::class);
+    }
+    public function pinjaman()
+    {
+        return $this->hasOne(Pinjaman::class);
+    }
     /**
      * The attributes that should be hidden for arrays.
      *

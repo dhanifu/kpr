@@ -25,16 +25,21 @@
             </div>
             <div class="card-body">
                 <div class="table-responsive">
-                    <table class="table table-hover">
+                    <table class="table table-hover table-">
                         <thead>
                             <tr>
                                 <th>#</th>
-                                <th>Avatar</th>
-                                <th>Name</th>
-                                <th>E-Mail</th>
-                                <th>Username</th>
-                                <th>Password</th>
-                                <th>Action</th>
+                                <th>Jangka Waktu</th>
+                                <th>Jumlah Angsuran</th>
+                                <th>Angsuran Masuk</th>
+                                <th>Angsuran Tunggakan</th>
+                                <th>Jumlah Tunggakan</th>
+                                <th>Keteragan</th>
+                                <th>Angsuran Pokok</th>
+                                <th>Angsuran Bunga</th>
+                                <th>Besar Angsuran</th>
+                                <th>Pinjaman Pokok</th>
+                                <th>Anusitas</th>
                             </tr>
                         </thead>
                         <tbody>

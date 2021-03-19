@@ -11,6 +11,7 @@ class AccountController extends Controller
 
     public function admin_index_account()
     {
+        dd(User::find(auth()->user()->id)->pinjaman);
         $account = User::where('id', '!=', auth()->user()->id)->where('role', '0')->paginate(5);
         return view('admin.account.admin.index', [
             'accounts' => $account

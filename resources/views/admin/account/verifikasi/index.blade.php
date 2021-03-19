@@ -50,14 +50,7 @@
                                 <td>{{ $account->email }}</td>
                                 <td>{{ $account->username }}</td>
                                 <td><span class="badge badge-light">DILINDUNGI<span></td>
-                                <td>
-                                    <a href="" style="float: left;" class="mr-1"><i class="fa fa-pencil-square-o" style="color: rgb(0, 241, 12);"></i></a>
-                                    <form action="{{ route('admin.account.register.destroy', $account->id) }}" method="post">
-                                        @csrf
-                                        @method('DELETE')
-                                        <button type="submit" onclick="return confirm('Sure for delete this data?')" style="background-color: transparent; border: none;"><i class="icon-trash" style="color: red;"></i></button>
-                                    </form>
-                                </td>
+
                             </tr>
                         </tbody>
                         @empty
