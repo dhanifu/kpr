@@ -16,12 +16,17 @@ class User extends Authenticatable implements MustVerifyEmail
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'username', 'password', 'role', 'nrp', 'avatar'
+        'name', 'email', 'nrp', 'password', 'role', 'avatar', 'pangkat_id'
     ];
 
     public function bunga()
     {
         return $this->hasOne(Bunga::class);
+    }
+
+    public function pangkat()
+    {
+        return $this->belongsTo(Pangkat::class);
     }
 
     /**
@@ -32,8 +37,6 @@ class User extends Authenticatable implements MustVerifyEmail
     protected $hidden = [
         'password', 'remember_token',
     ];
-
-
 
     /**
      * The attributes that should be cast to native types.

@@ -15,11 +15,12 @@
                             <thead>
                                 <tr>
                                     <th>#</th>
+                                    <th>Pangkat</th>
                                     <th>Status</th>
                                     <th>Avatar</th>
                                     <th>Name</th>
                                     <th>E-Mail</th>
-                                    <th>Username</th>
+                                    <th>NRP</th>
                                     <th>Password</th>
                                     <th>Action</th>
                                 </tr>
@@ -28,6 +29,7 @@
                             <tbody>
                                 <tr>
                                     <th>{{ $loop->iteration + $accounts->firstItem() - 1 . '.' }}</th>
+                                    <td><b>{{ Str::upper($account->pangkat->pangkat) }}</b></td>
                                     <td>
                                         @if($account->email_verified_at == null)
                                             <span class="badge badge-danger">Belum Verifikasi Email</span>
@@ -44,7 +46,7 @@
                                     </td>
                                     <td>{{ $account->name }}</td>
                                     <td>{{ $account->email }}</td>
-                                    <td>{{ $account->username }}</td>
+                                    <td>{{ $account->nrp }}</td>
                                     <td><span class="badge badge-light">DILINDUNGI<span></td>
                                     <td>
                                       <a href="{{ route('admin.account.register.edit', $account->id) }}" style="float: left;" class="mr-1"><i class="fa fa-pencil-square-o" style="color: rgb(0, 241, 12);"></i></a>
