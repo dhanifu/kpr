@@ -34,6 +34,20 @@
                             </span>
                         @enderror
                     </div>
+                    
+                    <div class="form-group">
+                      <select class="form-control" name="pangkat_id" id="pangkat_id" required>
+                        <option disabled selected>Pilih Pangkat</option>
+                        @foreach ($pangkats as $pangkat)
+                            <option value="{{ $pangkat->id }}">{{ $pangkat->pangkat }}</option>
+                        @endforeach
+                        @error('pangkat_id')
+                            <span class="invalid-feedback" role="alert">
+                                <strong>{{ $message }}</strong>
+                            </span>
+                        @enderror
+                      </select>
+                    </div>
                 
                     <div class="form-group">
                       <label class="col-form-label" for="username">Username:</label>
@@ -59,7 +73,7 @@
                         <label class="col-form-label" for="password-confirm">Confirm Password:</label>
                         <input class="form-control" type="password" name="password_confirmation" id="password-confirm" autocomplete="new-password" required>         
                     </div>
-                    <a href="{{ route('login') }}" class="btn btn-danger btn-sm" style="color: white; text-decoration: none; padding: 15px;" role="button">Back</a>
+                    <a href="{{ route('login') }}" class="btn btn-danger btn-sm" style="color: white; text-decoration: none; padding: 15px; width: 100px;" role="button">Back</a>
                     <button type="submit" class="btn btn-primary btn-sm" type="submit">Register</button>
             </form>
           </div>

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\User;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
@@ -23,6 +24,12 @@ class HomeController extends Controller
      */
     public function index()
     {
+        // $cek_role = User::where('role', auth()->user()->role == 2);
         return view('home');
+    }
+
+    public function kalkulator()
+    {
+        return view('admin.kalkulator.index');
     }
 }

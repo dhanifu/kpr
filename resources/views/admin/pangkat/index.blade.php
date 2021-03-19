@@ -15,34 +15,25 @@
                             <thead>
                                 <tr>
                                     <th>#</th>
-                                    <th>Role</th>
-                                    <th>Avatar</th>
-                                    <th>Name</th>
-                                    <th>E-Mail</th>
-                                    <th>Username</th>
-                                    <th>Password</th>
+                                    <th>Pangkat</th>
+                                    <th>Corps</th>
+                                    <th>Kesatuan</th>
+                                    <th>Tahapan</th>
                                     <th>Action</th>
                                 </tr>
                             </thead>
-                            @forelse ($accounts as $account)
+                            @forelse ($pangkats as $pangkat)
                             <tbody>
                                 <tr>
-                                    <th>{{ $loop->iteration + $accounts->firstItem() - 1 . '.' }}</th>
-                                    <td>{!! $account->RoleSection !!}</td>
+                                    <th>{{ $loop->iteration + $pangkats->firstItem() - 1 . '.' }}</th>
+                                    <td>{{ $pangkat->pangkat }}</td>
+                                    
+                                    <td>{{ $pangkat->corps }}</td>
+                                    <td>{{ $pangkat->kesatuan }}</td>
+                                    <td>{{ $pangkat->tahap }}</td>
                                     <td>
-                                      @empty($account->avatar)
-                                          <img class="rounded-circle" src="{{ asset('assets/images/avatar/avatar-default.png') }}" width="60" alt="avatar">
-                                      @else
-                                          <img class="rounded-circle" src="{{ $account->ImgProfile }}" style="width: 60px; height: 60px; object-fit: cover; object-position: center;" alt="avatar">
-                                      @endempty
-                                    </td>
-                                    <td>{{ $account->name }}</td>
-                                    <td>{{ $account->email }}</td>
-                                    <td>{{ $account->username }}</td>
-                                    <td><span class="badge badge-light">DILINDUNGI<span></td>
-                                    <td>
-                                      <a href="{{ route('admin.account.register.edit', $account->id) }}" style="float: left;" class="mr-1"><i class="fa fa-pencil-square-o" style="color: rgb(0, 241, 12);"></i></a>
-                                      <form action="{{ route('admin.account.register.destroy', $account->id) }}" method="post">
+                                      <a href="{{ route('admin.pangkat.edit', $pangkat->id) }}" style="float: left;" class="mr-1"><i class="fa fa-pencil-square-o" style="color: rgb(0, 241, 12);"></i></a>
+                                      <form action="{{ route('admin.pangkat.destroy', $pangkat->id) }}" method="post">
                                         @csrf
                                         @method('DELETE')
                                         <button type="submit" onclick="return confirm('Sure for delete this data?')" style="background-color: transparent; border: none;"><i class="icon-trash" style="color: red;"></i></button>
@@ -61,7 +52,7 @@
                     </div>
                 </div>
                 <div class="card-footer">
-                {{ $accounts->links() }}
+                {{ $pangkats->links() }}
               </div>
             </div>
         </div>
@@ -74,48 +65,32 @@
               <h5 class="modal-title" id="exampleModalLabel2">Add New Account</h5>
               <button class="close" type="button" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
             </div>
-            <form action="{{ route('admin.account.register.store') }}" method="POST" enctype="multipart/form-data">
+            <form action="{{ route('admin.pangkat.store') }}" method="POST" enctype="multipart/form-data">
               @csrf
               <div class="modal-body">
                 <div class="row">
                   <div class="col-md-6">
                     <div class="form-group">
-                      <label class="col-form-label" for="avatar">Image (Nullable):</label>
-                      <input class="form-control" type="file" name="avatar" id="avatar">
+                      <label class="col-form-label" for="pangkat">Pangkat:</label>
+                      <input class="form-control" type="text" name="pangkat" id="pangkat" placeholder="Your Head">
                     </div>
                   </div>
                   <div class="col-md-6">
                     <div class="form-group">
-                      <label class="col-form-label" for="name">Name:</label>
-                      <input class="form-control" type="text" name="name" id="name" placeholder="your name" required>
+                      <label class="col-form-label" for="corps">Coprs:</label>
+                      <input class="form-control" type="text" name="corps" id="corps" placeholder="your corps" required>
                     </div>
                   </div>
                   <div class="col-md-6">
                     <div class="form-group">
-                      <label class="col-form-label" for="email">E-Mail:</label>
-                      <input class="form-control" type="email" name="email" id="email" placeholder="your email" required>
+                      <label class="col-form-label" for="kesatuan">Kesatuan:</label>
+                      <input class="form-control" type="text" name="kesatuan" id="kesatuan" placeholder="your kesatuan" required>
                     </div>
                   </div>
                   <div class="col-md-6">
                     <div class="form-group">
-                      <label class="col-form-label" for="role">Role:</label>
-                      <select name="role" id="role" class="form-control custom-select" required>
-                        <option disabled selected>Select Role</option>
-                        <option value="admin">Admin</option>
-                        <option value="user">User</option>
-                      </select>
-                    </div>
-                  </div>
-                  <div class="col-md-6">
-                    <div class="form-group">
-                      <label class="col-form-label" for="username">Username:</label>
-                      <input class="form-control" type="text" name="username" id="username" placeholder="username" required>
-                    </div>
-                  </div>
-                  <div class="col-md-6">
-                    <div class="form-group">
-                      <label class="col-form-label" for="password">Password:</label>
-                      <input class="form-control" type="password" name="password" id="password" placeholder="********" required>
+                      <label class="col-form-label" for="tahap">Tahap:</label>
+                      <input class="form-control" type="number" name="tahap" id="tahap" placeholder="tahap" required>
                     </div>
                   </div>
                 </div>
