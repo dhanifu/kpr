@@ -51,6 +51,7 @@ Route::middleware('auth')->group(function(){
             // register account
             Route::resource('register', 'AccountController');
             Route::get('/verifikasi', 'AccountController@verifikasi_index_account')->name('verifikasi');
+            Route::patch('/verified/{id}', 'AccountController@verified')->name('verified');
         });
         Route::prefix('rekapdata')->name('rekapdata.')->group(function () {
             Route::get('/Bulan', 'RekapdataController@getBulan')->name('bulan');
