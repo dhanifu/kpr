@@ -40,7 +40,7 @@
                             <th>jumlah tunggakan</th>
                             <th>keterangan</th>
                             <th>Status</th>
-                            <th colspan="2">option</th>
+                            <th colspan="2">Action</th>
                         </tr>
                     </thead>
                     @forelse ($pinjams as $pinjam)

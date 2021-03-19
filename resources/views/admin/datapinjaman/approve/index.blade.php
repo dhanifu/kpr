@@ -40,7 +40,7 @@
                             <th>jumlah tunggakan</th>
                             <th>keterangan</th>
                             <th>Status</th>
-                            <th colspan="2">Option</th>
+                            <th colspan="2">Action</th>
                         </tr>
                     </thead>
                     @forelse ($pinjams as $pinjam)
@@ -78,7 +78,7 @@
                     @empty
                         <tbody>
                             <tr>
-                                <th colspan="8" style="color: red; text-align: center;">Data Empty!</th>
+                                <th colspan="16" style="color: red; text-align: center;">Data Empty!</th>
                             </tr>
                         </tbody>
                     @endforelse

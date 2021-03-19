@@ -77,6 +77,9 @@
                         <li class="breadcrumb-item">Detail Angsuran</li>
                         <li class="breadcrumb-item">Sisa Angsuran</li>
                     @endif
+                    @if(request()->is('kalkulator'))
+                        <li class="breadcrumb-item">Kalkulator</li>
+                    @endif
                 </ol>
             </div>
         </div>
