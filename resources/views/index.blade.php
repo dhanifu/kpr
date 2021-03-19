@@ -46,7 +46,7 @@
   }
 </style>
 
-<body class="landing-page" id="body">
+<body class="landing-page font-roboto" id="body">
   <!-- page-wrapper Start-->
   <div class="page-wrapper landing-page">
     <!-- Page Body Start           -->
@@ -83,8 +83,8 @@
             </div>
           </div>
           <div class="col-lg-6">
-            <div class="wow fadeIn"><img class="" style="margin-top: 220px;width:100%;margin-left:80px"
-                src="{{asset('assets/images/rumah2.png')}}" alt=""></div>
+            <div class="wow fadeIn"><img style="margin-top: 220px;width:100%;margin-left:80px"
+                src="{{asset('assets/images/rumahbaru.png')}}" alt="rumah"></div>
           </div>
         </div>
       </div>
@@ -92,7 +92,7 @@
     <section class="cuba-demo-section" id="tentangkami" style="background-color: white;">
       <div class="container">
         <div class="row p-5">
-          <div class="col-sm-4">
+          <div class="col-sm-5">
 
             <h2>Lebih Dari 12 tahun
               melayani lebih
@@ -138,16 +138,6 @@
             </div>
           </div>
         </div>
-        <ul id="kontakkami">
-          <li style="margin-top: 30px;">
-            <p>Alamat Kantor: <br>
-              Jl. Dr. Wahidin I No 6, Ps Baru, Kecamatan Sawah Besar,<br>
-               Kota Jakarta Pusat, Daerah khusus Ibukota Jakarta 10710</p>
-          </li>
-          <li style="margin-left: 200px;margin-top: 70px; width:70%;">
-            <p>Copyright &#169; Ditkuad TNI AD - All Rights Reserved</p>
-          </li>
-        </ul>
       </div>
     </section>
     <section class="cuba-demo-section" id="kontakkami" style="background-color: white;">
@@ -155,19 +145,18 @@
 
           <div class="row">
 
-            <div class="col-sm-4">
-              <p>Alamat Kantor: <br>
-                Dr. Wahidin I No 6, Ps Baru, Kecamatan Sawah Besar,
-                Kota Jakarta Pusat, Daerah khusus Ibukota Jakarta 10710</p>
+              <div class="col-sm-4">
+                <p>Alamat Kantor: <br>
+                  Dr. Wahidin I No 6, Ps Baru, Kecamatan Sawah Besar,
+                  Kota Jakarta Pusat, Daerah khusus Ibukota Jakarta 10710</p>
               </div>
 
               <div class="col-sm-5 pt-5 offset-md-3">
                 <p>Copyright @2021 Ditkuad TNI AD - All Right Reserved</p>
               </div>
               
-            </div>
-        </div>
-    </div>
+          </div>
+      </div>
       
     </section>
   <!-- latest jquery-->
