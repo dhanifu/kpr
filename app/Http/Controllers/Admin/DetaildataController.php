@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Pinjaman;
 
 class DetaildataController extends Controller
 {
@@ -27,12 +28,36 @@ class DetaildataController extends Controller
     {
         return view('admin.detaildata.sisaangsuran.index');
     }
-    public function getApprove()
+    public function getindex($approve)
     {
-        return view('admin.datapinjaman.approve.index');
+        if ($approve == 'approve') {
+            $pinjams = Pinjaman::where('status', 1)->get();
+            return view('admin.datapinjaman.approve.index', compact('pinjams'));
+        }
+        if ($approve == 'pending') {
+            $pinjams = Pinjaman::where('status', 0)->get();
+            return view('admin.datapinjaman.pending.index', compact('pinjams'));
+        }
     }
-    public function getPending()
+    public function statusupdate($id)
     {
-        return view('admin.datapinjaman.pending.index');
+        $pinjam = Pinjaman::findOrFail($id);
+        $pinjam->update([
+            'status' => 1
+        ]);
+        return back();
+    }
+    public function statusdecline($id)
+    {
+        $pinjam = Pinjaman::findOrFail($id);
+        $pinjam->update([
+            'status' => 0
+        ]);
+        return back();
+    }
+    public function cari($id)
+    {
+        $id = Pinjaman::where('name', 'like', "%" . $id . "%")->get();
+        return view('admin.datapinjaman.approve.index', compact('pinjams'));
     }
 }

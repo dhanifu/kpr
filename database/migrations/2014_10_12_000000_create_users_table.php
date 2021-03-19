@@ -21,8 +21,9 @@ class CreateUsersTable extends Migration
             $table->string('username')->unique();
             $table->string('nrp')->unique()->nullable();//nullable for developer
             $table->string('password');
-            $table->string('role'); //untuk role 0(admin), 1(pengelola), 2(user verif & tidak)
+            $table->string('role'); //untuk role 0(admin), 1(pengelola), 2(user status_verif diterima dan tidak), 3(end user = belum verifikasi email)
             $table->string('avatar')->nullable();
+            $table->boolean('status_verif');
             $table->foreignId('pangkat_id')->nullable()->references('id')->on('pangkat')->onDelete('cascade');
             $table->rememberToken();
             $table->timestamps();

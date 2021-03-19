@@ -16,12 +16,22 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'username', 'password', 'role', 'nrp', 'avatar'
+        'name', 'email', 'username', 'nrp', 'password', 'role', 'avatar', 'status_verif', 'pangkat_id'
     ];
 
     public function bunga()
     {
         return $this->hasOne(Bunga::class);
+    }
+
+    public function pinjaman()
+    {
+        return $this->hasOne(Pinjaman::class);
+    }
+
+    public function pangkat()
+    {
+        return $this->belongsTo(Pangkat::class);
     }
 
     /**
@@ -50,17 +60,20 @@ class User extends Authenticatable
     }
     public function getRoleSectionAttribute()
     {
-        if($this->role == 'admin')
+        if($this->role == '0')
         {
-            return '<span class="badge badge-danger">ADMIN<span>';
-        } else if($this->role == 'user')
+            return 'ADMIN';
+        } else if($this->role == '1')
+        {
+            return 'PENGELOLA';
+        } else if($this->role == '2')
         {
             return 'USER';
-        }else if($this->role == 3)
+        } else if($this->role == '3')
         {
             return 'ENDUSER';
         } else {
-            return '<span class="badge badge-light">Not Have Role<span>';
+            return 'Not Have Role';
         }
     }
 }

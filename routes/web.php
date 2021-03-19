@@ -6,7 +6,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
 // login & register
-Route::middleware('guest')->group(function(){
+Route::middleware('guest')->group(function () {
     // user landing page
     Route::get('/', function () {
         return view('index');
@@ -17,7 +17,7 @@ Route::middleware('guest')->group(function(){
     Route::get('/login', function () {
         return view('auth.login');
     });
-    Route::prefix('user')->namespace('User')->name('user.')->group(function(){
+    Route::prefix('user')->namespace('User')->name('user.')->group(function () {
         Route::get('/register', 'RegisterUser@index')->name('register');
     });
 });
@@ -26,21 +26,21 @@ Auth::routes(['verify' => true]);
 
 Route::get('/pinjaman', 'UserController@pinjaman')->name('user.pinjaman.index');
 
-Route::middleware('auth')->group(function(){
+Route::middleware('auth')->group(function () {
     // dashboard
     Route::get('/home', 'HomeController@index')->name('home');
     // profil user
-    Route::prefix('profile')->name('profile.')->group(function(){
+    Route::prefix('profile')->name('profile.')->group(function () {
         Route::get('/setting', 'UserController@edit')->name('setting');
         Route::patch('/setting/update', 'UserController@update')->name('update');
     });
     // change password
-    Route::prefix('account')->name('password.')->group(function(){
+    Route::prefix('account')->name('password.')->group(function () {
         Route::get('/password', 'UserController@changePassword')->name('edit');
         Route::patch('/password', 'UserController@updatePassword')->name('edit');
     });
     // admin
-    Route::prefix('admin')->name('admin.')->namespace('Admin')->group(function(){
+    Route::prefix('admin')->name('admin.')->namespace('Admin')->group(function () {
         // management account
         Route::prefix('account')->name('account.')->group(function () {
             // per view & role
@@ -57,18 +57,19 @@ Route::middleware('auth')->group(function(){
             Route::get('/Tahun', 'RekapdataController@getTahun')->name('tahun');
         });
         Route::prefix('detaildata')->name('detaildata.')->group(function () {
-            Route::get('/AngsuranKe','DetaildataController@getAngsuranKe')->name('angsuranke');
-            Route::get('/Pokok','DetaildataController@getPokok')->name('pokok');
-            Route::get('/Bunga','DetaildataController@getBunga')->name('bunga');
-            Route::get('/BesarAngsuran','DetaildataController@getBesarAngsuran')->name('besarangsuran');
-            Route::get('/SisaAngsuran','DetaildataController@getSisaAngsuran')->name('sisaangsuran');
-            Route::get('/approve', 'DetaildataController@getApprove')->name('approve');
-            Route::get('/pending', 'DetaildataController@getPending')->name('pending');
+            Route::get('/AngsuranKe', 'DetaildataController@getAngsuranKe')->name('angsuranke');
+            Route::get('/Pokok', 'DetaildataController@getPokok')->name('pokok');
+            Route::get('/Bunga', 'DetaildataController@getBunga')->name('bunga');
+            Route::get('/BesarAngsuran', 'DetaildataController@getBesarAngsuran')->name('besarangsuran');
+            Route::get('/SisaAngsuran', 'DetaildataController@getSisaAngsuran')->name('sisaangsuran');
+            Route::get('/{pinjam}', 'DetaildataController@getindex')->name('pinjam');
+            Route::put('/status/{pinjam}', 'DetaildataController@statusupdate')->name('status');
+            Route::put('/decline/{pinjam}', 'DetaildataController@statusdecline')->name('statusdecline');
+            Route::post('/status/{id}', 'DetaildataController@cari')->name('carinama');
         });
 
         Route::resource('pangkat', 'PangkatController');
-        Route::get('/search','AccountController@seacrh')->name('search');
+        Route::get('/search', 'AccountController@seacrh')->name('search');
     });
-    Route::get('/kalkulator','HomeController@kalkulator')->name('kalkulator');
-
+    Route::get('/kalkulator', 'HomeController@kalkulator')->name('kalkulator');
 });

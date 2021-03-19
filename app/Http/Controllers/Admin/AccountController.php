@@ -3,24 +3,24 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\RegisterRequest;
 use App\User;
 use Illuminate\Support\Facades\DB;
 
 class AccountController extends Controller
 {
-    public function index()
-    {
-        $account = User::where('id', '!=', auth()->user()->id)->latest()->paginate(5);
-        return view('admin.account.index', [
-            'accounts' => $account
-        ]);
-    }
 
     public function admin_index_account()
     {
         $account = User::where('id', '!=', auth()->user()->id)->where('role', '0')->paginate(5);
         return view('admin.account.admin.index', [
+            'accounts' => $account
+        ]);
+    }
+
+    public function pengelola_index_account()
+    {
+        $account = User::where('id', '!=', auth()->user()->id)->where('role', '1')->paginate(5);
+        return view('admin.account.kelola.index', [
             'accounts' => $account
         ]);
     }
@@ -33,18 +33,25 @@ class AccountController extends Controller
         ]);
     }
 
-    public function kelola_index_account()
+    public function enduser_index_account()
     {
-        $account = User::where('id', '!=', auth()->user()->id)->where('role', 'kelola')->paginate(5);
-        return view('admin.account.kelola.index', [
+        $account = User::where('id', '!=', auth()->user()->id)->where('role', '3')->where('email_verified_at', null)->paginate(5);
+        return view('admin.account.user.index', [
             'accounts' => $account
         ]);
     }
 
-    public function store(RegisterRequest $request)
+    public function store()
     {
-        $attr = $request->all();
-        $attr['password'] = bcrypt($request->password);
+        $attr = $this->validate(request(), [
+            'name' => ['required', 'string', 'max:255'],
+            'email' => ['required', 'string', 'email', 'max:255', 'unique:users,email'],
+            'username' => ['required', 'string', 'min:3', 'max:255', 'unique:users,username'],
+            'password' => ['required', 'min:3'],
+            'role' => ['required'],
+            'avatar' => ['mimes:png,jpg,jpeg,svg', 'max:2048']
+        ]);
+        $attr['password'] = bcrypt(request('password'));
         $thumb = request()->file('avatar') ? request()->file('avatar')->store("images/avatar") : null;
         $attr['avatar'] = $thumb;
         User::create($attr);
@@ -53,17 +60,16 @@ class AccountController extends Controller
 
     public function edit($id)
     {
-       $user = User::findOrFail($id);
-       return view('admin.account.edit', compact('user'));
+        $user = User::findOrFail($id);
+        return view('admin.account.edit', compact('user'));
     }
 
     public function update($id)
     {
         $attr = $this->validate(request(), [
             'name' => ['required', 'string', 'max:255'],
-            'email' => ['required', 'string', 'email', 'max:255', 'unique:users,email,'.$id],
-            'username' => ['required', 'min:3', 'string', 'max:255', 'unique:users,username,'.$id],
-            'role' => ['required'],
+            'email' => ['required', 'string', 'email', 'max:255', 'unique:users,email,' . $id],
+            'username' => ['required', 'min:3', 'string', 'max:255', 'unique:users,username,' . $id],
             'avatar' => ['mimes:png,jpg,jpeg,svg', 'max:2048']
         ]);
         $user = User::findOrFail($id);
@@ -83,14 +89,13 @@ class AccountController extends Controller
         }
         $attr['avatar'] = $thumbnail;
         $user->update($attr);
-        return redirect()->route('admin.account.register.index')->with('success','Data User Berhasil Di tambahkan');
+        return redirect()->route('admin.account.admin')->with('success', 'Data User Berhasil Di tambahkan');
     }
 
     public function destroy($id)
     {
         $user = User::findOrFail($id);
-        if($user->avatar)
-        {
+        if ($user->avatar) {
             \Storage::delete($user->avatar);
         }
         $user->delete();
@@ -104,7 +109,7 @@ class AccountController extends Controller
     {
         $account = User::where('id', '!=', auth()->user()->id)->where('role', '2')->paginate(5);
 
-        return view('admin.account.verifikasi.index',[
+        return view('admin.account.verifikasi.index', [
             'accounts' => $account
         ]);
     }

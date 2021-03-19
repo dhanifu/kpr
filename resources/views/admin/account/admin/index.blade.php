@@ -76,6 +76,7 @@
             </div>
             <form action="{{ route('admin.account.register.store') }}" method="POST" enctype="multipart/form-data">
                 @csrf
+                <input type="hidden" name="role" value="0">
                 <div class="modal-body">
                     <div class="row">
                         <div class="col-md-6">
@@ -90,21 +91,10 @@
                                 <input class="form-control" type="text" name="name" id="name" placeholder="your name" required>
                             </div>
                         </div>
-                        <div class="col-md-6">
+                        <div class="col-md-12">
                             <div class="form-group">
                                 <label class="col-form-label" for="email">E-Mail:</label>
                                 <input class="form-control" type="email" name="email" id="email" placeholder="your email" required>
-                            </div>
-                        </div>
-                        <div class="col-md-6">
-                            <div class="form-group">
-                                <label class="col-form-label" for="role">Role:</label>
-                                <select name="role" id="role" class="form-control custom-select" required>
-                                    <option disabled selected>Select Role</option>
-                                    <option value="admin">Admin</option>
-                                    <option value="customer">Customer</option>
-                                    <option value="boss">Boss</option>
-                                </select>
                             </div>
                         </div>
                         <div class="col-md-6">
@@ -120,29 +110,6 @@
                             </div>
                         </div>
                     </div>
-                  </div>
-                  <div class="col-md-6">
-                    <div class="form-group">
-                      <label class="col-form-label" for="role">Role:</label>
-                      <select name="role" id="role" class="form-control custom-select" required>
-                        <option disabled selected>Select Role</option>
-                        <option value="admin">Admin</option>
-                        <option value="user">User</option>
-                      </select>
-                    </div>
-                  </div>
-                  <div class="col-md-6">
-                    <div class="form-group">
-                      <label class="col-form-label" for="username">Username:</label>
-                      <input class="form-control" type="text" name="username" id="username" placeholder="username" required>
-                    </div>
-                  </div>
-                  <div class="col-md-6">
-                    <div class="form-group">
-                      <label class="col-form-label" for="password">Password:</label>
-                      <input class="form-control" type="password" name="password" id="password" placeholder="********" required>
-                    </div>
-                  </div>
                 </div>
                 <div class="modal-footer">
                     <button class="btn btn-light for-light" type="button" data-dismiss="modal">Close</button>
