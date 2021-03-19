@@ -1,78 +1,95 @@
 @extends('layouts.app', ['title' => 'KPR | Pinjaman Approve' ])
 @section('content')
-<div class="row">
-    <div class="col-md-12">
-        <div class="card">
-            <div class="card-header b-l-primary border-3">
-                <h5>Data Pinjaman <span class="badge badge-success">Approve</span></h5>
-                <form action="" method="post">
-                    <div class="d-flex justify-content-end pt-4">
-                        <div class="input-group">
-                            <div class="row">
-                                <div class="col-md-12">
-                                    <input class="form-control" id="validationTooltip02" type="text" placeholder="Search" required="">
-                                    <div class="valid-tooltip">Looks good!</div>
+    <div class="row">
+        <div class="col-md-12">
+            <div class="card">
+                <div class="card-header b-l-primary border-3">
+                    <h5>Data Pinjaman <span class="badge badge-success">Verified</span></h5>
+                    <form action="" method="post">
+                        <div class="d-flex justify-content-end pt-4">
+                            <div class="input-group">
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <input class="form-control" id="validationTooltip02" type="text"
+                                            placeholder="Search" required="">
+                                        <div class="valid-tooltip">Looks good!</div>
+                                    </div>
                                 </div>
-                            </div>
-                            <button class="btn btn-secondary ml-2">Search</button>
-                </form>
-                <button class="btn btn-primary ml-2" data-toggle="modal" data-target="#addModal">Add</button>
-            </div>
-        </div>
-    </div>
-    <div class="card-body">
-        <div class="table-responsive">
-            <table class="table table-hover">
-                <thead>
-                    <tr>
-                        <th>jangka waktu</th>
-                        <th>jumlah angsuran</th>
-                        <th>angsuran ke</th>
-                        <th>angsuran masuk</th>
-                        <th>jumlah tunggakan</th>
-                        <th>keterangan</th>
-                        <th colspan="2"></th>
-                    </tr>
-                </thead>
-                <tbody>
-                </tbody>
-            </table>
-        </div>
-    </div>
-    <div class="card-footer">
-        <div>
-        </div>
-    </div>
-</div>
-
-{{-- add data modal --}}
-<div class="modal fade" id="addModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-lg" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel2">Add New Account</h5>
-                <button class="close" type="button" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
-            </div>
-            <form action="{{ route('admin.account.register.store') }}" method="POST" enctype="multipart/form-data">
-                @csrf
-                <div class="modal-body">
-                    <div class="row">
-                        <div class="col-md-6">
-                            <div class="form-group">
-                                <label class="col-form-label" for="avatar">Image (Nullable):</label>
-                                <input class="form-control" type="file" name="avatar" id="avatar">
-                            </div>
-                        </div>
-
-                    </div>
-                    <div class="modal-footer">
-                        <button class="btn btn-light for-light" type="button" data-dismiss="modal">Close</button>
-                        <button class="btn btn-secondary for-dark" type="button" data-dismiss="modal">Close</button>
-                        <button class="btn btn-primary" type="submit">Save</button>
-                    </div>
+                                <button class="btn btn-secondary ml-2">Search</button>
+                    </form>
                 </div>
-            </form>
+            </div>
+        </div>
+        <div class="card-body">
+            <div class="table-responsive">
+                <table class="table table-hover">
+                    <thead>
+                        <tr>
+                            <th>id</th>
+                            <th>Nama</th>
+                            <th>Pangkat</th>
+                            <th>Corps</th>
+                            <th>NRP</th>
+                            <th>Kesatuan</th>
+                            <th>Tahap</th>
+                            <th>jangka waktu</th>
+                            <th>jumlah angsuran</th>
+                            <th>angsuran ke</th>
+                            <th>angsuran masuk</th>
+                            <th>angsuran Tunggak</th>
+                            <th>jumlah tunggakan</th>
+                            <th>keterangan</th>
+                            <th>Status</th>
+                            <th colspan="2">Option</th>
+                        </tr>
+                    </thead>
+                    @forelse ($pinjams as $pinjam)
+                        <tbody>
+                            <tr>
+                                <th>{{ $loop->iteration }}</th>
+                                <td>{{ $pinjam->user->name }}</td>
+                                <td>{{ $pinjam->user->pangkat->pangkat }}</td>
+                                <td>{{ $pinjam->user->pangkat->corps }}</td>
+                                <td>{{ $pinjam->user->nrp }}</td>
+                                <td>{{ $pinjam->user->pangkat->kesatuan }}</td>
+                                <td>{{ $pinjam->user->pangkat->tahap }}</td>
+                                <td>{{ $pinjam->jangka_waktu }}</td>
+                                <td>{{ $pinjam->jmlangs }}</td>
+                                <td>{{ $pinjam->angsuran_ke }}</td>
+                                <td>{{ $pinjam->angsuran_masuk }}</td>
+                                <td>{{ $pinjam->angsuran_tunggak }}</td>
+                                <td>{{ $pinjam->jml_tunggak }}</td>
+                                <td>{{ $pinjam->keterangan }}</td>
+                                @if ($pinjam->status == 1)
+                                    <td><span class="badge badge-success">Verified</span>
+
+                                    </td>
+                                @endif
+
+                                <td>
+                                    <form action="{{ route('admin.detaildata.statusdecline', $pinjam->id) }}" method="post">
+                                        @csrf
+                                        @method('PUT')
+                                        <button type="submit" class="btn btn-sm btn-danger mb-1">Decline
+                                    </form>
+                                </td>
+                            </tr>
+                        </tbody>
+                    @empty
+                        <tbody>
+                            <tr>
+                                <th colspan="8" style="color: red; text-align: center;">Data Empty!</th>
+                            </tr>
+                        </tbody>
+                    @endforelse
+                </table>
+            </div>
+        </div>
+        <div class="card-footer">
+            <div>
+            </div>
         </div>
     </div>
-</div>
+
+
 @endsection

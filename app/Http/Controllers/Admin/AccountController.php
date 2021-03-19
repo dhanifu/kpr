@@ -37,7 +37,7 @@ class AccountController extends Controller
     {
         $account = User::where('id', '!=', auth()->user()->id)->wherein('role', ['2', '3'])->paginate(5);
         return view('admin.account.user.index', [
-            'accounts' => $account, 
+            'accounts' => $account,
             'pangkats' => Pangkat::get()
         ]);
     }
@@ -86,16 +86,16 @@ class AccountController extends Controller
 
     public function edit($id)
     {
-       $user = User::findOrFail($id);
-       return view('admin.account.edit', compact('user'));
+        $user = User::findOrFail($id);
+        return view('admin.account.edit', compact('user'));
     }
 
     public function update($id)
     {
         $attr = $this->validate(request(), [
             'name' => ['required', 'string', 'max:255'],
-            'email' => ['required', 'string', 'email', 'max:255', 'unique:users,email,'.$id],
-            'nrp' => ['required', 'min:3', 'string', 'max:255', 'unique:users,nrp,'.$id],
+            'email' => ['required', 'string', 'email', 'max:255', 'unique:users,email,' . $id],
+            'nrp' => ['required', 'min:3', 'string', 'max:255', 'unique:users,nrp,' . $id],
             'avatar' => ['mimes:png,jpg,jpeg,svg', 'max:2048']
         ]);
         $user = User::findOrFail($id);
@@ -115,14 +115,13 @@ class AccountController extends Controller
         }
         $attr['avatar'] = $thumbnail;
         $user->update($attr);
-        return redirect()->back()->with('success','Data User Berhasil Di tambahkan');
+        return redirect()->back()->with('success', 'Data User Berhasil Di tambahkan');
     }
 
     public function destroy($id)
     {
         $user = User::findOrFail($id);
-        if($user->avatar)
-        {
+        if ($user->avatar) {
             \Storage::delete($user->avatar);
         }
         $user->delete();
@@ -132,5 +131,4 @@ class AccountController extends Controller
     {
         echo $data[0];
     }
-
 }

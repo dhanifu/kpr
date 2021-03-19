@@ -24,6 +24,11 @@ class User extends Authenticatable implements MustVerifyEmail
         return $this->hasOne(Bunga::class);
     }
 
+    public function pinjaman()
+    {
+        return $this->hasOne(Pinjaman::class);
+    }
+
     public function pangkat()
     {
         return $this->belongsTo(Pangkat::class);
@@ -49,21 +54,17 @@ class User extends Authenticatable implements MustVerifyEmail
 
     public function getImgProfileAttribute()
     {
-        return "/storage/".$this->avatar;
+        return "/storage/" . $this->avatar;
     }
     public function getRoleSectionAttribute()
     {
-        if($this->role == '0')
-        {
+        if ($this->role == '0') {
             return '<span class="badge badge-success">ADMIN</span>';
-        } else if($this->role == '1')
-        {
+        } else if ($this->role == '1') {
             return '<span class="badge badge-warning">PENGELOLA</span>';
-        } else if($this->role == '2')
-        {
+        } else if ($this->role == '2') {
             return 'USER';
-        } else if($this->role == '3')
-        {
+        } else if ($this->role == '3') {
             return 'ENDUSER';
         } else {
             return 'Not Have Role';
