@@ -16,7 +16,7 @@ class User extends Authenticatable implements MustVerifyEmail
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'username', 'nrp', 'password', 'role', 'avatar', 'status_verif', 'pangkat_id'
+        'name', 'email', 'nrp', 'password', 'role', 'avatar', 'pangkat_id', 'status_verif'
     ];
 
     public function bunga()

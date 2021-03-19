@@ -1,4 +1,4 @@
-@extends('layouts.app', ['title' => 'KPR | '.request()->path() ])
+@extends('layouts.app', ['title' => 'KPR | Pinjaman Approve' ])
 @section('content')
     <div class="row">
         <div class="col-md-12">
