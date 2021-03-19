@@ -35,11 +35,13 @@
     <link id="color" rel="stylesheet" href="{{ asset('assets/css/color-1.css') }}" media="screen">
     <!-- Responsive css-->
     <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/responsive.css') }}">
+
     @stack('style')
 </head>
-<body onload="startTime()">
+<body>
     <!-- tap on top starts-->
     <div class="tap-top"><i data-feather="chevrons-up"></i></div>
+    @include('alert')
     <!-- tap on tap end-->
     <!-- page-wrapper Start-->
     <div class="page-wrapper compact-wrapper" id="pageWrapper">
@@ -62,7 +64,7 @@
             <!-- footer start-->
             @include('layouts.partials.footer')
             <!-- footer Ends-->
-        </div>   
+        </div>
         <!-- Page Body end-->
     </div>
     <!-- page-wrapper End-->
@@ -103,6 +105,7 @@
     <!-- Theme js-->
     <script src="{{ asset('assets/js/script.js') }}"></script>
     <!-- login js-->
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
     <!-- Plugin used-->
 </body>
 

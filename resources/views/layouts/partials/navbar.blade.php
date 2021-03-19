@@ -44,7 +44,7 @@
                             </div>
                         </div>
                         <div class="media-body"><span>{{ auth()->user()->name }}</span>
-                            <p class="mb-0 font-roboto">{{ Str::upper(auth()->user()->RoleSection) }} <i class="middle fa fa-angle-down"></i></p>
+                            <p class="mb-0 font-roboto">{!! Str::upper(auth()->user()->RoleSection) !!} <i class="middle fa fa-angle-down"></i></p>
                         </div>
                     </div>
                     <ul class="profile-dropdown onhover-show-div">

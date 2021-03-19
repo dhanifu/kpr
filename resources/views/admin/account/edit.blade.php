@@ -34,15 +34,6 @@
                                         @enderror
                                     </div>
                                 </div>
-                                <div class="col-md-12">
-                                    <div class="form-group">
-                                        <label class="col-form-label" for="role">Role:</label>
-                                        <select name="role" id="role" class="form-control custom-select" required>
-                                            <option value="admin" @if($user->role == 'admin') selected @endif>Admin</option>
-                                            <option value="user" @if($user->role == 'user') selected @endif>User</option>
-                                        </select>
-                                    </div>
-                                </div>
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label class="col-form-label" for="email">E-Mail:</label>
