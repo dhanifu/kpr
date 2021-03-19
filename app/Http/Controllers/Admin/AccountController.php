@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Pangkat;
 use App\User;
 
 class AccountController extends Controller
@@ -36,17 +37,34 @@ class AccountController extends Controller
     {
         $account = User::where('id', '!=', auth()->user()->id)->wherein('role', ['2', '3'])->paginate(5);
         return view('admin.account.user.index', [
+            'accounts' => $account, 
+            'pangkats' => Pangkat::get()
+        ]);
+    }
+
+    public function verifikasi_index_account()
+    {
+        $account = User::where('id', '!=', auth()->user()->id)->where('status_verif', null)->whereIn('role', ['2'])->paginate(5);
+        return view('admin.account.verifikasi.index', [
             'accounts' => $account
         ]);
     }
 
-    public function enduser_index_account()
+    public function update_role($id)
     {
-        $account = User::where('id', '!=', auth()->user()->id)->where('role', '3')->where('email_verified_at', null)->paginate(5);
-        return view('admin.account.user.index', [
-            'accounts' => $account
+        User::findOrFail($id)->update([
+            'role' => '2'
         ]);
+        return back();
     }
+
+    // public function enduser_index_account()
+    // {
+    //     $account = User::where('id', '!=', auth()->user()->id)->where('role', '3')->where('email_verified_at', null)->paginate(5);
+    //     return view('admin.account.user.index', [
+    //         'accounts' => $account
+    //     ]);
+    // }
 
     public function store()
     {
@@ -113,12 +131,5 @@ class AccountController extends Controller
     {
         echo $data[0];
     }
-    public function verifikasi()
-    {
-        $account = User::where('id', '!=', auth()->user()->id)->where('role', '2')->paginate(5);
 
-        return view('admin.account.verifikasi.index',[
-            'accounts' => $account
-        ]);
-    }
 }

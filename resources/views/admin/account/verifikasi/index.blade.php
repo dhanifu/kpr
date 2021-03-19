@@ -1,4 +1,4 @@
-@extends('layouts.app', ['title' => 'KPR | User Account'])
+@extends('layouts.app', ['title' => 'KPR | Verif User Account'])
 @section('content')
 <div class="row">
     <div class="col-md-12">
@@ -48,7 +48,7 @@
                                 </td>
                                 <td>{{ $account->name }}</td>
                                 <td>{{ $account->email }}</td>
-                                <td>{{ $account->username }}</td>
+                                <td>{{ $account->nrp }}</td>
                                 <td><span class="badge badge-light">DILINDUNGI<span></td>
                                 <td>
                                     <a href="" style="float: left;" class="mr-1"><i class="fa fa-pencil-square-o" style="color: rgb(0, 241, 12);"></i></a>
