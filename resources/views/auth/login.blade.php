@@ -12,11 +12,6 @@
             <div class="mb-4">
             <h3>Sign In</h3>
             <p class="mb-4">Silahkan login untuk melanjutkan.</p>
-            @if(session()->has('success'))
-            <div class="alert alert-success">
-              <span>{{ session()->get('success') }}</span>
-            </div>
-            @endif
           </div>
           <form action="{{ route('login') }}" method="post">
             @csrf

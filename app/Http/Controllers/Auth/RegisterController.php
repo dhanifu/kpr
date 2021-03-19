@@ -38,14 +38,7 @@ class RegisterController extends Controller
     {
         $this->middleware('guest');
     }
-
-    // public function index()
-    // {
-    //     dd('asd');
-    //     return view('auth.register', [
-    //         'pangkats' => Pangkat::get()
-    //     ]);
-    // }
+    
     /**
      * Get a validator for an incoming registration request.
      *
@@ -85,7 +78,6 @@ class RegisterController extends Controller
     // cegah login dari registrasi
     protected function registered()
     {
-        $this->guard()->logout();
-        return redirect()->route('login')->with('success', 'untuk melanjutkan silahkan verifikasi email anda.');
+        return redirect()->route('home');
     }
 }

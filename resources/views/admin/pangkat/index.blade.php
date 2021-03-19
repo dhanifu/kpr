@@ -22,18 +22,18 @@
                                     <th>Action</th>
                                 </tr>
                             </thead>
-                            @forelse ($pangkats as $account)
+                            @forelse ($pangkats as $pangkat)
                             <tbody>
                                 <tr>
                                     <th>{{ $loop->iteration + $pangkats->firstItem() - 1 . '.' }}</th>
-                                    <td>{{ $account->pangkat }}</td>
+                                    <td>{{ $pangkat->pangkat }}</td>
                                     
-                                    <td>{{ $account->corps }}</td>
-                                    <td>{{ $account->kesatuan }}</td>
-                                    <td>{{ $account->tahap }}</td>
+                                    <td>{{ $pangkat->corps }}</td>
+                                    <td>{{ $pangkat->kesatuan }}</td>
+                                    <td>{{ $pangkat->tahap }}</td>
                                     <td>
-                                      <a href="{{ route('admin.pangkat.edit', $account->id) }}" style="float: left;" class="mr-1"><i class="fa fa-pencil-square-o" style="color: rgb(0, 241, 12);"></i></a>
-                                      <form action="{{ route('admin.pangkat.destroy', $account->id) }}" method="post">
+                                      <a href="{{ route('admin.pangkat.edit', $pangkat->id) }}" style="float: left;" class="mr-1"><i class="fa fa-pencil-square-o" style="color: rgb(0, 241, 12);"></i></a>
+                                      <form action="{{ route('admin.pangkat.destroy', $pangkat->id) }}" method="post">
                                         @csrf
                                         @method('DELETE')
                                         <button type="submit" onclick="return confirm('Sure for delete this data?')" style="background-color: transparent; border: none;"><i class="icon-trash" style="color: red;"></i></button>

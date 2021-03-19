@@ -3,7 +3,6 @@
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
-
 // login & register
 Route::middleware('guest')->group(function(){
     // user landing page
@@ -21,7 +20,7 @@ Route::middleware('guest')->group(function(){
     });
 });
 
-Auth::routes(); 
+Auth::routes(['verify' => true]);
 
 Route::middleware('auth')->group(function(){
     // dashboard
@@ -57,8 +56,11 @@ Route::middleware('auth')->group(function(){
             Route::get('/BesarAngsuran','DetaildataController@getBesarAngsuran')->name('besarangsuran');
             Route::get('/SisaAngsuran','DetaildataController@getSisaAngsuran')->name('sisaangsuran');
         });
+        
         Route::resource('pangkat', 'PangkatController');
     });
+
+    Route::get('/kalkulator','HomeController@kalkulator')->name('kalkulator');
     
     
 
