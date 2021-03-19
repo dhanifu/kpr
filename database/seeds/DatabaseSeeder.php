@@ -11,7 +11,7 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
+        $this->call(PangkatSeeder::class);
         $this->call(UserSeeder::class);
-        // $this->call(PangkatSeeder::class);
     }
 }

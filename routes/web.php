@@ -60,6 +60,8 @@ Route::middleware('auth')->group(function(){
             Route::get('/Bunga','DetaildataController@getBunga')->name('bunga');
             Route::get('/BesarAngsuran','DetaildataController@getBesarAngsuran')->name('besarangsuran');
             Route::get('/SisaAngsuran','DetaildataController@getSisaAngsuran')->name('sisaangsuran');
+            Route::get('/approve', 'DetaildataController@getApprove')->name('approve');
+            Route::get('/pending', 'DetaildataController@getPending')->name('pending');
         });
 
         Route::resource('pangkat', 'PangkatController');

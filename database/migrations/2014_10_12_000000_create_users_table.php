@@ -23,7 +23,7 @@ class CreateUsersTable extends Migration
             $table->string('password');
             $table->string('role'); //untuk role 0(admin), 1(pengelola), 2(user verif & tidak)
             $table->string('avatar')->nullable();
-            $table->foreignId('pangkat_id')->references('id')->on('pangkat')->onDelete('cascade');
+            $table->foreignId('pangkat_id')->nullable()->references('id')->on('pangkat')->onDelete('cascade');
             $table->rememberToken();
             $table->timestamps();
         });

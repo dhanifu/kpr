@@ -102,6 +102,10 @@ class AccountController extends Controller
     }
     public function verifikasi()
     {
-        return view('admin.account.verifikasi.index');
+        $account = User::where('id', '!=', auth()->user()->id)->where('role', '2')->paginate(5);
+
+        return view('admin.account.verifikasi.index',[
+            'accounts' => $account
+        ]);
     }
 }
