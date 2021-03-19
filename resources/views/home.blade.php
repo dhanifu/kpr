@@ -28,7 +28,7 @@
                     <div class="f1-progress">
                         <div class="f1-progress-line" data-now-value="16.66" data-number-of-steps="3"></div>
                     </div>
-                    @if(auth()->user()->role == "3" && auth()->user()->email_verified_at != null || auth()->user()->role == "2")
+                    @if(auth()->user()->role == "3" || auth()->user()->email_verified_at != null && auth()->user()->role == "2")
                     <div class="f1-step active">
                         <div class="f1-step-icon"><i class="fa fa-key"></i></div>
                         <p>Email</p>

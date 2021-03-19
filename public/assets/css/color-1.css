@@ -16734,7 +16734,7 @@ footer {
       color: var(--theme-deafult);
       font-weight: 500;
       font-size: calc(35px + (70 - 35) * ((100vw - 300px) / (1920 - 300)));
-      background: -webkit-linear-gradient(var(--theme-deafult), #305744);
+      background: #000000;
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
       margin-bottom: 0;
@@ -16872,7 +16872,7 @@ footer {
       padding: 7px 14px; }
 
 .landing-home .sticky .navbar-brand img {
-  max-height: 110px; }
+  max-height: 140px; }
 
 .title-padding {
   padding: 130px 0; }
