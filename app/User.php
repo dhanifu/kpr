@@ -55,7 +55,10 @@ class User extends Authenticatable
             return '<span class="badge badge-danger">ADMIN<span>';
         } else if($this->role == 'user')
         {
-            return '<span class="badge badge-warning">USER<span>';
+            return 'USER';
+        }else if($this->role == 3)
+        {
+            return 'ENDUSER';
         } else {
             return '<span class="badge badge-light">Not Have Role<span>';
         }

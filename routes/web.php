@@ -61,15 +61,10 @@ Route::middleware('auth')->group(function(){
             Route::get('/BesarAngsuran','DetaildataController@getBesarAngsuran')->name('besarangsuran');
             Route::get('/SisaAngsuran','DetaildataController@getSisaAngsuran')->name('sisaangsuran');
         });
-        Route::prefix('datapinjaman')->name('datapinjaman.')->group(function () {
-            Route::get('/Approve','DatapinjamanController@getApprove')->name('approve');
-            Route::get('/Pending','DatapinjamanController@getPending')->name('pending');
-        });
+
         Route::resource('pangkat', 'PangkatController');
         Route::get('/search','AccountController@seacrh')->name('search');
     });
-
-
-
+    Route::get('/kalkulator','HomeController@kalkulator')->name('kalkulator');
 
 });

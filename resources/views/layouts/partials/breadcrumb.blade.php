@@ -27,6 +27,10 @@
                         <li class="breadcrumb-item">Kelola Akun</li>
                         <li class="breadcrumb-item">Admin</li>
                     @endif
+                    @if(request()->is('admin/account/'))
+                        <li class="breadcrumb-item">Kelola Akun</li>
+                        <li class="breadcrumb-item">Admin</li>
+                    @endif
                     @if(request()->is('admin/account/customer'))
                         <li class="breadcrumb-item">Kelola Akun</li>
                         <li class="breadcrumb-item">Customer</li>
