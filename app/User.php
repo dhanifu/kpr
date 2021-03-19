@@ -64,6 +64,9 @@ class User extends Authenticatable implements MustVerifyEmail
         } else if($this->role == 2)
         {
             return 'USER';
+        }else if($this->role == 3)
+        {
+            return 'ENDUSER';
         } else {
             return 'Not Have Role';
         }

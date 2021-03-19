@@ -59,10 +59,6 @@ Route::middleware('auth')->group(function(){
         
         Route::resource('pangkat', 'PangkatController');
     });
-
     Route::get('/kalkulator','HomeController@kalkulator')->name('kalkulator');
     
-    
-
-
 });

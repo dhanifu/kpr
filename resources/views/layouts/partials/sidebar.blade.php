@@ -1,6 +1,6 @@
 <div class="sidebar-wrapper">
     {{-- style="background-image: linear-gradient(#134E5E, #71B280);" --}}
-    @if (auth()->user()->role == "0" || auth()->user()->role == "admin")
+    @if (auth()->user()->role == "0")
         <div class="logo-wrapper">
             <a href="{{ route('home') }}"><img class="img-fluid for-light" src="{{ asset('assets/images/logo/logoweb.png') }}" alt="logowebsite" style="height: 100px; width: 200px; object-fit: cover;"><img class="img-fluid for-dark" src="{{ asset('assets/images/logo/logowebdark.png') }}" alt="logowebsite" style="height: 100px; width: 200px; object-fit: cover;"></a>
             <div class="back-btn"><i class="fa fa-angle-left"></i></div>
@@ -62,7 +62,8 @@
             </div>
             <div class="right-arrow" id="right-arrow"><i data-feather="arrow-right"></i></div>
         </nav>
-    @elseif(auth()->user()->role == "1")
+    @endif
+    @if(auth()->user()->role == "1")
         <div class="logo-wrapper">
             <a href="{{ route('home') }}"><img class="img-fluid for-light" src="{{ asset('assets/images/logo/logoweb.png') }}" alt="logowebsite" style="height: 100px; width: 200px; object-fit: cover;"><img class="img-fluid for-dark" src="{{ asset('assets/images/logo/logowebdark.png') }}" alt="logowebsite" style="height: 100px; width: 200px; object-fit: cover;"></a>
             <div class="back-btn"><i class="fa fa-angle-left"></i></div>
@@ -116,7 +117,8 @@
             </div>
             <div class="right-arrow" id="right-arrow"><i data-feather="arrow-right"></i></div>
         </nav>
-        @elseif(auth()->user()->role == "2")
+    @endif
+    @if(auth()->user()->role == "2")
             <div class="logo-wrapper">
                 <a href="{{ route('home') }}"><img class="img-fluid for-light" src="{{ asset('assets/images/logo/logoweb.png') }}" alt="logowebsite" style="height: 100px; width: 200px; object-fit: cover;"><img class="img-fluid for-dark" src="{{ asset('assets/images/logo/logowebdark.png') }}" alt="logowebsite" style="height: 100px; width: 200px; object-fit: cover;"></a>
                 <div class="back-btn"><i class="fa fa-angle-left"></i></div>
@@ -150,7 +152,8 @@
                 </div>
                 <div class="right-arrow" id="right-arrow"><i data-feather="arrow-right"></i></div>
             </nav>
-        @elseif(auth()->user()->role == "3" &&  auth()->user()->email_verified_at == null)
+    @endif
+    @if(auth()->user()->role == "3" &&  auth()->user()->email_verified_at == null || auth()->user()->email_verified_at != null)
             <div class="logo-wrapper">
                 <a href="{{ route('home') }}"><img class="img-fluid for-light" src="{{ asset('assets/images/logo/logoweb.png') }}" alt="logowebsite" style="height: 100px; width: 200px; object-fit: cover;"><img class="img-fluid for-dark" src="{{ asset('assets/images/logo/logowebdark.png') }}" alt="logowebsite" style="height: 100px; width: 200px; object-fit: cover;"></a>
                 <div class="back-btn"><i class="fa fa-angle-left"></i></div>
