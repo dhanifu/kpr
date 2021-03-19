@@ -138,6 +138,16 @@
             </div>
           </div>
         </div>
+        <ul id="kontakkami">
+          <li style="margin-top: 30px;">
+            <p>Alamat Kantor: <br>
+              Jl. Dr. Wahidin I No 6, Ps Baru, Kecamatan Sawah Besar,<br>
+               Kota Jakarta Pusat, Daerah khusus Ibukota Jakarta 10710</p>
+          </li>
+          <li style="margin-left: 200px;margin-top: 70px; width:70%;">
+            <p>Copyright &#169; Ditkuad TNI AD - All Rights Reserved</p>
+          </li>
+        </ul>
       </div>
     </section>
     <section class="cuba-demo-section" id="kontakkami" style="background-color: white;">
