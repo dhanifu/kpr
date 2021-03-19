@@ -21,10 +21,9 @@ class CreatePinjamanTable extends Migration
             $table->string('angsuran_masuk');
             $table->integer('angsuran_tunggak');
             $table->integer('jml_tunggak');
-            $table->longText('keterangan');
+            $table->string('keterangan');
             $table->foreignId('angsuran_id')->references('id')->on('angsuran')->onDelete('cascade');
             $table->foreignId('user_id')->references('id')->on('users')->onDelete('cascade');
-            $table->boolean('status'); //untuk kondisi di approve atau decline
             $table->timestamps();
         });
     }

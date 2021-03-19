@@ -6,7 +6,7 @@ use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 
-class User extends Authenticatable implements MustVerifyEmail
+class User extends Authenticatable
 {
     use Notifiable;
 
@@ -16,17 +16,12 @@ class User extends Authenticatable implements MustVerifyEmail
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'username', 'nrp', 'password', 'role', 'avatar', 'status_verif', 'pangkat_id'
+        'name', 'email', 'username', 'password', 'role', 'nrp', 'avatar'
     ];
 
     public function bunga()
     {
         return $this->hasOne(Bunga::class);
-    }
-
-    public function pangkat()
-    {
-        return $this->belongsTo(Pangkat::class);
     }
 
     /**
@@ -38,7 +33,7 @@ class User extends Authenticatable implements MustVerifyEmail
         'password', 'remember_token',
     ];
 
-    
+
 
     /**
      * The attributes that should be cast to native types.
@@ -55,20 +50,17 @@ class User extends Authenticatable implements MustVerifyEmail
     }
     public function getRoleSectionAttribute()
     {
-        if($this->role == 0)
+        if($this->role == 'admin')
         {
-            return 'ADMIN';
-        } else if($this->role == 1)
-        {
-            return 'PENGELOLA';
-        } else if($this->role == 2)
+            return '<span class="badge badge-danger">ADMIN<span>';
+        } else if($this->role == 'user')
         {
             return 'USER';
         }else if($this->role == 3)
         {
             return 'ENDUSER';
         } else {
-            return 'Not Have Role';
+            return '<span class="badge badge-light">Not Have Role<span>';
         }
     }
 }
