@@ -21,7 +21,9 @@
                 <li class="sidebar-list"><a class="sidebar-link sidebar-title link-nav" href="{{ route('home') }}"><i data-feather="home"> </i><span>Dashboard</span></a></li>
                 <li class="sidebar-list"><a class="sidebar-link sidebar-title" href="#"><i data-feather="users"></i><span>Kelola User</span></a>
                     <ul class="sidebar-submenu">
+                        <li><a href="{{ route('admin.account.register.index') }}">Daftar Akun</a></li>
                         <li><a href="{{ route('admin.account.admin') }}">Admin</a></li>
+                        <li><a href="{{ route('admin.account.pengelola') }}">Pengelola</a></li>
                         <li><a href="{{ route('admin.account.customer') }}">User</a></li>
                         <li><a href="{{ route('admin.pangkat.index') }}">Daftar Pangkat</a></li>
                         <li><a href="{{ route('admin.account.verifikasi') }}">Verifikasi Akun User</a></li>

@@ -47,9 +47,9 @@
                                 </div>
                                 <div class="col-md-6">
                                     <div class="form-group">
-                                        <label class="col-form-label" for="username">Username:</label>
-                                        <input class="form-control @error('username') is-invalid @enderror" type="text" name="username" value="{{ $user->username ?? old('username') }}" id="username" placeholder="username" required>
-                                        @error('username')
+                                        <label class="col-form-label" for="nrp">NRP:</label>
+                                        <input class="form-control @error('nrp') is-invalid @enderror" type="text" name="nrp" value="{{ $user->nrp ?? old('nrp') }}" id="nrp" placeholder="nrp" required>
+                                        @error('nrp')
                                             <span class="invalid-feedback" role="alert">
                                                 <strong>{{ $message }}</strong>
                                             </span>

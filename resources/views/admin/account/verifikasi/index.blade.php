@@ -1,4 +1,4 @@
-@extends('layouts.app', ['title' => 'KPR | User Account'])
+@extends('layouts.app', ['title' => 'KPR | Verif User Account'])
 @section('content')
 <div class="row">
     <div class="col-md-12">
@@ -29,7 +29,7 @@
                                 <th>Avatar</th>
                                 <th>Name</th>
                                 <th>E-Mail</th>
-                                <th>Username</th>
+                                <th>NRP</th>
                                 <th>Password</th>
                                 <th>Action</th>
                             </tr>
@@ -48,14 +48,13 @@
                                 </td>
                                 <td>{{ $account->name }}</td>
                                 <td>{{ $account->email }}</td>
-                                <td>{{ $account->username }}</td>
+                                <td>{{ $account->nrp }}</td>
                                 <td><span class="badge badge-light">DILINDUNGI<span></td>
                                 <td>
-                                    <a href="" style="float: left;" class="mr-1"><i class="fa fa-pencil-square-o" style="color: rgb(0, 241, 12);"></i></a>
-                                    <form action="{{ route('admin.account.register.destroy', $account->id) }}" method="post">
+                                    <form action="{}" method="post">
                                         @csrf
-                                        @method('DELETE')
-                                        <button type="submit" onclick="return confirm('Sure for delete this data?')" style="background-color: transparent; border: none;"><i class="icon-trash" style="color: red;"></i></button>
+                                        @method('PATCH')
+                                        <button type="button" class="btn btn-success btn-sm"><i class="fa fa-check"></i> VERIFIED</button>
                                     </form>
                                 </td>
                             </tr>

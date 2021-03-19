@@ -1,55 +1,48 @@
-@extends('layouts.app', ['title' => 'KPR | User Account'])
+@extends('layouts.app', ['title' => 'KPR | Register'])
 @section('content')
-<div class="row">
-    <div class="col-md-12">
-        <div class="card">
-            <div class="card-header">
-                <form action="" method="post">
-                    <div class="d-flex justify-content-end">
-                        <div class="row">
-                            <div class="col-md-12">
-                                <div class="input-group">
-                                    <input class="form-control" id="validationTooltip02" type="text" placeholder="Search" required="">
-                                    <div class="valid-tooltip">Looks good!</div>
-                                    <button class="btn btn-secondary ml-2">Search</button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </form>
-            </div>
-            <div class="card-body">
-                <div class="table-responsive">
-                    <table class="table table-hover">
-                        <thead>
-                            <tr>
-                                <th>#</th>
-                                <th>Avatar</th>
-                                <th>Name</th>
-                                <th>E-Mail</th>
-                                <th>Username</th>
-                                <th>Password</th>
-                                <th>Action</th>
-                            </tr>
-                        </thead>
-                        @forelse ($accounts as $account)
-                        <tbody>
-                            <tr>
-                                <th>{{ $loop->iteration + $accounts->firstItem() - 1 . '.' }}</th>
-                                <td>
-                                    @empty($account->avatar)
-                                    <img class="rounded-circle" src="{{ asset('assets/images/avatar/avatar-default.png') }}" width="60" alt="avatar">
-                                    @else
-                                    <img class="rounded-circle" src="{{ $account->ImgProfile }}" style="width: 60px; height: 60px; object-fit: cover; object-position: center;" alt="avatar">
-                                    @endempty
-                                </td>
-                                <td>{{ $account->name }}</td>
-                                <td>{{ $account->email }}</td>
-                                <td>{{ $account->username }}</td>
-                                <td><span class="badge badge-light">DILINDUNGI<span></td>
-                                <td>
-                                    <a href="{{ route('admin.account.register.edit', $account->id) }}" style="float: left;" class="mr-1"><i class="fa fa-pencil-square-o" style="color: rgb(0, 241, 12);"></i></a>
-                                    <form action="{{ route('admin.account.register.destroy', $account->id) }}" method="post">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="card">
+                <div class="card-header">
+                  @include('layouts.partials.error')
+                  <div class="d-flex justify-content-between">
+                    <button type="submit" class="btn btn-primary btn-md" data-toggle="modal" data-target="#addModal">Add</button>
+                  </div>
+                </div>
+                <div class="card-body">
+                    <div class="table-responsive">
+                        <table class="table table-hover">
+                            <thead>
+                                <tr>
+                                    <th>#</th>
+                                    <th>Role</th>
+                                    <th>Avatar</th>
+                                    <th>Name</th>
+                                    <th>E-Mail</th>
+                                    <th>NRP</th>
+                                    <th>Password</th>
+                                    <th>Action</th>
+                                </tr>
+                            </thead>
+                            @forelse ($accounts as $account)
+                            <tbody>
+                                <tr>
+                                    <th>{{ $loop->iteration + $accounts->firstItem() - 1 . '.' }}</th>
+                                    <td>{!! $account->RoleSection !!}</td>
+                                    <td>
+                                      @empty($account->avatar)
+                                          <img class="rounded-circle" src="{{ asset('assets/images/avatar/avatar-default.png') }}" width="60" alt="avatar">
+                                      @else
+                                          <img class="rounded-circle" src="{{ $account->ImgProfile }}" style="width: 60px; height: 60px; object-fit: cover; object-position: center;" alt="avatar">
+                                      @endempty
+                                    </td>
+                                    <td>{{ $account->name }}</td>
+                                    <td>{{ $account->email }}</td>
+                                    <td>{{ $account->nrp }}</td>
+                                    <td><span class="badge badge-light">DILINDUNGI<span></td>
+                                    <td>
+                                      <a href="{{ route('admin.account.register.edit', $account->id) }}" style="float: left;" class="mr-1"><i class="fa fa-pencil-square-o" style="color: rgb(0, 241, 12);"></i></a>
+                                      <form action="{{ route('admin.account.register.destroy', $account->id) }}" method="post">
                                         @csrf
                                         @method('DELETE')
                                         <button type="submit" onclick="return confirm('Sure for delete this data?')" style="background-color: transparent; border: none;"><i class="icon-trash" style="color: red;"></i></button>
@@ -105,19 +98,18 @@
                         </div>
                         <div class="col-md-6">
                             <div class="form-group">
-                                <label class="col-form-label" for="role">Role:</label>
-                                <select name="role" id="role" class="form-control custom-select" required>
-                                    <option disabled selected>Select Role</option>
-                                    <option value="admin">Admin</option>
-                                    <option value="customer">Customer</option>
-                                    <option value="boss">Boss</option>
+                                <label class="col-form-label" for="role">Pilih Role:</label>
+                                <select class="form-control custom-select" name="role" id="role">
+                                    <option disabled selected>role</option>
+                                    <option value="0">Admin</option>
+                                    <option value="1">Pengelola</option>
                                 </select>
                             </div>
                         </div>
                         <div class="col-md-6">
                             <div class="form-group">
-                                <label class="col-form-label" for="username">Username:</label>
-                                <input class="form-control" type="text" name="username" id="username" placeholder="username" required>
+                                <label class="col-form-label" for="nrp">NRP:</label>
+                                <input class="form-control" type="number" name="nrp" id="nrp" placeholder="nrp" required>
                             </div>
                         </div>
                         <div class="col-md-6">
