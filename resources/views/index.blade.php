@@ -154,18 +154,17 @@
       <div class="offset-md-1">
 
           <div class="row">
+
             <div class="col-sm-4">
-              
               <p>Alamat Kantor: <br>
                 Dr. Wahidin I No 6, Ps Baru, Kecamatan Sawah Besar,
                 Kota Jakarta Pusat, Daerah khusus Ibukota Jakarta 10710</p>
-                
-                
               </div>
+
               <div class="col-sm-5 pt-5 offset-md-3">
-                
                 <p>Copyright @2021 Ditkuad TNI AD - All Right Reserved</p>
               </div>
+              
             </div>
         </div>
     </div>
