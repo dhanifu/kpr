@@ -80,6 +80,14 @@
                     @if(request()->is('kalkulator'))
                         <li class="breadcrumb-item">Kalkulator</li>
                     @endif
+                    @if(request()->is('admin/detaildata/approve'))
+                        <li class="breadcrumb-item">Pinjaman</li>
+                        <li class="breadcrumb-item">Data KPR</li>
+                    @endif
+                    @if(request()->is('admin/detaildata/pending'))
+                        <li class="breadcrumb-item">Pinjaman</li>
+                        <li class="breadcrumb-item">Manual</li>
+                    @endif
                 </ol>
             </div>
         </div>
