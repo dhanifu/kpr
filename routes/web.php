@@ -1,5 +1,7 @@
+
 <?php
 
+use Illuminate\Routing\Router;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -21,6 +23,8 @@ Route::middleware('guest')->group(function(){
 });
 
 Auth::routes(['verify' => true]);
+
+Route::get('/pinjaman', 'UserController@pinjaman')->name('user.pinjaman.index');
 
 Route::middleware('auth')->group(function(){
     // dashboard
@@ -44,6 +48,7 @@ Route::middleware('auth')->group(function(){
             Route::get('/customer', 'AccountController@user_index_account')->name('customer');
             // register account
             Route::resource('register', 'AccountController');
+            Route::get('/verifikasi', 'AccountController@verifikasi')->name('verifikasi');
         });
         Route::prefix('rekapdata')->name('rekapdata.')->group(function () {
             Route::get('/Bulan', 'RekapdataController@getBulan')->name('bulan');
@@ -55,10 +60,13 @@ Route::middleware('auth')->group(function(){
             Route::get('/Bunga','DetaildataController@getBunga')->name('bunga');
             Route::get('/BesarAngsuran','DetaildataController@getBesarAngsuran')->name('besarangsuran');
             Route::get('/SisaAngsuran','DetaildataController@getSisaAngsuran')->name('sisaangsuran');
+            Route::get('/approve', 'DetaildataController@getApprove')->name('approve');
+            Route::get('/pending', 'DetaildataController@getPending')->name('pending');
         });
-        
+
         Route::resource('pangkat', 'PangkatController');
+        Route::get('/search','AccountController@seacrh')->name('search');
     });
     Route::get('/kalkulator','HomeController@kalkulator')->name('kalkulator');
-    
+
 });

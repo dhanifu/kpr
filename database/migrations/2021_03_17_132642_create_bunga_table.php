@@ -17,7 +17,7 @@ class CreateBungaTable extends Migration
             $table->id();
             $table->integer('pinjaman');
             $table->integer('jumlah_angsuran');
-            $table->integer('bunga');
+            $table->string('bunga');
             $table->foreignId('user_id')->references('id')->on('users')->onDelete('cascade');
             $table->timestamps();
         });

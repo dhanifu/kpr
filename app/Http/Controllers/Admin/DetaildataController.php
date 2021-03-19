@@ -27,4 +27,12 @@ class DetaildataController extends Controller
     {
         return view('admin.detaildata.sisaangsuran.index');
     }
+    public function getApprove()
+    {
+        return view('admin.datapinjaman.approve.index');
+    }
+    public function getPending()
+    {
+        return view('admin.datapinjaman.pending.index');
+    }
 }
