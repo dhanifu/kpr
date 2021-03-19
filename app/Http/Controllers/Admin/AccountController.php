@@ -4,10 +4,17 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\User;
-use Illuminate\Support\Facades\DB;
 
 class AccountController extends Controller
 {
+
+    public function index()
+    {
+        $account = User::where('id', '!=', auth()->user()->id)->whereIn('role', ['0', '1'])->paginate(5);
+        return view('admin.account.index', [
+            'accounts' => $account
+        ]);
+    }
 
     public function admin_index_account()
     {
@@ -27,7 +34,7 @@ class AccountController extends Controller
 
     public function user_index_account()
     {
-        $account = User::where('id', '!=', auth()->user()->id)->where('role', '2')->paginate(5);
+        $account = User::where('id', '!=', auth()->user()->id)->wherein('role', ['2', '3'])->paginate(5);
         return view('admin.account.user.index', [
             'accounts' => $account
         ]);
@@ -89,7 +96,7 @@ class AccountController extends Controller
         }
         $attr['avatar'] = $thumbnail;
         $user->update($attr);
-        return redirect()->route('admin.account.admin')->with('success','Data User Berhasil Di tambahkan');
+        return redirect()->back()->with('success','Data User Berhasil Di tambahkan');
     }
 
     public function destroy($id)

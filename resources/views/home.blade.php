@@ -7,13 +7,12 @@
         <form class="d-inline" method="POST" action="{{ route('verification.resend') }}">
             @csrf
             <button type="submit" class="btn btn-link p-0 m-0 align-baseline">
-                <p> Tidak Menerima Email? Cek spam atau</p>
-                <a>kirim ulang</a>
+                <a> Tidak Menerima Email? Cek spam atau kirim ulang</a>
             </button>.
         </form>
     </div>
     @endif
-    @if(auth()->user()->role == "3" || auth()->user()->email_verified_at != null)
+    @if(auth()->user()->role == "3" && auth()->user()->email_verified_at != null)
     <div class="card p-3">
         <h1 class="badge badge-warning">Akun anda sedang di pending</h1>
     </div>
@@ -29,7 +28,7 @@
                     <div class="f1-progress">
                         <div class="f1-progress-line" data-now-value="16.66" data-number-of-steps="3"></div>
                     </div>
-                    @if(auth()->user()->role == "3" && auth()->user()->email_verified_at != null || auth()->user()->role == "2")
+                    @if(auth()->user()->role == "3" || auth()->user()->email_verified_at != null && auth()->user()->role == "2")
                     <div class="f1-step active">
                         <div class="f1-step-icon"><i class="fa fa-key"></i></div>
                         <p>Email</p>

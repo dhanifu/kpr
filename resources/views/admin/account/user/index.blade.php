@@ -15,7 +15,7 @@
                             <thead>
                                 <tr>
                                     <th>#</th>
-                                    <th>Role</th>
+                                    <th>Status</th>
                                     <th>Avatar</th>
                                     <th>Name</th>
                                     <th>E-Mail</th>
@@ -28,7 +28,13 @@
                             <tbody>
                                 <tr>
                                     <th>{{ $loop->iteration + $accounts->firstItem() - 1 . '.' }}</th>
-                                    <td>{!! $account->RoleSection !!}</td>
+                                    <td>
+                                        @if($account->email_verified_at == null)
+                                            <span class="badge badge-danger">Belum Verifikasi Email</span>
+                                        @else
+                                            <span class="badge badge-success">Sudah Verifikasi Email</span>
+                                        @endif
+                                    </td>
                                     <td>
                                       @empty($account->avatar)
                                           <img class="rounded-circle" src="{{ asset('assets/images/avatar/avatar-default.png') }}" width="60" alt="avatar">
