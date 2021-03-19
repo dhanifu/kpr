@@ -41,7 +41,9 @@ Route::middleware('auth')->group(function(){
         Route::prefix('account')->name('account.')->group(function () {
             // per view & role
             Route::get('/admin', 'AccountController@admin_index_account')->name('admin');
-            Route::get('/customer', 'AccountController@user_index_account')->name('customer');
+            Route::get('/user', 'AccountController@user_index_account')->name('customer');
+            Route::get('/pengelola', 'AccountController@user_index_account')->name('pengelola');
+            Route::get('/enduser', 'AccountController@user_index_account')->name('pengelola');
             // register account
             Route::resource('register', 'AccountController');
         });

@@ -22,7 +22,9 @@
                         <li class="sidebar-list"><a class="sidebar-link sidebar-title" href="#"><i data-feather="users"></i><span>Kelola User</span></a>
                             <ul class="sidebar-submenu">
                                 <li><a href="{{ route('admin.account.admin') }}">Admin</a></li>
+                                <li><a href="{{ route('admin.account.pengelola') }}">Pengelola</a></li>
                                 <li><a href="{{ route('admin.account.customer') }}">User</a></li>
+                                <li><a href="{{ route('admin.account.customer') }}">End User</a></li>
                                 <li><a href="{{ route('admin.pangkat.index') }}">Daftar Pangkat</a></li>
                             </ul>
                         </li>
