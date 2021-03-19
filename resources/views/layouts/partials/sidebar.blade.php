@@ -197,7 +197,7 @@
                 {{-- @if(auth()->user()->role == 'admin') --}}
                 <li class="sidebar-list"><a class="sidebar-link sidebar-title link-nav" href="{{ route('home') }}"><i data-feather="home"> </i><span>Dashboard</span></a></li>
                 <li class="sidebar-list"><a class="sidebar-link sidebar-title link-nav" href="{{ route('kalkulator')}}"><i data-feather="dollar-sign"></i><span>Kalkulator KPR</span></a></li>
-                <li class="sidebar-list"><a class="sidebar-link sidebar-title link-nav" href="#"><i data-feather="file-plus"></i><span>Pinjaman</span></a></li>
+                <li class="sidebar-list"><a class="sidebar-link sidebar-title link-nav" href="{{ route('user.pinjaman.index')}}"><i data-feather="file-plus"></i><span>Pinjaman</span></a></li>
                 <li class="sidebar-list"><a class="sidebar-link sidebar-title link-nav" href="#"><i data-feather="plus-circle"></i></i><span>Bayar Angsuran</span></a></li>
                 {{-- @endif --}}
                 <li class="sidebar-list"><a class="sidebar-link sidebar-title" href="#"><i data-feather="user"></i><span>My Profile</span>

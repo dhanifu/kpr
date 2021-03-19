@@ -70,5 +70,6 @@ Route::middleware('auth')->group(function(){
         Route::get('/search','AccountController@seacrh')->name('search');
     });
     Route::get('/kalkulator','HomeController@kalkulator')->name('kalkulator');
+    Route::post('/kalkulator','HomeController@HitungKalkulator')->name('hitung');
 
 });
