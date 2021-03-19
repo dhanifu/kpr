@@ -27,6 +27,7 @@
     <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/vendors/animate.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/vendors/chartist.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/vendors/date-picker.css') }}">
+    <script src="https://code.highcharts.com/highcharts.js"></script>
     <!-- Plugins css end-->
     <!-- Bootstrap css-->
     <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/vendors/bootstrap.css') }}">
