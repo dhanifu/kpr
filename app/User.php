@@ -55,10 +55,10 @@ class User extends Authenticatable implements MustVerifyEmail
     {
         if($this->role == '0')
         {
-            return 'ADMIN';
+            return '<span class="badge badge-success">ADMIN</span>';
         } else if($this->role == '1')
         {
-            return 'PENGELOLA';
+            return '<span class="badge badge-warning">PENGELOLA</span>';
         } else if($this->role == '2')
         {
             return 'USER';

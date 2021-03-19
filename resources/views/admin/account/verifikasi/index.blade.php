@@ -29,7 +29,7 @@
                                 <th>Avatar</th>
                                 <th>Name</th>
                                 <th>E-Mail</th>
-                                <th>Username</th>
+                                <th>NRP</th>
                                 <th>Password</th>
                                 <th>Action</th>
                             </tr>

@@ -13,7 +13,7 @@
             <h3>Sign In</h3>
             <p class="mb-4">Silahkan login untuk melanjutkan.</p>
           </div>
-          <form action="{{ route('login') }}" method="post">
+          <form action="{{ route('login') }}" method="post" autocomplete="off">
             @csrf
             <div class="form-group">
               <label for="nrp">NRP</label>

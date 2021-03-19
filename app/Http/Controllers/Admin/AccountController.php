@@ -53,7 +53,7 @@ class AccountController extends Controller
         $attr = $this->validate(request(), [
             'name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users,email'],
-            'username' => ['required', 'string', 'min:3', 'max:255', 'unique:users,username'],
+            'nrp' => ['required', 'string', 'min:3', 'max:255', 'unique:users,nrp'],
             'password' => ['required', 'min:3'],
             'role' => ['required'],
             'avatar' => ['mimes:png,jpg,jpeg,svg', 'max:2048']
@@ -76,7 +76,7 @@ class AccountController extends Controller
         $attr = $this->validate(request(), [
             'name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users,email,'.$id],
-            'username' => ['required', 'min:3', 'string', 'max:255', 'unique:users,username,'.$id],
+            'nrp' => ['required', 'min:3', 'string', 'max:255', 'unique:users,nrp,'.$id],
             'avatar' => ['mimes:png,jpg,jpeg,svg', 'max:2048']
         ]);
         $user = User::findOrFail($id);

@@ -19,7 +19,7 @@
                                     <th>Avatar</th>
                                     <th>Name</th>
                                     <th>E-Mail</th>
-                                    <th>Username</th>
+                                    <th>NRP</th>
                                     <th>Password</th>
                                     <th>Action</th>
                                 </tr>
@@ -38,7 +38,7 @@
                                     </td>
                                     <td>{{ $account->name }}</td>
                                     <td>{{ $account->email }}</td>
-                                    <td>{{ $account->username }}</td>
+                                    <td>{{ $account->nrp }}</td>
                                     <td><span class="badge badge-light">DILINDUNGI<span></td>
                                     <td>
                                       <a href="{{ route('admin.account.register.edit', $account->id) }}" style="float: left;" class="mr-1"><i class="fa fa-pencil-square-o" style="color: rgb(0, 241, 12);"></i></a>
@@ -108,8 +108,8 @@
                         </div>
                         <div class="col-md-6">
                             <div class="form-group">
-                                <label class="col-form-label" for="username">Username:</label>
-                                <input class="form-control" type="text" name="username" id="username" placeholder="username" required>
+                                <label class="col-form-label" for="nrp">NRP:</label>
+                                <input class="form-control" type="number" name="nrp" id="nrp" placeholder="nrp" required>
                             </div>
                         </div>
                         <div class="col-md-6">
