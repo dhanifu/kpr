@@ -9,8 +9,8 @@
                     <li class="breadcrumb-item">
                         <a href="{{ route('home') }}"> <i data-feather="home"></i></a>
                     </li>
-                    @if(request()->is('dashboard'))
-                        <li class="breadcrumb-item">Dashboard</li>
+                    @if(request()->is('home'))
+                        <li class="breadcrumb-item">Home</li>
                     @endif
                     @if(request()->is('profile/setting'))
                         <li class="breadcrumb-item">My Profile</li>
