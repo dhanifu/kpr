@@ -48,7 +48,7 @@ class AccountController extends Controller
         $thumb = request()->file('avatar') ? request()->file('avatar')->store("images/avatar") : null;
         $attr['avatar'] = $thumb;
         User::create($attr);
-        return back();
+        return back()->with('success', 'Berhasil Menambahkan User');
     }
 
     public function edit($id)
@@ -94,7 +94,7 @@ class AccountController extends Controller
             \Storage::delete($user->avatar);
         }
         $user->delete();
-        return back();
+        return back()->with('success', 'Berhasil Menghapus Data');
     }
     public function search($data)
     {

@@ -13,7 +13,7 @@
         </form>
     </div>
     @endif
-    @if(auth()->user()->role == "3" || auth()->user()->email_verified_at != null)
+    @if(auth()->user()->role == "3" && auth()->user()->email_verified_at != null)
     <div class="card p-3">
         <h1 class="badge badge-warning">Akun anda sedang di pending</h1>
     </div>
@@ -116,7 +116,7 @@
         </div>
     </div>
     @endif
-    {{-- <div class="row second-chart-list third-news-update">
+    <div class="row second-chart-list third-news-update">
         <div class="col-xl-9 xl-100 chart_data_left box-col-12">
             <div class="card">
                 <div class="card-body p-0">
@@ -271,6 +271,6 @@
                 </div>
             </div>
         </div>
-    </div> --}}
+    </div>
 </div>
 @endsection
