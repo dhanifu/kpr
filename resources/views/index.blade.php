@@ -108,7 +108,7 @@
         </div>
       </div>
     </div>
-    <section class="cuba-demo-section" id="layout" style="background-color: white;">
+    <section class="cuba-demo-section" id="tentangkami" style="background-color: white;">
       <div class="container">
         <ul>
           <li style="margin-top: 30px;">
@@ -149,7 +149,7 @@
             </div>
           </div>
         </div>
-        <ul>
+        <ul id="kontakkami">
           <li style="margin-top: 30px;">
             <p>Alamat Kantor: <br>
               Jl. Dr. Wahidin I No 6, Ps Baru, Kecamatan Sawah Besar,<br>
