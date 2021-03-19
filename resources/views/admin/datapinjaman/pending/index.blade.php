@@ -4,7 +4,7 @@
         <div class="col-md-12">
             <div class="card">
                 <div class="card-header b-l-primary border-3">
-                    <h5>Data Pinjaman <span class="badge badge-warning">Pending</span></h5>
+                    <h5>Data Pinjaman <span class="badge badge-warning">Manual</span></h5>
                     <form action="" method="post">
                         <div class="d-flex justify-content-end pt-4">
                             <div class="input-group">
@@ -61,13 +61,13 @@
                                 <td>{{ $pinjam->jml_tunggak }}</td>
                                 <td>{{ $pinjam->keterangan }}</td>
                                 @if ($pinjam->status == 0)
-                                    <td><span class="badge badge-warning">Pending</span></td>
+                                    <td><span class="badge badge-warning">Manual</span></td>
                                 @endif
                                 <td>
                                     <form action="{{ route('admin.detaildata.status', $pinjam->id) }}" method="post">
                                         @csrf
                                         @method('PUT')
-                                        <button type="submit" class="btn btn-sm btn-success mb-1">Approve
+                                        <button type="submit" class="btn btn-sm btn-success mb-1">Verified
                                     </form>
 
                                     <form action="{{ route('admin.pangkat.destroy', $pinjam->id) }}" method="post">

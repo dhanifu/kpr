@@ -13,14 +13,14 @@
             <h3>Sign In</h3>
             <p class="mb-4">Silahkan login untuk melanjutkan.</p>
           </div>
-          <form action="{{ route('login') }}" method="post">
+          <form action="{{ route('login') }}" method="post" autocomplete="off">
             @csrf
             <div class="form-group">
-              <label for="username">Username</label>
-              <input class="form-control @error('username') is-invalid @enderror" type="text" name="username" id="username" autofocus required>
-              @error('username')
+              <label for="nrp">NRP</label>
+              <input class="form-control @error('nrp') is-invalid @enderror" type="number" name="nrp" id="nrp" autofocus required>
+              @error('nrp')
                   <span class="invalid-feedback" role="alert">
-                      <strong>Username / Password yang dimasukan salah!</strong>
+                      <strong>NRP / Password yang dimasukan salah!</strong>
                   </span>
               @enderror
             </div>

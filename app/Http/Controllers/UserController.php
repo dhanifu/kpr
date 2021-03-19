@@ -50,7 +50,7 @@ class UserController extends Controller
             'name' => 'required|min:3|max:50|string',
             'avatar' => 'mimes:png,jpg,jpeg,ico,svg|max:2048',
             'email' => 'required|string',
-            'username' => 'required|string'
+            'nrp' => 'required'
         ], $this->messages());
 
         $user = auth()->user();
@@ -73,7 +73,7 @@ class UserController extends Controller
             'name' => request('name'),
             'avatar' => $thumbnail,
             'email' => request('email'),
-            'username' => request('username')
+            'nrp' => request('nrp')
         ]);
         return back();
     }

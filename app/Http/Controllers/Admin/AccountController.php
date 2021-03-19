@@ -3,11 +3,19 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Pangkat;
 use App\User;
-use Illuminate\Support\Facades\DB;
 
 class AccountController extends Controller
 {
+
+    public function index()
+    {
+        $account = User::where('id', '!=', auth()->user()->id)->whereIn('role', ['0', '1'])->paginate(5);
+        return view('admin.account.index', [
+            'accounts' => $account
+        ]);
+    }
 
     public function admin_index_account()
     {
@@ -27,26 +35,43 @@ class AccountController extends Controller
 
     public function user_index_account()
     {
-        $account = User::where('id', '!=', auth()->user()->id)->where('role', '2')->paginate(5);
+        $account = User::where('id', '!=', auth()->user()->id)->wherein('role', ['2', '3'])->paginate(5);
         return view('admin.account.user.index', [
+            'accounts' => $account,
+            'pangkats' => Pangkat::get()
+        ]);
+    }
+
+    public function verifikasi_index_account()
+    {
+        $account = User::where('id', '!=', auth()->user()->id)->where('status_verif', null)->whereIn('role', ['2'])->paginate(5);
+        return view('admin.account.verifikasi.index', [
             'accounts' => $account
         ]);
     }
 
-    public function enduser_index_account()
+    public function update_role($id)
     {
-        $account = User::where('id', '!=', auth()->user()->id)->where('role', '3')->where('email_verified_at', null)->paginate(5);
-        return view('admin.account.user.index', [
-            'accounts' => $account
+        User::findOrFail($id)->update([
+            'role' => '2'
         ]);
+        return back();
     }
+
+    // public function enduser_index_account()
+    // {
+    //     $account = User::where('id', '!=', auth()->user()->id)->where('role', '3')->where('email_verified_at', null)->paginate(5);
+    //     return view('admin.account.user.index', [
+    //         'accounts' => $account
+    //     ]);
+    // }
 
     public function store()
     {
         $attr = $this->validate(request(), [
             'name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users,email'],
-            'username' => ['required', 'string', 'min:3', 'max:255', 'unique:users,username'],
+            'nrp' => ['required', 'string', 'min:3', 'max:255', 'unique:users,nrp'],
             'password' => ['required', 'min:3'],
             'role' => ['required'],
             'avatar' => ['mimes:png,jpg,jpeg,svg', 'max:2048']
@@ -69,7 +94,7 @@ class AccountController extends Controller
         $attr = $this->validate(request(), [
             'name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users,email,' . $id],
-            'username' => ['required', 'min:3', 'string', 'max:255', 'unique:users,username,' . $id],
+            'nrp' => ['required', 'min:3', 'string', 'max:255', 'unique:users,nrp,' . $id],
             'avatar' => ['mimes:png,jpg,jpeg,svg', 'max:2048']
         ]);
         $user = User::findOrFail($id);
@@ -89,7 +114,7 @@ class AccountController extends Controller
         }
         $attr['avatar'] = $thumbnail;
         $user->update($attr);
-        return redirect()->route('admin.account.admin')->with('success', 'Data User Berhasil Di tambahkan');
+        return redirect()->back()->with('success', 'Data User Berhasil Di tambahkan');
     }
 
     public function destroy($id)
@@ -104,13 +129,5 @@ class AccountController extends Controller
     public function search($data)
     {
         echo $data[0];
-    }
-    public function verifikasi()
-    {
-        $account = User::where('id', '!=', auth()->user()->id)->where('role', '2')->paginate(5);
-
-        return view('admin.account.verifikasi.index', [
-            'accounts' => $account
-        ]);
     }
 }

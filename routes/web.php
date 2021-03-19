@@ -46,11 +46,11 @@ Route::middleware('auth')->group(function () {
             // per view & role
             Route::get('/admin', 'AccountController@admin_index_account')->name('admin');
             Route::get('/user', 'AccountController@user_index_account')->name('customer');
-            Route::get('/pengelola', 'AccountController@user_index_account')->name('pengelola');
-            Route::get('/enduser', 'AccountController@user_index_account')->name('pengelola');
+            Route::get('/pengelola', 'AccountController@pengelola_index_account')->name('pengelola');
+            Route::patch('/updaterole/{id}', 'AccountController@update_role')->name('updaterole');
             // register account
             Route::resource('register', 'AccountController');
-            Route::get('/verifikasi', 'AccountController@verifikasi')->name('verifikasi');
+            Route::get('/verifikasi', 'AccountController@verifikasi_index_account')->name('verifikasi');
         });
         Route::prefix('rekapdata')->name('rekapdata.')->group(function () {
             Route::get('/Bulan', 'RekapdataController@getBulan')->name('bulan');

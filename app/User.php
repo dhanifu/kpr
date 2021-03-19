@@ -6,7 +6,7 @@ use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 
-class User extends Authenticatable
+class User extends Authenticatable implements MustVerifyEmail
 {
     use Notifiable;
 
@@ -43,8 +43,6 @@ class User extends Authenticatable
         'password', 'remember_token',
     ];
 
-
-
     /**
      * The attributes that should be cast to native types.
      *
@@ -56,21 +54,17 @@ class User extends Authenticatable
 
     public function getImgProfileAttribute()
     {
-        return "/storage/".$this->avatar;
+        return "/storage/" . $this->avatar;
     }
     public function getRoleSectionAttribute()
     {
-        if($this->role == '0')
-        {
-            return 'ADMIN';
-        } else if($this->role == '1')
-        {
-            return 'PENGELOLA';
-        } else if($this->role == '2')
-        {
+        if ($this->role == '0') {
+            return '<span class="badge badge-success">ADMIN</span>';
+        } else if ($this->role == '1') {
+            return '<span class="badge badge-warning">PENGELOLA</span>';
+        } else if ($this->role == '2') {
             return 'USER';
-        } else if($this->role == '3')
-        {
+        } else if ($this->role == '3') {
             return 'ENDUSER';
         } else {
             return 'Not Have Role';

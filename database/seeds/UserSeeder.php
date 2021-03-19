@@ -16,7 +16,7 @@ class UserSeeder extends Seeder
             'name' => 'Admin Rizal Gans',
             'email' => 'rizalihwan94@gmail.com',
             'username' => 'admin',
-            'role' => '0', 
+            'role' => '0',
             'password' => bcrypt('password')
         ]);
     }

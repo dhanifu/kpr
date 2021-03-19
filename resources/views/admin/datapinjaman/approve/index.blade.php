@@ -4,7 +4,7 @@
         <div class="col-md-12">
             <div class="card">
                 <div class="card-header b-l-primary border-3">
-                    <h5>Data Pinjaman <span class="badge badge-success">Approve</span></h5>
+                    <h5>Data Pinjaman <span class="badge badge-success">Verified</span></h5>
                     <form action="" method="post">
                         <div class="d-flex justify-content-end pt-4">
                             <div class="input-group">
@@ -61,7 +61,7 @@
                                 <td>{{ $pinjam->jml_tunggak }}</td>
                                 <td>{{ $pinjam->keterangan }}</td>
                                 @if ($pinjam->status == 1)
-                                    <td><span class="badge badge-success">Approve</span>
+                                    <td><span class="badge badge-success">Verified</span>
 
                                     </td>
                                 @endif
