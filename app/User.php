@@ -50,17 +50,20 @@ class User extends Authenticatable
     }
     public function getRoleSectionAttribute()
     {
-        if($this->role == 'admin')
+        if($this->role == '0')
         {
-            return '<span class="badge badge-danger">ADMIN<span>';
-        } else if($this->role == 'user')
+            return 'ADMIN';
+        } else if($this->role == '1')
+        {
+            return 'PENGELOLA';
+        } else if($this->role == '2')
         {
             return 'USER';
-        }else if($this->role == 3)
+        } else if($this->role == '3')
         {
             return 'ENDUSER';
         } else {
-            return '<span class="badge badge-light">Not Have Role<span>';
+            return 'Not Have Role';
         }
     }
 }
