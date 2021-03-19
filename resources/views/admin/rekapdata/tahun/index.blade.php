@@ -6,10 +6,10 @@
             <div class="card-header b-l-primary border-3">
                 <h5>Tahun</h5>
                 <div class="pt-4">
-                    <button type="button" class="btn btn-secondary btn-md" data-toggle="tooltip" data-placement="top" title="Total Tunggakan"><i data-feather="book-open"></i></button>
-                    <button type="button" class="btn btn-success btn-md" data-toggle="tooltip" data-placement="right" title="Statisk Customer"><i data-feather="bar-chart"></i></button>
+                    <button type="button" class="btn btn-secondary btn-md" data-toggle="tooltip" data-placement="bottom" title="Total Tunggakan"><i data-feather="book-open"></i></button>
+                    <button type="button" class="btn btn-success btn-md" data-toggle="tooltip" data-placement="bottom" title="Statisk Customer"><i data-feather="bar-chart"></i></button>
                     <button type="button" class="btn btn-info btn-md" data-toggle="tooltip" data-placement="bottom" title="Total Customer"><i data-feather="users"></i></button>
-                    <button type="button" class="btn btn-warning btn-md" data-toggle="tooltip" data-placement="left" title="Total Pinjaman"><i data-feather="book"></i></button>
+                    <button type="button" class="btn btn-warning btn-md" data-toggle="tooltip" data-placement="bottom" title="Total Pinjaman"><i data-feather="book"></i></button>
                 </div>
                 <div class="d-flex justify-content-end">
                         <div class="input-group pt-4">
