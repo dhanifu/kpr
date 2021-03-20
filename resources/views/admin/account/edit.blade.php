@@ -1,4 +1,4 @@
-@extends('layouts.app', ['title' => 'KPR | Register'])
+@extends('layouts.app', ['title' => 'KPR | Edit Account'])
 @section('content')
     <div class="row">
         <div class="col-md-12">

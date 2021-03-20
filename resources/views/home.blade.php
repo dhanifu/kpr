@@ -1,4 +1,4 @@
-@extends('layouts.app', ['title' => 'KPR | Dashboard'])
+@extends('layouts.app', ['title' => 'KPR | Home'])
 @section('content')
 <div class="container-fluid">
     @if(auth()->user()->role == "3" && auth()->user()->email_verified_at == null)
@@ -115,7 +115,7 @@
         </div>
     </div>
     @endif
-    @if(auth()->user()->role == "0")
+    @if(auth()->user()->role == "0" || auth()->user()->role == "1")
     <div class="row second-chart-list third-news-update">
         <div class="col-xl-9 xl-100 chart_data_left box-col-12">
             <div class="card">
@@ -144,7 +144,7 @@
                                 </div>
                                 <div class="media-body">
                                     <div class="right-chart-content">
-                                        <h4>{{ $user }}</h4><span>User</span>
+                                        <h4>{{ $user }}</h4><span><u>User</u></span>
                                     </div>
                                 </div>
                             </div>
@@ -158,7 +158,7 @@
                                 </div>
                                 <div class="media-body">
                                     <div class="right-chart-content">
-                                        <h4>{{ $admin }}</h4><span>Admin</span>
+                                        <h4>{{ $admin }}</h4><span><u>Admin</u></span>
                                     </div>
                                 </div>
                             </div>
@@ -172,7 +172,7 @@
                                 </div>
                                 <div class="media-body">
                                     <div class="right-chart-content">
-                                        <h4>{{ $pengelola }}</h4><span>Pengelola</span>
+                                        <h4>{{ $pengelola }}</h4><span><u>Pengelola</u></span>
                                     </div>
                                 </div>
                             </div>

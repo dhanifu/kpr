@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Pangkat;
 use App\User;
+use RealRashid\SweetAlert\Facades\Alert;
 
 class AccountController extends Controller
 {
@@ -55,6 +56,7 @@ class AccountController extends Controller
         User::findOrFail($id)->update([
             'role' => '2'
         ]);
+        Alert::success('Informasi Pesan', 'Role berhasil di update');
         return back();
     }
 
@@ -64,6 +66,7 @@ class AccountController extends Controller
             'role' => '2',
             'status_verif' => '1'
         ]);
+        Alert::success('Informasi Pesan', 'User berhasil di Verifikasi');
         return back();
     }
 
@@ -81,6 +84,7 @@ class AccountController extends Controller
         $thumb = request()->file('avatar') ? request()->file('avatar')->store("images/avatar") : null;
         $attr['avatar'] = $thumb;
         User::create($attr);
+        Alert::success('Informasi Pesan', $this->role_definition() . ' baru berhasil di simpan');
         return back();
     }
 
@@ -115,7 +119,8 @@ class AccountController extends Controller
         }
         $attr['avatar'] = $thumbnail;
         $user->update($attr);
-        return redirect()->back()->with('success', 'Data User Berhasil Di tambahkan');
+        Alert::success('Informasi Pesan', $this->role_definition() . ' ' . request('name') . ' berhasil di update');
+        return redirect()->back();
     }
 
     public function destroy($id)
@@ -125,10 +130,18 @@ class AccountController extends Controller
             \Storage::delete($user->avatar);
         }
         $user->delete();
+        Alert::success('Informasi Pesan', $this->role_definition() . ' ' . $user->name . ' berhasil di hapus');
         return back();
     }
-    public function search($data)
+
+    protected function role_definition()
     {
-        echo $data[0];
+        
+        if(request('role') == 0)
+        {
+            return 'Admin';
+        } else {
+            return 'Pengelola';
+        }
     }
 }

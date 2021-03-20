@@ -46,7 +46,7 @@
                         </ul>
                     </li>
                     <li class="sidebar-list"><a class="sidebar-link sidebar-title" href="#"><i
-                                data-feather="file"></i></i><span>Detail Data Angsuran</span>
+                                data-feather="airplay"></i></i><span>Detail Data Angsuran</span>
                         </a>
                         <ul class="sidebar-submenu">
                             <li><a href="{{ route('admin.detaildata.angsuranke') }}">Angsuran Ke</a></li>
@@ -118,7 +118,7 @@
                         </ul>
                     </li>
                     <li class="sidebar-list"><a class="sidebar-link sidebar-title" href="#"><i
-                                data-feather="file"></i></i><span>Detail Data Angsuran</span>
+                                data-feather="airplay"></i></i><span>Detail Data Angsuran</span>
                         </a>
                         <ul class="sidebar-submenu">
                             <li><a href="{{ route('admin.detaildata.angsuranke') }}">Angsuran Ke</a></li>
@@ -129,13 +129,15 @@
                         </ul>
                     </li>
                     <li class="sidebar-list"><a class="sidebar-link sidebar-title" href="#"><i
-                                data-feather="file-text"></i><span>Detail Data Pinjaman</span></a>
+                                data-feather="bookmark"></i><span>Data Pinjaman</span>
+                        </a>
                         <ul class="sidebar-submenu">
-                            <li><a href="">Approved</a></li>
-                            <li><a href="">Belum di Approve</a></li>
+                            <li><a href="{{ route('admin.detaildata.pinjam', 'approve') }}">Data KPR</a></li>
+                            <li><a href="{{ route('admin.detaildata.pinjam', 'pending') }}">Manual</a></li>
+
                         </ul>
                     </li>
-                    <li class="sidebar-list"><a class="sidebar-link sidebar-title link-nav" href="#"><i
+                    <li class="sidebar-list"><a class="sidebar-link sidebar-title link-nav" href="{{ route('admin.account.verifikasi') }}"><i
                                 data-feather="user-check"></i><span>Verifikasi User</span></a></li>
                     {{-- @endif --}}
                     <li class="sidebar-list"><a class="sidebar-link sidebar-title" href="#"><i

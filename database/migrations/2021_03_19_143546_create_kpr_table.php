@@ -30,6 +30,7 @@ class CreateKprTable extends Migration
             $table->integer('tunggakan');
             $table->integer('jml_tunggakan');
             $table->text('keterangan');
+            $table->boolean('status');
         });
     }
 
