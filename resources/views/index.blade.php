@@ -59,12 +59,12 @@
               <button class="navbar-toggler navabr_btn-set custom_nav" type="button" data-toggle="collapse"
                 data-target="#navbarDefault" aria-controls="navbarDefault" aria-expanded="false"
                 aria-label="Toggle navigation"><span></span><span></span><span></span></button>
-              <div class="navbar-collapse justify-content-end collapse hidenav" id="navbarDefault">
-                <ul class="navbar-nav navbar_nav_modify" id="scroll-spy">
-                  <li class="nav-item" style="margin-right: 20px;"><a class="nav-link" href="#dashboards">Home</a></li>
-                  <li class="nav-item" style="margin-right: 20px;"><a class="nav-link" href="#tentangkami">Tentang
+              <div class="navbar-collapse justify-content-start collapse hidenav" id="navbarDefault">
+                <ul class="navbar-nav navbar_nav_modify ml-5" id="scroll-spy">
+                  <li class="nav-item mr-4"><a class="nav-link" href="#dashboards">Home</a></li>
+                  <li class="nav-item mr-4"><a class="nav-link" href="#tentangkami">Tentang
                       Kami</a></li>
-                  <li class="nav-item" style="margin-right: 20px;"><a class="nav-link" href="#kontakkami">Hubungi
+                  <li class="nav-item mr-4"><a class="nav-link" href="#kontakkami">Hubungi
                       Kami</a></li>
                   <li class="nav-item"><a class="nav-link" href="{{ route('login') }}">Sign in</a></li>
                 </ul>
@@ -73,7 +73,7 @@
           </header>
         </div>
         <div class="row" id="#dashboards">
-          <div class="col-lg-6">
+          <div class="col-md-6">
             <div class="content">
               <div class="font-light" style="margin-bottom: 100px;">
                 <h1>PERUMAHAN TNI AD</h1>
@@ -82,15 +82,15 @@
               </div>
             </div>
           </div>
-          <div class="col-lg-6">
-            <div class="wow fadeIn"><img style="margin-top: 220px;width:100%;margin-left:80px"
-                src="{{asset('assets/images/Rumah PNG.png')}}" alt="rumah"></div>
+          <div class="col-md-6">
+            <div class="wow fadeIn mt-2"><img style="width:100%;margin-left:80px"
+                src="{{asset('assets/images/rumahawan.png')}}" alt="rumah"></div>
           </div>
         </div>
       </div>
     </div>
   </div>
-    <section class="cuba-demo-section" id="tentangkami" style="background-color: white;">
+    <section class="cuba-demo-section font-weight-bold" id="tentangkami" style="background-color: white;">
       <div class="container">
         <div class="row p-5">
           <div class="col-sm-5">
@@ -111,13 +111,13 @@
         </div>
       </div>
     </section>
-    <section class="section-space cuba-demo-section" id="layout" style="background-color: white;">
+    <section class="section-space cuba-demo-section font-weight-bold" id="layout" style="background-color: white;">
       <div class="container">
         <div class="row">
           <div class="col-sm-4 wow pulse">
             <div class="cuba-demo-content mt50">
               <div class="couting">
-                <h2>Rp. 2T</h2>
+                <h1>Rp. 2T</h1>
                 <p style="color: black;font-size:14px;">Penyaluran Dana KPR Swakelola</p>
               </div>
             </div>
@@ -125,7 +125,7 @@
           <div class="col-sm-4 wow pulse">
             <div class="cuba-demo-content mt50">
               <div class="couting">
-                <h2>17K+</h2>
+                <h1>17K+</h1>
                 <p style="color: black;font-size:14px;">Prajurit memiliki perumahan</p>
               </div>
             </div>
@@ -133,7 +133,7 @@
           <div class="col-sm-4 wow pulse">
             <div class="cuba-demo-content mt50">
               <div class="couting">
-                <h2>30+</h2>
+                <h1>30+</h1>
                 <p style="color: black;font-size:14px;">Lokasi perumahan tersebar diseluruh indonesia</p>
               </div>
             </div>
@@ -143,13 +143,13 @@
     </section>
     <section class="cuba-demo-section" id="kontakkami" style="background-color: white;">
           <div class="row mx-2">
-              <div class="col-sm-4">
+              <div class="col-sm-5 font-weight-bold">
                 <p>Alamat Kantor: <br>
                   Dr. Wahidin I No 6, Ps Baru, Kecamatan Sawah Besar,
                   Kota Jakarta Pusat, Daerah khusus Ibukota Jakarta 10710</p>
               </div>
 
-              <div class="col-sm-5 pt-5 offset-md-3">
+              <div class="col-sm-4 pt-5 offset-md-3">
                 <p>Copyright @2021 Ditkuad TNI AD - All Right Reserved</p>
               </div>
               

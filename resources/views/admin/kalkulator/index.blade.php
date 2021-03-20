@@ -8,7 +8,7 @@
                     <h5>Kalkulator KPR</h5>
                 </div>
                 <div class="card-body">
-                  <form action="#" class="needs-validation" method="POST">
+                  <form action="hitung" class="needs-validation" method="POST">
                     @csrf
                     <div class="row">
                       <div class="col-md-4 mb-3">

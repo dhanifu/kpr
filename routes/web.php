@@ -52,6 +52,8 @@ Route::middleware('auth')->group(function () {
             Route::resource('register', 'AccountController');
             Route::get('/verifikasi', 'AccountController@verifikasi_index_account')->name('verifikasi');
             Route::patch('/verified/{id}', 'AccountController@verified')->name('verified');
+            Route::get('/search/admin', 'AccountController@search_admin')->name('search.admin');
+            Route::get('/search/pengelola', 'AccountController@search_pengelola')->name('search.pengelola');
         });
         Route::prefix('rekapdata')->name('rekapdata.')->group(function () {
             Route::get('/Bulan', 'RekapdataController@getBulan')->name('bulan');
@@ -70,7 +72,7 @@ Route::middleware('auth')->group(function () {
         });
 
         Route::resource('pangkat', 'PangkatController');
-        Route::get('/search', 'AccountController@seacrh')->name('search');
     });
     Route::get('/kalkulator', 'HomeController@kalkulator')->name('kalkulator');
+    Route::post('/hitung', 'HomeController@HitungKalkulator')->name('hitung');
 });

@@ -144,4 +144,28 @@ class AccountController extends Controller
             return 'Pengelola';
         }
     }
+
+    public function search_admin()
+    {
+        $query = request('query');
+        $account = User::where('role', '0')->where("name", "like", "%$query%")
+            ->orWhere("email", "like", "%$query%")
+            ->orWhere("nrp", "like", "%$query%")
+            ->latest()->paginate(3);
+        return view('admin.account.admin.index', [
+            'accounts' => $account
+        ]);
+    }
+
+    public function search_pengelola()
+    {
+        $query = request('query');
+        $account = User::where('role', '1')->where("name", "like", "%$query%")
+            ->orWhere("email", "like", "%$query%")
+            ->orWhere("nrp", "like", "%$query%")
+            ->latest()->paginate(3);
+        return view('admin.account.kelola.index', [
+            'accounts' => $account
+        ]);
+    }
 }
