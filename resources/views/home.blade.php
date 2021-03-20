@@ -130,7 +130,7 @@
                                 </div>
                                 <div class="media-body">
                                     <div class="right-chart-content">
-                                        <h4>14</h4><span>Count Accounts</span>
+                                        <h4>{{ $pangkats }}</h4><span><u>Pangkat</u></span>
                                     </div>
                                 </div>
                             </div>
@@ -144,7 +144,8 @@
                                 </div>
                                 <div class="media-body">
                                     <div class="right-chart-content">
-                                        <h4>1005</h4><span>Sales</span>
+                                        <h4>{{ $pangkats }}</h4><span><u>Pangkat</u></span>
+                                        <h4>{{ $user }}</h4><span>User</span>
                                     </div>
                                 </div>
                             </div>
@@ -158,7 +159,7 @@
                                 </div>
                                 <div class="media-body">
                                     <div class="right-chart-content">
-                                        <h4>100</h4><span>Sales return</span>
+                                        <h4>{{ $admin }}</h4><span>Admin</span>
                                     </div>
                                 </div>
                             </div>
@@ -172,7 +173,7 @@
                                 </div>
                                 <div class="media-body">
                                     <div class="right-chart-content">
-                                        <h4>101</h4><span>Purchase ret</span>
+                                        <h4>{{ $pengelola }}</h4><span>Pengelola</span>
                                     </div>
                                 </div>
                             </div>
