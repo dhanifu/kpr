@@ -45,7 +45,7 @@ class AccountController extends Controller
 
     public function verifikasi_index_account()
     {
-        $account = User::where('id', '!=', auth()->user()->id)->where('status_verif', null)->whereIn('role', ['2'])->paginate(5);
+        $account = User::where('id', '!=', auth()->user()->id)->where('status_verif', null || 0)->whereIn('role', ['2'])->paginate(5);
         return view('admin.account.verifikasi.index', [
             'accounts' => $account
         ]);
