@@ -144,7 +144,6 @@
                                 </div>
                                 <div class="media-body">
                                     <div class="right-chart-content">
-                                        <h4>{{ $pangkats }}</h4><span><u>Pangkat</u></span>
                                         <h4>{{ $user }}</h4><span>User</span>
                                     </div>
                                 </div>

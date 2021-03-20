@@ -23,6 +23,9 @@
   <body>
     {{-- content --}}
     @yield('content')
+    {{-- swal --}}
+    @include('sweetalert::alert')
+    {{-- script --}}
     <script src="{{asset('stylelogin/js/jquery-3.3.1.min.js')}}"></script>
     <script src="{{asset('stylelogin/js/popper.min.js')}}"></script>
     <script src="{{asset('stylelogin/js/bootstrap.min.js')}}"></script>
