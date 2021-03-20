@@ -1,4 +1,4 @@
-@extends('layouts.app', ['title' => 'KPR | '.request()->path() ])
+@extends('layouts.app', ['title' => 'KPR | Rekapdata Bulan' ])
 @section('content')
 <div class="row">
     <div class="col-md-12">

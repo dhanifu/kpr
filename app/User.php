@@ -6,7 +6,7 @@ use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 
-class User extends Authenticatable
+class User extends Authenticatable implements MustVerifyEmail
 {
     use Notifiable;
 
@@ -16,7 +16,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'username', 'nrp', 'password', 'role', 'avatar', 'status_verif', 'pangkat_id'
+        'name', 'email', 'nrp', 'password', 'role', 'avatar', 'pangkat_id', 'status_verif'
     ];
 
     public function bunga()
@@ -24,14 +24,16 @@ class User extends Authenticatable
         return $this->hasOne(Bunga::class);
     }
 
-    public function pangkat()
-    {
-        return $this->belongsTo(Pangkat::class);
-    }
     public function pinjaman()
     {
         return $this->hasOne(Pinjaman::class);
     }
+
+    public function pangkat()
+    {
+        return $this->belongsTo(Pangkat::class);
+    }
+
     /**
      * The attributes that should be hidden for arrays.
      *
@@ -40,8 +42,6 @@ class User extends Authenticatable
     protected $hidden = [
         'password', 'remember_token',
     ];
-
-
 
     /**
      * The attributes that should be cast to native types.
@@ -54,21 +54,17 @@ class User extends Authenticatable
 
     public function getImgProfileAttribute()
     {
-        return "/storage/".$this->avatar;
+        return "/storage/" . $this->avatar;
     }
     public function getRoleSectionAttribute()
     {
-        if($this->role == '0')
-        {
-            return 'ADMIN';
-        } else if($this->role == '1')
-        {
-            return 'PENGELOLA';
-        } else if($this->role == '2')
-        {
+        if ($this->role == '0') {
+            return '<span class="badge badge-success">ADMIN</span>';
+        } else if ($this->role == '1') {
+            return '<span class="badge badge-warning">PENGELOLA</span>';
+        } else if ($this->role == '2') {
             return 'USER';
-        } else if($this->role == '3')
-        {
+        } else if ($this->role == '3') {
             return 'ENDUSER';
         } else {
             return 'Not Have Role';

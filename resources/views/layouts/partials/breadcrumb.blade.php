@@ -9,8 +9,8 @@
                     <li class="breadcrumb-item">
                         <a href="{{ route('home') }}"> <i data-feather="home"></i></a>
                     </li>
-                    @if(request()->is('dashboard'))
-                        <li class="breadcrumb-item">Dashboard</li>
+                    @if(request()->is('home'))
+                        <li class="breadcrumb-item">Home</li>
                     @endif
                     @if(request()->is('profile/setting'))
                         <li class="breadcrumb-item">My Profile</li>
@@ -27,19 +27,66 @@
                         <li class="breadcrumb-item">Kelola Akun</li>
                         <li class="breadcrumb-item">Admin</li>
                     @endif
-                    @if(request()->is('admin/account/'))
+                    @if(request()->is('admin/account/pengelola'))
                         <li class="breadcrumb-item">Kelola Akun</li>
-                        <li class="breadcrumb-item">Admin</li>
+                        <li class="breadcrumb-item">Pengelola</li>
                     @endif
-                    @if(request()->is('admin/account/customer'))
+                    @if(request()->is('admin/account/user'))
                         <li class="breadcrumb-item">Kelola Akun</li>
-                        <li class="breadcrumb-item">Customer</li>
+                        <li class="breadcrumb-item">User</li>
+                    @endif
+                    @if(request()->is('admin/account/boss'))
+                        <li class="breadcrumb-item">Kelola Akun</li>
                     @endif
                     @if(request()->is('admin/account/boss'))
                         <li class="breadcrumb-item">Kelola Akun</li>
                     @endif
-                    @if(request()->is('admin/account/boss'))
+                    @if(request()->is('admin/pangkat'))
                         <li class="breadcrumb-item">Kelola Akun</li>
+                        <li class="breadcrumb-item">Pangkat</li>
+                    @endif
+                    @if(request()->is('admin/account/verifikasi'))
+                        <li class="breadcrumb-item">Kelola Akun</li>
+                        <li class="breadcrumb-item">Verifikasi Akun</li>
+                    @endif
+                    @if(request()->is('admin/rekapdata/Bulan'))
+                        <li class="breadcrumb-item">Rekap Data KPR</li>
+                        <li class="breadcrumb-item">Perbulan</li>
+                    @endif
+                    @if(request()->is('admin/rekapdata/Tahun'))
+                        <li class="breadcrumb-item">Rekap Data KPR</li>
+                        <li class="breadcrumb-item">Pertahun</li>
+                    @endif
+                    @if(request()->is('admin/detaildata/AngsuranKe'))
+                        <li class="breadcrumb-item">Detail Angsuran</li>
+                        <li class="breadcrumb-item">Angsuran Ke</li>
+                    @endif
+                    @if(request()->is('admin/detaildata/Pokok'))
+                        <li class="breadcrumb-item">Detail Angsuran</li>
+                        <li class="breadcrumb-item">Pokok</li>
+                    @endif
+                    @if(request()->is('admin/detaildata/Bunga'))
+                        <li class="breadcrumb-item">Detail Angsuran</li>
+                        <li class="breadcrumb-item">Bunga</li>
+                    @endif
+                    @if(request()->is('admin/detaildata/BesarAngsuran'))
+                        <li class="breadcrumb-item">Detail Angsuran</li>
+                        <li class="breadcrumb-item">Besar Angsuran</li>
+                    @endif
+                    @if(request()->is('admin/detaildata/SisaAngsuran'))
+                        <li class="breadcrumb-item">Detail Angsuran</li>
+                        <li class="breadcrumb-item">Sisa Angsuran</li>
+                    @endif
+                    @if(request()->is('kalkulator'))
+                        <li class="breadcrumb-item">Kalkulator</li>
+                    @endif
+                    @if(request()->is('admin/detaildata/approve'))
+                        <li class="breadcrumb-item">Pinjaman</li>
+                        <li class="breadcrumb-item">Data KPR</li>
+                    @endif
+                    @if(request()->is('admin/detaildata/pending'))
+                        <li class="breadcrumb-item">Pinjaman</li>
+                        <li class="breadcrumb-item">Manual</li>
                     @endif
                 </ol>
             </div>

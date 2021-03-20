@@ -4,19 +4,22 @@
     <div class="col-md-12">
         <div class="card">
             <div class="card-header">
-                <form action="" method="post">
-                    <div class="d-flex justify-content-end">
-                        <div class="row">
-                            <div class="col-md-12">
-                                <div class="input-group">
-                                    <input class="form-control" id="validationTooltip02" type="text" placeholder="Search" required="">
-                                    <div class="valid-tooltip">Looks good!</div>
-                                    <button class="btn btn-secondary ml-2">Search</button>
+                <div class="justify-content-between">
+                    <a href="{{ route('admin.account.pengelola') }}" class="btn btn-info"><i class="fa fa-refresh"></i></a>
+                    <form action="{{ route('admin.account.search.pengelola') }}" method="GET">
+                        <div class="d-flex justify-content-end">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="input-group">
+                                        <input class="form-control" id="validationTooltip02" type="search" name="query" placeholder="Search" required="">
+                                        <div class="valid-tooltip">Looks good!</div>
+                                        <button class="btn btn-secondary ml-2">Search</button>
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
-                </form>
+                    </form>
+                </div>
             </div>
             <div class="card-body">
                 <div class="table-responsive">
@@ -27,7 +30,7 @@
                                 <th>Avatar</th>
                                 <th>Name</th>
                                 <th>E-Mail</th>
-                                <th>Username</th>
+                                <th>NRP</th>
                                 <th>Password</th>
                                 <th>Action</th>
                             </tr>
@@ -45,34 +48,11 @@
                                 </td>
                                 <td>{{ $account->name }}</td>
                                 <td>{{ $account->email }}</td>
-                                <td>{{ $account->username }}</td>
+                                <td>{{ $account->nrp }}</td>
                                 <td><span class="badge badge-light">DILINDUNGI<span></td>
                                 <td>
                                     <a href="{{ route('admin.account.register.edit', $account->id) }}" style="float: left;" class="mr-1"><i class="fa fa-pencil-square-o" style="color: rgb(0, 241, 12);"></i></a>
-                                    <button onclick="return deleteUser('{{$account->id}}')" style="background-color: transparent; border: none;"><i class="icon-trash" style="color: red;"></i></button>
-                                    <form method="post" id="DeleteUser{{$account->id}}" action="{{ route('admin.account.register.destroy', $account->id) }}">
-                                        @csrf
-                                        @method('delete')
-                                    </form>
-                                    <script>
-                                        function deleteUser(id) {
-                                            swal({
-                                                    title: "Are you sure?",
-                                                    text: "Once deleted, you will not be able to recover this imaginary file!",
-                                                    icon: "warning",
-                                                    buttons: true,
-                                                    dangerMode: true,
-                                                })
-                                                .then((willDelete) => {
-                                                    if (willDelete) {
-                                                        event.preventDefault();
-                                                        document.getElementById(`DeleteUser${id}`).submit();
-                                                    } else {
-                                                        swal("okay :)");
-                                                    }
-                                                });
-                                        }
-                                    </script>
+                                    @include('alert.deleteUser')
                                 </td>
                             </tr>
                         </tbody>

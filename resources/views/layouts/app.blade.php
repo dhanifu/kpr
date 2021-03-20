@@ -27,6 +27,7 @@
     <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/vendors/animate.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/vendors/chartist.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/vendors/date-picker.css') }}">
+    <script src="https://code.highcharts.com/highcharts.js"></script>
     <!-- Plugins css end-->
     <!-- Bootstrap css-->
     <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/vendors/bootstrap.css') }}">
@@ -71,6 +72,8 @@
     </div>
     <!-- page-wrapper End-->
     <!-- swal vendor-->
+    @include('sweetalert::alert')
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@10"></script>
     {{-- vanilla js --}}
     @stack('script')
     <!-- latest jquery-->
@@ -106,7 +109,6 @@
     <!-- Plugins JS end-->
     <!-- Theme js-->
     <script src="{{ asset('assets/js/script.js') }}"></script>
-    <!-- login js-->
     <!-- Plugin used-->
 </body>
 

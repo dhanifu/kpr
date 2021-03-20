@@ -7,7 +7,6 @@ use Illuminate\Http\Request;
 
 class RekapdataController extends Controller
 {
-    //
     public function getBulan()
     {
         return view('admin.rekapdata.bulan.index');

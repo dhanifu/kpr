@@ -50,9 +50,9 @@
                     </div>
 
                     <div class="form-group">
-                      <label class="col-form-label" for="username">Username:</label>
-                      <input class="form-control @error('username') is-invalid @enderror" type="text" name="username" value="{{ old('username') }}" id="username" required>
-                        @error('username')
+                      <label class="col-form-label" for="username">NRP:</label>
+                      <input class="form-control @error('nrp') is-invalid @enderror" type="number" name="nrp" value="{{ old('nrp') }}" id="nrp" required>
+                        @error('nrp')
                             <span class="invalid-feedback" role="alert">
                                 <strong>{{ $message }}</strong>
                             </span>

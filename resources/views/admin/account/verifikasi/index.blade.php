@@ -1,4 +1,4 @@
-@extends('layouts.app', ['title' => 'KPR | User Account'])
+@extends('layouts.app', ['title' => 'KPR | Verif User Account'])
 @section('content')
 <div class="row">
     <div class="col-md-12">
@@ -29,7 +29,7 @@
                                 <th>Avatar</th>
                                 <th>Name</th>
                                 <th>E-Mail</th>
-                                <th>Username</th>
+                                <th>NRP</th>
                                 <th>Password</th>
                                 <th>Action</th>
                             </tr>
@@ -48,9 +48,15 @@
                                 </td>
                                 <td>{{ $account->name }}</td>
                                 <td>{{ $account->email }}</td>
-                                <td>{{ $account->username }}</td>
+                                <td>{{ $account->nrp }}</td>
                                 <td><span class="badge badge-light">DILINDUNGI<span></td>
-
+                                <td>
+                                    <form action="{{ route('admin.account.verified', $account->id) }}" method="post">
+                                        @csrf
+                                        @method('PATCH')
+                                        <button type="submit" class="btn btn-success btn-sm"><i class="fa fa-check"></i> VERIFIED</button>
+                                    </form>
+                                </td>
                             </tr>
                         </tbody>
                         @empty

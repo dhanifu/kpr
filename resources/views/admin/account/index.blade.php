@@ -3,15 +3,11 @@
     <div class="row">
         <div class="col-md-12">
             <div class="card">
-                {{-- <div class="card-header">
+                <div class="card-header">
                   @include('layouts.partials.error')
                   <div class="d-flex justify-content-between">
                     <button type="submit" class="btn btn-primary btn-md" data-toggle="modal" data-target="#addModal">Add</button>
                   </div>
-                </div> --}}
-                <div class="card-header">
-                    <a href="{{ route('admin.account.user.export.excel') }}" class="btn btn-success">Export User Excel</a>
-                    <a href="{{ route('admin.account.user.export.pdf') }}" class="btn btn-danger">Export User PDF</a>
                 </div>
                 <div class="card-body">
                     <div class="table-responsive">
@@ -19,8 +15,7 @@
                             <thead>
                                 <tr>
                                     <th>#</th>
-                                    <th>Pangkat</th>
-                                    <th>Status</th>
+                                    <th>Role</th>
                                     <th>Avatar</th>
                                     <th>Name</th>
                                     <th>E-Mail</th>
@@ -33,14 +28,7 @@
                             <tbody>
                                 <tr>
                                     <th>{{ $loop->iteration + $accounts->firstItem() - 1 . '.' }}</th>
-                                    <td><b>{{ Str::upper($account->pangkat->pangkat) }}</b></td>
-                                    <td>
-                                        @if($account->email_verified_at == null)
-                                            <span class="badge badge-danger">Belum Verifikasi Email</span>
-                                        @else
-                                            <span class="badge badge-success">Sudah Verifikasi Email</span>
-                                        @endif
-                                    </td>
+                                    <td>{!! $account->RoleSection !!}</td>
                                     <td>
                                       @empty($account->avatar)
                                           <img class="rounded-circle" src="{{ asset('assets/images/avatar/avatar-default.png') }}" width="60" alt="avatar">
@@ -53,16 +41,7 @@
                                     <td>{{ $account->nrp }}</td>
                                     <td><span class="badge badge-light">DILINDUNGI<span></td>
                                     <td>
-                                        <div class="mb-2">
-                                            @if($account->email_verified_at != null && $account->role == 3)
-                                                <form action="{{ route('admin.account.updaterole', $account->id) }}" method="post">
-                                                    @csrf
-                                                    @method('PATCH')
-                                                    <button class="btn btn-info btn-sm"><i class="fa fa-refresh"></i> UPDATE ROLE</button>
-                                                </form>
-                                            @endif
-                                        </div>
-                                        <a href="{{ route('admin.account.register.edit', $account->id) }}" style="float: left;" class="mr-1"><i class="fa fa-pencil-square-o" style="color: rgb(0, 241, 12);"></i></a>
+                                      <a href="{{ route('admin.account.register.edit', $account->id) }}" style="float: left;" class="mr-1"><i class="fa fa-pencil-square-o" style="color: rgb(0, 241, 12);"></i></a>
                                         @include('alert.deleteUser')
                                 </td>
                             </tr>
@@ -84,7 +63,7 @@
     </div>
 </div>
 {{-- add data modal --}}
-{{-- <div class="modal fade" id="addModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal fade" id="addModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-lg" role="document">
         <div class="modal-content">
             <div class="modal-header">
@@ -93,7 +72,6 @@
             </div>
             <form action="{{ route('admin.account.register.store') }}" method="POST" enctype="multipart/form-data">
                 @csrf
-                <input type="hidden" name="role" value="3">
                 <div class="modal-body">
                     <div class="row">
                         <div class="col-md-6">
@@ -116,12 +94,11 @@
                         </div>
                         <div class="col-md-6">
                             <div class="form-group">
-                                <label class="col-form-label" for="pangkat_id">Pilih Pangkat:</label>
-                                <select class="form-control custom-select" name="pangkat_id" id="pangkat_id">
-                                    <option disabled selected>Pilih Pangkat</option>
-                                    @foreach ($pangkats as $pangkat)
-                                        <option value="{{ $pangkat->id }}">{{ $pangkat->pangkat }}</option>
-                                    @endforeach
+                                <label class="col-form-label" for="role">Pilih Role:</label>
+                                <select class="form-control custom-select" name="role" id="role">
+                                    <option disabled selected>role</option>
+                                    <option value="0">Admin</option>
+                                    <option value="1">Pengelola</option>
                                 </select>
                             </div>
                         </div>
@@ -144,6 +121,8 @@
                     <button class="btn btn-secondary for-dark" type="button" data-dismiss="modal">Close</button>
                     <button class="btn btn-primary" type="submit">Save</button>
                 </div>
+            </form>
         </div>
-      </div> --}}
+    </div>
+</div>
 @endsection

@@ -68,13 +68,13 @@
                         </div>
                         <div class="row form-group">
                             <div class="col col-md-3">
-                                <label for="username" class=" form-control-label">Username</label>
+                                <label for="nrp" class=" form-control-label">NRP</label>
                             </div>
                             <div class="col-12 col-md-9">
-                                <input type="text" id="username" name="username"
-                                    value="{{ auth()->user()->username ?? old('username') }}" placeholder="Admin2325"
-                                    class="form-control @error('username') is-invalid @enderror">
-                                @error('username')
+                                <input type="text" id="nrp" name="nrp"
+                                    value="{{ auth()->user()->nrp ?? old('nrp') }}" placeholder="Admin2325"
+                                    class="form-control @error('nrp') is-invalid @enderror">
+                                @error('nrp')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
                                     </span>

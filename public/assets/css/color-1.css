@@ -16734,7 +16734,7 @@ footer {
       color: var(--theme-deafult);
       font-weight: 500;
       font-size: calc(35px + (70 - 35) * ((100vw - 300px) / (1920 - 300)));
-      background: -webkit-linear-gradient(var(--theme-deafult), #305744);
+      background: #000000;
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
       margin-bottom: 0;
@@ -16854,7 +16854,7 @@ footer {
   z-index: 6;
   text-align: center;
   line-height: normal;
-  height: 110px;
+  height: 80px;
   background: var(--theme-deafult);
   color: #fff;
   -webkit-box-shadow: 0 0 5px 1px rgba(5, 56, 111, 0.1);
@@ -16865,14 +16865,14 @@ footer {
     padding: 14px; }
   .sticky-header header.sticky {
     line-height: normal;
-    height: 110px;
+    height: 130px;
     background: var(--theme-deafult);
     text-align: left; }
     .sticky-header header.sticky .nav-padding {
       padding: 7px 14px; }
 
 .landing-home .sticky .navbar-brand img {
-  max-height: 110px; }
+  max-height: 140px; }
 
 .title-padding {
   padding: 130px 0; }

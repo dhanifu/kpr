@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Auth;
 use App\Http\Controllers\Controller;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
+use RealRashid\SweetAlert\Facades\Alert;
 
 class LoginController extends Controller
 {
@@ -38,14 +39,20 @@ class LoginController extends Controller
         $this->middleware('guest')->except('logout');
     }
 
+    public function authenticated()
+    {
+        Alert::success('Informasi Pesan', 'Selamat datang ' . auth()->user()->name);
+    }
+
     public function username()
     {
-        return 'username';
+        return 'nrp';
     }
 
     public function logout()
     {
         $this->guard()->logout();
+        Alert::success('Informasi Pesan', 'Logout Berhasil');
         return redirect()->route('login');
     }
 }
