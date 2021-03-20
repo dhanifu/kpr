@@ -6,6 +6,9 @@ use App\Http\Controllers\Controller;
 use App\Pangkat;
 use App\User;
 use RealRashid\SweetAlert\Facades\Alert;
+use App\Exports\UserExport;
+use Maatwebsite\Excel\Facades\Excel;
+use PDF;
 
 class AccountController extends Controller
 {
@@ -168,4 +171,19 @@ class AccountController extends Controller
             'accounts' => $account
         ]);
     }
+
+    public function userExportExcel()
+    {
+        return Excel::download(new UserExport, 'user.xlsx');
+    }
+
+    public function userExportPdf()
+    {
+        $user = User::where('role', '2')->get();
+        $pdf = PDF::loadview('admin.account.report_user_pdf',[
+            'user' => $user
+        ]);
+        return $pdf->stream();
+    }
+
 }

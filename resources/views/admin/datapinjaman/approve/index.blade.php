@@ -25,54 +25,41 @@
                 <table class="table table-hover">
                     <thead>
                         <tr>
-                            <th>id</th>
+                            <th>#</th>
+                            <th>NRP</th>
                             <th>Nama</th>
                             <th>Pangkat</th>
-                            <th>Corps</th>
-                            <th>NRP</th>
                             <th>Kesatuan</th>
                             <th>Tahap</th>
+                            <th>Pinjaman</th>
                             <th>jangka waktu</th>
-                            <th>jumlah angsuran</th>
+                            <th>TMT Angsuran</th>
+                            <th>Jumlah angsuran</th>
                             <th>angsuran ke</th>
                             <th>angsuran masuk</th>
-                            <th>angsuran Tunggak</th>
+                            <th> tunggakan</th>
                             <th>jumlah tunggakan</th>
                             <th>keterangan</th>
-                            <th>Status</th>
-                            <th colspan="2">Action</th>
                         </tr>
                     </thead>
                     @forelse ($pinjams as $pinjam)
                         <tbody>
                             <tr>
-                                <th>{{ $loop->iteration }}</th>
-                                <td>{{ $pinjam->user->name }}</td>
-                                <td>{{ $pinjam->user->pangkat->pangkat }}</td>
-                                <td>{{ $pinjam->user->pangkat->corps }}</td>
-                                <td>{{ $pinjam->user->nrp }}</td>
-                                <td>{{ $pinjam->user->pangkat->kesatuan }}</td>
-                                <td>{{ $pinjam->user->pangkat->tahap }}</td>
-                                <td>{{ $pinjam->jangka_waktu }}</td>
-                                <td>{{ $pinjam->jmlangs }}</td>
-                                <td>{{ $pinjam->angsuran_ke }}</td>
+                                <th>{{ $loop->iteration + $pinjams->firstItem() - 1 . '.' }}</th>
+                                <td><span class="badge badge-light">{{ $pinjam->nrp }}</span></td>
+                                <td><a href="" style="color: black;">{{ $pinjam->nama }}</a></td>
+                                <td>{{ $pinjam->corps }}</td>
+                                <td>{{ $pinjam->kesatuan }}</td>
+                                <td>{{ $pinjam->tahap }}</td>
+                                <td>{{ "IDR. " . number_format($pinjam->pinjaman, 0,',','.') }}</td>
+                                <td>{{ $pinjam->jk_waktu }}</td>
+                                <td>{{ $pinjam->tmt_angsuran }}</td>
+                                <td>{{ "Rp. " . number_format($pinjam->jml_angs, 0,',','.') }}</td>
+                                <td>{{ $pinjam->angs_ke }}</td>
                                 <td>{{ $pinjam->angsuran_masuk }}</td>
-                                <td>{{ $pinjam->angsuran_tunggak }}</td>
-                                <td>{{ $pinjam->jml_tunggak }}</td>
+                                <td>{{ $pinjam->tunggakan }}</td>
+                                <td>{{ "Rp. " . number_format( $pinjam->jml_tunggakan , 0,',','.') }}</td>
                                 <td>{{ $pinjam->keterangan }}</td>
-                                @if ($pinjam->status == 1)
-                                    <td><span class="badge badge-success">Verified</span>
-
-                                    </td>
-                                @endif
-
-                                <td>
-                                    <form action="{{ route('admin.detaildata.statusdecline', $pinjam->id) }}" method="post">
-                                        @csrf
-                                        @method('PUT')
-                                        <button type="submit" class="btn btn-sm btn-danger mb-1">Decline
-                                    </form>
-                                </td>
                             </tr>
                         </tbody>
                     @empty
@@ -86,9 +73,10 @@
             </div>
         </div>
         <div class="card-footer">
-            <div>
-            </div>
+            {{$pinjams->links()}}
         </div>
+    </div>
+    </div>
     </div>
 
 

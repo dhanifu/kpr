@@ -25,18 +25,20 @@
                 <table class="table table-hover">
                     <thead>
                         <tr>
-                            <th>id</th>
+                        <th>id</th>
                             <th>Nama</th>
                             <th>Pangkat</th>
                             <th>Corps</th>
                             <th>NRP</th>
                             <th>Kesatuan</th>
                             <th>Tahap</th>
+                            <th>Pinjaman</th>
                             <th>jangka waktu</th>
-                            <th>jumlah angsuran</th>
+                            <th>TMT Angsuran</th>
+                            <th>Jumlah angsuran</th>
                             <th>angsuran ke</th>
                             <th>angsuran masuk</th>
-                            <th>angsuran Tunggak</th>
+                            <th> tunggakan</th>
                             <th>jumlah tunggakan</th>
                             <th>keterangan</th>
                             <th>Status</th>
@@ -46,19 +48,21 @@
                     @forelse ($pinjams as $pinjam)
                         <tbody>
                             <tr>
-                                <th>{{ $loop->iteration }}</th>
-                                <td>{{ $pinjam->user->name }}</td>
-                                <td>{{ $pinjam->user->pangkat->pangkat }}</td>
-                                <td>{{ $pinjam->user->pangkat->corps }}</td>
-                                <td>{{ $pinjam->user->nrp }}</td>
-                                <td>{{ $pinjam->user->pangkat->kesatuan }}</td>
-                                <td>{{ $pinjam->user->pangkat->tahap }}</td>
-                                <td>{{ $pinjam->jangka_waktu }}</td>
-                                <td>{{ $pinjam->jmlangs }}</td>
-                                <td>{{ $pinjam->angsuran_ke }}</td>
+                            <th>{{ $loop->iteration }}</th>
+                                <td>{{ $pinjam->nama }}</td>
+                                <td>{{ $pinjam->pangkat }}</td>
+                                <td>{{ $pinjam->corps }}</td>
+                                <td>{{ $pinjam->nrp }}</td>
+                                <td>{{ $pinjam->kesatuan }}</td>
+                                <td>{{ $pinjam->tahap }}</td>
+                                <td>{{ "IDR. " . number_format($pinjam->pinjaman, 0,',','.') }}</td>
+                                <td>{{ $pinjam->jk_waktu }}</td>
+                                <td>{{ $pinjam->tmt_angsuran }}</td>
+                                <td>{{ "Rp. " . number_format($pinjam->jml_angs, 0,',','.') }}</td>
+                                <td>{{ $pinjam->angs_ke }}</td>
                                 <td>{{ $pinjam->angsuran_masuk }}</td>
-                                <td>{{ $pinjam->angsuran_tunggak }}</td>
-                                <td>{{ $pinjam->jml_tunggak }}</td>
+                                <td>{{ $pinjam->tunggakan }}</td>
+                                <td>{{ $pinjam->jml_tunggakan }}</td>
                                 <td>{{ $pinjam->keterangan }}</td>
                                 @if ($pinjam->status == 0)
                                     <td><span class="badge badge-warning">Manual</span></td>
@@ -93,6 +97,8 @@
             <div>
             </div>
         </div>
+    </div>
+    </div>
     </div>
 
 

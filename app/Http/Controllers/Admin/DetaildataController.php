@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Detailkpr;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Pinjaman;
@@ -10,7 +11,15 @@ class DetaildataController extends Controller
 {
     public function getAngsuranKe()
     {
-        return view('admin.detaildata.angsuranke.index');
+        $pinjams = Detailkpr::orderBy('id', 'ASC')->paginate(20);
+        return view('admin.detaildata.angsuranke.index', compact('pinjams'));
+    }
+
+    public function getangsuran(Request $request)
+    {
+        $cari = $request->cari;
+        $pinjams = Detailkpr::where('id','LIKE',"%".$cari."%")->get();
+        return view('admin.detaildata.angsuranke.index', compact('pinjams'));
     }
     public function getPokok()
     {
@@ -28,17 +37,18 @@ class DetaildataController extends Controller
     {
         return view('admin.detaildata.sisaangsuran.index');
     }
-    public function getindex($approve)
+   public function getindex($approve)
     {
         if ($approve == 'approve') {
-            $pinjams = Pinjaman::where('status', 1)->get();
+            $pinjams = Detailkpr::where('status', 1)->orderBy('id', 'ASC')->paginate(20);
             return view('admin.datapinjaman.approve.index', compact('pinjams'));
         }
         if ($approve == 'pending') {
-            $pinjams = Pinjaman::where('status', 0)->get();
+            $pinjams = Detailkpr::where('status', 0)->orderBy('id', 'ASC')->paginate(20);
             return view('admin.datapinjaman.pending.index', compact('pinjams'));
         }
     }
+
     public function statusupdate($id)
     {
         $pinjam = Pinjaman::findOrFail($id);
@@ -55,9 +65,11 @@ class DetaildataController extends Controller
         ]);
         return back();
     }
-    public function cari($id)
+    
+    public function cari(Request $request)
     {
-        $id = Pinjaman::where('name', 'like', "%" . $id . "%")->get();
-        return view('admin.datapinjaman.approve.index', compact('pinjams'));
+        $id = $request->cari;
+        $pinjams = Detailkpr::where('nrp', 'like', "%" . $id ."%")->get();
+        return view('admin.detaildata.angsuranke.index', compact('pinjams'));
     }
 }
