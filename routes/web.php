@@ -10,7 +10,7 @@ Route::middleware('guest')->group(function () {
     // user landing page
     Route::get('/', function () {
         return view('index');
-    });
+    })->name('index');
     Route::get('/register', function () {
         return view('auth.register');
     });

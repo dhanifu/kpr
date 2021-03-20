@@ -55,7 +55,7 @@
         <div class="sticky-header">
           <header>
             <nav class="navbar navbar-b navbar-trans navbar-expand-xl fixed-top nav-padding" id="sidebar-menu"><a
-                class="navbar-brand p-0" href="#"><img src="{{asset('assets/images/logo-tni.png')}}" alt=""></a>
+                class="navbar-brand p-0" href="{{ route('index') }}"><img src="{{ asset('assets/images/logo-tni.png') }}" alt=""></a>
               <button class="navbar-toggler navabr_btn-set custom_nav" type="button" data-toggle="collapse"
                 data-target="#navbarDefault" aria-controls="navbarDefault" aria-expanded="false"
                 aria-label="Toggle navigation"><span></span><span></span><span></span></button>
@@ -84,11 +84,12 @@
           </div>
           <div class="col-lg-6">
             <div class="wow fadeIn"><img style="margin-top: 220px;width:100%;margin-left:80px"
-                src="{{asset('assets/images/rumahbaru.png')}}" alt="rumah"></div>
+                src="{{asset('assets/images/Rumah PNG.png')}}" alt="rumah"></div>
           </div>
         </div>
       </div>
     </div>
+  </div>
     <section class="cuba-demo-section" id="tentangkami" style="background-color: white;">
       <div class="container">
         <div class="row p-5">
@@ -141,10 +142,7 @@
       </div>
     </section>
     <section class="cuba-demo-section" id="kontakkami" style="background-color: white;">
-      <div class="offset-md-1">
-
-          <div class="row">
-
+          <div class="row mx-2">
               <div class="col-sm-4">
                 <p>Alamat Kantor: <br>
                   Dr. Wahidin I No 6, Ps Baru, Kecamatan Sawah Besar,
@@ -156,7 +154,6 @@
               </div>
               
           </div>
-      </div>
       
     </section>
   <!-- latest jquery-->
