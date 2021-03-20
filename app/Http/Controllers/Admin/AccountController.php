@@ -5,14 +5,15 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Pangkat;
 use App\User;
+use App\Detailkpr;
 use RealRashid\SweetAlert\Facades\Alert;
 use App\Exports\UserExport;
+use Illuminate\Http\Request;
 use Maatwebsite\Excel\Facades\Excel;
 use PDF;
 
 class AccountController extends Controller
 {
-
     public function index()
     {
         $account = User::where('id', '!=', auth()->user()->id)->whereIn('role', ['0', '1'])->paginate(5);
@@ -23,7 +24,6 @@ class AccountController extends Controller
 
     public function admin_index_account()
     {
-        dd(User::find(auth()->user()->id)->pinjaman);
         $account = User::where('id', '!=', auth()->user()->id)->where('role', '0')->paginate(5);
         return view('admin.account.admin.index', [
             'accounts' => $account
@@ -40,16 +40,19 @@ class AccountController extends Controller
 
     public function user_index_account()
     {
-        $account = User::where('id', '!=', auth()->user()->id)->wherein('role', ['2', '3'])->paginate(5);
+        // $detailkpr = Detailkpr::where('id', '!=', auth()->user()->id)->wherein('role', ['2', '3'])->paginate(5);
+        $detailkpr = Detailkpr::paginate(20);
         return view('admin.account.user.index', [
-            'accounts' => $account,
-            'pangkats' => Pangkat::get()
+            'accounts' => $detailkpr
+            // 'pangkats' => Pangkat::get()
         ]);
     }
 
     public function verifikasi_index_account()
     {
-        $account = User::where('id', '!=', auth()->user()->id)->where('status_verif', null || 0)->whereIn('role', ['2'])->paginate(5);
+        $account = User::where('id', '!=', auth()->user()->id)->where('status_verif', null || 0)->where('email_verified_at','!=',null)->whereIn('role', ['3'])->paginate(5);
+
+
         return view('admin.account.verifikasi.index', [
             'accounts' => $account
         ]);
@@ -60,7 +63,24 @@ class AccountController extends Controller
         User::findOrFail($id)->update([
             'role' => '2'
         ]);
+
         Alert::success('Informasi Pesan', 'Role berhasil di update');
+        return back();
+    }
+    public function krp_update_profile_user(Request $request)
+    {
+        Detailkpr::create([
+            "nama" => $request->nama,
+            "nrp" => $request->nrp,
+            "pangkat" => $request->pangkat,
+            "corps" => $request->corps,
+            "kesatuan" => $request->kesatuan,
+            "tahap" => $request->tahap,
+            'status' => 0
+        ]);
+
+        Alert::success('Informasi Pesan', 'Role berhasil di update');
+
         return back();
     }
 

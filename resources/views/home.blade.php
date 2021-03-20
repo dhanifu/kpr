@@ -115,96 +115,174 @@
         </div>
     </div>
     @endif
-    @if(auth()->user()->role == "0" || auth()->user()->role == "1")
-    <div class="row second-chart-list third-news-update">
-        <div class="col-xl-9 xl-100 chart_data_left box-col-12">
-            <div class="card">
-                <div class="card-body p-0">
-                    <div class="row m-0 chart-main">
-                        <div class="col-xl-3 col-md-6 col-sm-6 p-0 box-col-6">
-                            <div class="media align-items-center">
-                                <div class="hospital-small-chart">
-                                    <div class="small-bar">
-                                        <div class="small-chart flot-chart-container"></div>
-                                    </div>
-                                </div>
-                                <div class="media-body">
-                                    <div class="right-chart-content">
-                                        <h4>{{ $pangkats }}</h4><span><u>Pangkat</u></span>
-                                    </div>
+    @if(auth()->user()->role == "2" && auth()->user()->status_verif == 1)
+    <div class="card">
+        <div class="card-body">
+            <h1>Lengkapi Data Diri Anda</h1>
+            <form action="{{route('admin.account.update.profile')}}" method="POST" enctype="multipart/form-data">
+                @csrf
+                @method('patch')
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label class="col-form-label" for="avatar">Nama</label>
+                            <input class="form-control" type="text" name="nama" id="avatar" value="{{auth()->user()->name}}">
+                            @error('nama')
+                            <span style="color: red;">{{ $message }}</span>
+                            @enderror
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label class="col-form-label" for="avatar">NRP</label>
+                            <input class="form-control" type="text" name="nrp" id="avatar" value="{{auth()->user()->nrp}}" readonly>
+                            @error('nrp')
+                            <span style="color: red;">{{ $message }}</span>
+                            @enderror
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label class="col-form-label" for="avatar">Pangkat</label>
+                            <select name="pangkat" id="pangkat" class="form-control">
+                                @foreach($pangkat as $data)
+                                <option value="{{ $data->id }}">{{ $data->pangkat }}</option>
+                                @endforeach
+                            </select>
+                            @error('pangkat')
+                            <span style="color: red;">{{ $message }}</span>
+                            @enderror
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label class="col-form-label" for="avatar">Corps</label>
+                            <input class="form-control" type="text" name="corps" id="avatar">
+                            @error('corps')
+                            <span style="color: red;">{{ $message }}</span>
+                            @enderror
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label class="col-form-label" for="avatar">kesatuan</label>
+                            <input class="form-control" type="text" name="kesatuan" id="kesatuan">
+                            @error('kesatuan')
+                            <span style="color: red;">{{ $message }}</span>
+                            @enderror
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label class="col-form-label" for="avatar">tahap</label>
+                            <input class="form-control" type="text" name="tahap" id="kesatuan">
+                            @error('tahap')
+                            <span style="color: red;">{{ $message }}</span>
+                            @enderror
+                        </div>
+                    </div>
+                </div>
+
+        </div>
+        <div class="card-footer">
+            <a href="{{ route('admin.account.register.index') }}" class="btn btn-light for-light">Back</a>
+            <a href="{{ route('admin.account.register.index') }}" class="btn btn-secondary for-dark">Back</a>
+            <button class="btn btn-primary" type="submit">Update</button>
+            </form>
+        </div>
+    </div>
+    @endif
+</div>
+@if(auth()->user()->role == "0" || auth()->user()->role == "1")
+<div class="row second-chart-list third-news-update">
+    <div class="col-xl-9 xl-100 chart_data_left box-col-12">
+        <div class="card">
+            <div class="card-body p-0">
+                <div class="row m-0 chart-main">
+                    <div class="col-xl-3 col-md-6 col-sm-6 p-0 box-col-6">
+                        <div class="media align-items-center">
+                            <div class="hospital-small-chart">
+                                <div class="small-bar">
+                                    <div class="small-chart flot-chart-container"></div>
                                 </div>
                             </div>
-                        </div>
-                        <div class="col-xl-3 col-md-6 col-sm-6 p-0 box-col-6">
-                            <div class="media align-items-center">
-                                <div class="hospital-small-chart">
-                                    <div class="small-bar">
-                                        <div class="small-chart1 flot-chart-container"></div>
-                                    </div>
-                                </div>
-                                <div class="media-body">
-                                    <div class="right-chart-content">
-                                        <h4>{{ $user }}</h4><span><u>User</u></span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-xl-3 col-md-6 col-sm-6 p-0 box-col-6">
-                            <div class="media align-items-center">
-                                <div class="hospital-small-chart">
-                                    <div class="small-bar">
-                                        <div class="small-chart2 flot-chart-container"></div>
-                                    </div>
-                                </div>
-                                <div class="media-body">
-                                    <div class="right-chart-content">
-                                        <h4>{{ $admin }}</h4><span><u>Admin</u></span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-xl-3 col-md-6 col-sm-6 p-0 box-col-6">
-                            <div class="media border-none align-items-center">
-                                <div class="hospital-small-chart">
-                                    <div class="small-bar">
-                                        <div class="small-chart3 flot-chart-container"></div>
-                                    </div>
-                                </div>
-                                <div class="media-body">
-                                    <div class="right-chart-content">
-                                        <h4>{{ $pengelola }}</h4><span><u>Pengelola</u></span>
-                                    </div>
+                            <div class="media-body">
+                                <div class="right-chart-content">
+                                    <h4>{{ $pangkats }}</h4><span><u>Pangkat</u></span>
                                 </div>
                             </div>
                         </div>
                     </div>
-                </div>
-            </div>
-        </div>
-        <div class="col-xl-8 xl-100 dashboard-sec box-col-12">
-            <div class="card earning-card">
-                <div class="card-body p-0">
-                    <div class="row m-0">
-                        <div class="col-xl-3 earning-content p-0">
-                            <div class="row m-0 chart-left">
-                                <div class="col-xl-12 p-0 left_side_earning">
-                                    <h5>Dashboard</h5>
-                                    <p class="font-roboto">Overview of last month</p>
+                    <div class="col-xl-3 col-md-6 col-sm-6 p-0 box-col-6">
+                        <div class="media align-items-center">
+                            <div class="hospital-small-chart">
+                                <div class="small-bar">
+                                    <div class="small-chart1 flot-chart-container"></div>
+                                </div>
+                            </div>
+                            <div class="media-body">
+                                <div class="right-chart-content">
+                                    <h4>{{ $user }}</h4><span><u>User</u></span>
                                 </div>
                             </div>
                         </div>
-                        <div id="chartUser"></div>
+                    </div>
+                    <div class="col-xl-3 col-md-6 col-sm-6 p-0 box-col-6">
+                        <div class="media align-items-center">
+                            <div class="hospital-small-chart">
+                                <div class="small-bar">
+                                    <div class="small-chart2 flot-chart-container"></div>
+                                </div>
+                            </div>
+                            <div class="media-body">
+                                <div class="right-chart-content">
+                                    <h4>{{ $admin }}</h4><span><u>Admin</u></span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xl-3 col-md-6 col-sm-6 p-0 box-col-6">
+                        <div class="media border-none align-items-center">
+                            <div class="hospital-small-chart">
+                                <div class="small-bar">
+                                    <div class="small-chart3 flot-chart-container"></div>
+                                </div>
+                            </div>
+                            <div class="media-body">
+                                <div class="right-chart-content">
+                                    <h4>{{ $pengelola }}</h4><span><u>Pengelola</u></span>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-    @endif
+    <div class="col-xl-8 xl-100 dashboard-sec box-col-12">
+        <div class="card earning-card">
+            <div class="card-body p-0">
+                <div class="row m-0">
+                    <div class="col-xl-3 earning-content p-0">
+                        <div class="row m-0 chart-left">
+                            <div class="col-xl-12 p-0 left_side_earning">
+                                <h5>Dashboard</h5>
+                                <p class="font-roboto">Overview of last month</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="chartUser"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+@endif
 </div>
 @endsection
 @push('script')
-    <script>
-        Highcharts.chart('chartUser', {
+<script>
+    Highcharts.chart('chartUser', {
         chart: {
             type: 'area'
         },
@@ -222,7 +300,7 @@
         xAxis: {
             allowDecimals: false,
             labels: {
-                formatter: function () {
+                formatter: function() {
                     return this.value; // clean, unformatted number for year
                 }
             },
@@ -235,7 +313,7 @@
                 text: 'Nuclear weapon states'
             },
             labels: {
-                formatter: function () {
+                formatter: function() {
                     return this.value / 1000 + 'k';
                 }
             }
@@ -283,5 +361,5 @@
             ]
         }]
     });
-    </script>
+</script>
 @endpush

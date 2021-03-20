@@ -33,7 +33,7 @@
                             <tbody>
                                 <tr>
                                     <th>{{ $loop->iteration + $accounts->firstItem() - 1 . '.' }}</th>
-                                    <td><b>{{ Str::upper($account->pangkat->pangkat) }}</b></td>
+                                    <td><b>{{ Str::upper($account->pangkat) }}</b></td>
                                     <td>
                                         @if($account->email_verified_at == null)
                                             <span class="badge badge-danger">Belum Verifikasi Email</span>
