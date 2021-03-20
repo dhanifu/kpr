@@ -29,7 +29,7 @@ class CreateKprTable extends Migration
             $table->string('angsuran_masuk')->nullable();
             $table->integer('tunggakan');
             $table->integer('jml_tunggakan');
-            $table->string('keterangan');
+            $table->text('keterangan');
         });
     }
 
