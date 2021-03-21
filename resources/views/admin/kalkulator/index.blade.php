@@ -27,7 +27,7 @@
                         </div>
                       </div>
                     </div>
-                    
+
                     <div class="form-group">
                     </div>
                     <button class="btn btn-primary" type="submit">Hitung</button>

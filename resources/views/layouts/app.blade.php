@@ -37,29 +37,33 @@
     <!-- Responsive css-->
     <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/responsive.css') }}">
 
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.6.0/Chart.bundle.js" charset="utf-8"></script>
+
     @stack('style')
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 </head>
+
 <body>
     <!-- tap on top starts-->
     <div class="tap-top"><i data-feather="chevrons-up"></i></div>
-    @include('alert')
     <!-- tap on tap end-->
     <!-- page-wrapper Start-->
     <div class="page-wrapper compact-wrapper" id="pageWrapper">
         <!-- Page Header Start-->
-            @include('layouts.partials.navbar')
+        @include('layouts.partials.navbar')
         <!-- Page Header end-->
         <!-- Page Body Start-->
         <div class="page-body-wrapper sidebar-icon">
             <!-- Page Sidebar Start-->
-                @include('layouts.partials.sidebar')
+            @include('layouts.partials.sidebar')
             <!-- Page Sidebar end-->
             <div class="page-body">
                 <!-- Breadcrumb -->
-                    @include('layouts.partials.breadcrumb')
+                @include('layouts.partials.breadcrumb')
                 <!-- Breadcrumb end-->
                 <!-- Content -->
-                    @yield('content')
+                @yield('content')
+                @include('alert')
                 <!-- Content Ends-->
             </div>
             <!-- footer start-->

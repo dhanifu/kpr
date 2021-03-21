@@ -33,7 +33,7 @@
                             <tbody>
                                 <tr>
                                     <th>{{ $loop->iteration + $accounts->firstItem() - 1 . '.' }}</th>
-                                    <td><b>{{ Str::upper($account->pangkat->pangkat) }}</b></td>
+                                    <td><b>{{ Str::upper($account->pangkat) }}</b></td>
                                     <td>
                                         @if($account->email_verified_at == null)
                                             <span class="badge badge-danger">Belum Verifikasi Email</span>
@@ -63,7 +63,7 @@
                                             @endif
                                         </div>
                                         <a href="{{ route('admin.account.register.edit', $account->id) }}" style="float: left;" class="mr-1"><i class="fa fa-pencil-square-o" style="color: rgb(0, 241, 12);"></i></a>
-                                        @include('alert.deleteUser')  
+                                        @include('alert.deleteUser')
                                 </td>
                             </tr>
                         </tbody>
@@ -144,7 +144,6 @@
                     <button class="btn btn-secondary for-dark" type="button" data-dismiss="modal">Close</button>
                     <button class="btn btn-primary" type="submit">Save</button>
                 </div>
-            </form>
         </div>
       </div> --}}
 @endsection

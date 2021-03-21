@@ -39,13 +39,21 @@ Route::middleware('auth')->group(function () {
         Route::get('/password', 'UserController@changePassword')->name('edit');
         Route::patch('/password', 'UserController@updatePassword')->name('edit');
     });
+    Route::prefix('pinjaman')->name('pinjaman.')->namespace('User')->group(function () {
+        Route::post('/set', 'MenuController@set')->name('set');
+        Route::get('/get', 'MenuController@get')->name('get');
+        Route::post('/store', 'MenuController@store')->name('store');
+    });
     // admin
     Route::prefix('admin')->name('admin.')->namespace('Admin')->group(function () {
         // management account
         Route::prefix('account')->name('account.')->group(function () {
             // per view & role
             Route::get('/admin', 'AccountController@admin_index_account')->name('admin');
+
             Route::get('/user', 'AccountController@user_index_account')->name('customer');
+            Route::patch('/user/updateprofile', 'AccountController@krp_update_profile_user')->name('update.profile');
+
             Route::get('/pengelola', 'AccountController@pengelola_index_account')->name('pengelola');
             Route::patch('/updaterole/{id}', 'AccountController@update_role')->name('updaterole');
             // register account

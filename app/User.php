@@ -33,7 +33,10 @@ class User extends Authenticatable implements MustVerifyEmail
     {
         return $this->belongsTo(Pangkat::class);
     }
-
+    public function detailkpr()
+    {
+        return $this->hasOne(Detailkpr::class,'nrp');
+    }
     /**
      * The attributes that should be hidden for arrays.
      *

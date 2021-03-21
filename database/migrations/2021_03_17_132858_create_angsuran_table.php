@@ -15,12 +15,15 @@ class CreateAngsuranTable extends Migration
     {
         Schema::create('angsuran', function (Blueprint $table) {
             $table->id();
-            $table->integer('pokok');
-            $table->integer('bunga');
+            $table->integer('angsuran_ke');
+            $table->integer('angsuran_pokok');
+            $table->integer('angsuran_bunga');
             $table->integer('besar_angsuran');
-            $table->integer('pinjaman_pokok');
+            $table->integer('sisa_pinjaman_pokok');
             $table->integer('anuitas');
-            $table->foreignId('bunga_id')->references('id')->on('bunga')->onDelete('cascade');
+            $table->biginteger('nrp');
+            $table->foreignId('pinjaman_id')->references('id')->on('pinjaman')->onDelete('cascade');
+            $table->enum('status',['sudahbayar','belumbayar']);
             $table->timestamps();
         });
     }

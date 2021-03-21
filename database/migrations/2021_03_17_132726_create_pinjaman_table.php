@@ -15,16 +15,14 @@ class CreatePinjamanTable extends Migration
     {
         Schema::create('pinjaman', function (Blueprint $table) {
             $table->id();
+            $table->integer('jumlah_pinjaman');
             $table->date('jangka_waktu');
-            $table->integer('jmlangs');
+            $table->integer('bunga');
+            $table->biginteger('nrp');
             $table->integer('angsuran_ke');
-            $table->string('angsuran_masuk');
-            $table->integer('angsuran_tunggak');
-            $table->integer('jml_tunggak');
-            $table->string('keterangan');
-            $table->foreignId('angsuran_id')->references('id')->on('angsuran')->onDelete('cascade');
-            $table->foreignId('user_id')->references('id')->on('users')->onDelete('cascade');
-            $table->boolean('status');
+            $table->integer('angsuran_masuk');
+            $table->integer('tunggakan');
+            $table->integer('jml_tunggakan');
             $table->timestamps();
         });
     }

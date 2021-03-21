@@ -1,6 +1,8 @@
 <?php
 
 use Illuminate\Database\Seeder;
+use App\Detailkpr;
+use Carbon\Carbon;
 
 class DatabaseSeeder extends Seeder
 {
@@ -11,7 +13,12 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        $this->call(PangkatSeeder::class);
-        $this->call(UserSeeder::class);
+        for($i = 1; $i < 17398; $i++){
+            Detailkpr::where('tmt_angsuran','0000-00-00')->update([
+                'tmt_angsuran' => Carbon::now()
+            ]);
+        }
+        // $this->call(PangkatSeeder::class);
+        // $this->call(UserSeeder::class);
     }
 }

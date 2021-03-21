@@ -52,7 +52,7 @@
                                 <td><span class="badge badge-light">DILINDUNGI<span></td>
                                 <td>
                                     <a href="{{ route('admin.account.register.edit', $account->id) }}" style="float: left;" class="mr-1"><i class="fa fa-pencil-square-o" style="color: rgb(0, 241, 12);"></i></a>
-                                    @include('alert.deleteUser')  
+                                    @include('alert.deleteUser')
                                 </td>
                             </tr>
                         </tbody>
@@ -127,13 +127,35 @@
                         </div>
                     </div>
                 </div>
-                <div class="modal-footer">
-                    <button class="btn btn-light for-light" type="button" data-dismiss="modal">Close</button>
-                    <button class="btn btn-secondary for-dark" type="button" data-dismiss="modal">Close</button>
-                    <button class="btn btn-primary" type="submit">Save</button>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label class="col-form-label" for="role">Role:</label>
+                        <select name="role" id="role" class="form-control custom-select" required>
+                            <option disabled selected>Select Role</option>
+                            <option value="admin">Admin</option>
+                            <option value="user">User</option>
+                        </select>
+                    </div>
                 </div>
-            </form>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label class="col-form-label" for="username">Username:</label>
+                        <input class="form-control" type="text" name="username" id="username" placeholder="username" required>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label class="col-form-label" for="password">Password:</label>
+                        <input class="form-control" type="password" name="password" id="password" placeholder="********" required>
+                    </div>
+                </div>
         </div>
+        <div class="modal-footer">
+            <button class="btn btn-light for-light" type="button" data-dismiss="modal">Close</button>
+            <button class="btn btn-secondary for-dark" type="button" data-dismiss="modal">Close</button>
+            <button class="btn btn-primary" type="submit">Save</button>
+        </div>
+        </form>
     </div>
 </div>
 @endsection

@@ -7,9 +7,9 @@ use Illuminate\Database\Eloquent\Model;
 class Angsuran extends Model
 {
     protected $table = 'angsuran';
-    protected $fillable =['pokok','bunga','besar_angsuran','pinjama_pokok','anuitas','bunga_id'];
-    public function bunga()
+    protected $guarded  = [];
+    public function pinjaman()
     {
-        return $this->belongsTo(Bunga::class,'bunga_id','id');
+        return $this->belongsTo(Pinjaman::class,'pinjaman_id','id');
     }
 }
