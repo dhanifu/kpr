@@ -37,7 +37,7 @@
                             <th>Jumlah angsuran</th>
                             <th>angsuran ke</th>
                             <th>angsuran masuk</th>
-                            <th> tunggakan</th>
+                            <th>tunggakan</th>
                             <th>jumlah tunggakan</th>
                             <th>keterangan</th>
                         </tr>

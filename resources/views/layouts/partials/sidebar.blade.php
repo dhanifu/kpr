@@ -35,7 +35,7 @@
                         <li><a href="{{ route('admin.rekapdata.tahun') }}">Pertahun</a></li>
                     </ul>
                 </li>
-                <li class="sidebar-list"><a class="sidebar-link sidebar-title" href="#"><i data-feather="airplay"></i></i><span>Detail Data Angsuran</span>
+                 <li class="sidebar-list"><a class="sidebar-link sidebar-title" href="#"><i data-feather="airplay"></i></i><span>Detail Data Angsuran</span>
                     </a>
                     <ul class="sidebar-submenu">
                         <li><a href="{{ route('admin.detaildata.angsuranke') }}">Angsuran Ke</a></li>
@@ -45,7 +45,7 @@
                         <li><a href="{{ route('admin.detaildata.sisaangsuran') }}">Sisa Angsuran</a></li>
                     </ul>
                 </li>
-                <li class="sidebar-list"><a class="sidebar-link sidebar-title" href="#"><i data-feather="bookmark"></i><span>Data Pinjaman</span>
+                <li class="sidebar-list"><a class="sidebar-link sidebar-title" href="#"><i data-feather="bookmark"></i><span>Detail Data</span>
                     </a>
                     <ul class="sidebar-submenu">
                         <li><a href="{{ route('admin.detaildata.pinjam', 'approve') }}">Data KPR</a></li>

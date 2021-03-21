@@ -7,8 +7,8 @@ use App\Pangkat;
 use App\User;
 use App\Detailkpr;
 use RealRashid\SweetAlert\Facades\Alert;
-use App\Exports\UserExport;
 use Illuminate\Http\Request;
+use App\Exports\UserExport;
 use Maatwebsite\Excel\Facades\Excel;
 use PDF;
 
@@ -196,14 +196,14 @@ class AccountController extends Controller
 
     public function userExportExcel()
     {
-        return Excel::download(new UserExport, 'user.xlsx');
+        return Excel::download(new UserExport, 'Uji Coba.xlsx');
     }
 
     public function userExportPdf()
     {
-        $user = User::where('role', '2')->get();
+        $user = Detailkpr::paginate(100);
         $pdf = PDF::loadview('admin.account.report_user_pdf',[
-            'user' => $user
+            'pinjams' => $user
         ]);
         return $pdf->stream();
     }

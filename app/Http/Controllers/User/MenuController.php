@@ -79,7 +79,7 @@ class MenuController extends Controller
         $request = $request->all();
         $pinjaman_id = 1;
         // dd($request['data']->bunga);
-        // dd($request->all());
+        dd($request);
         Pinjaman::create([
 
             'besar_angsuran' => $request['besar_angsuran'],
