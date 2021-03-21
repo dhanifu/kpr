@@ -77,7 +77,7 @@ class MenuController extends Controller
 
         $request['data'] = $request->session()->get('data');
         $request = $request->all();
-        // $pinjaman_id = 1;
+        $pinjaman_id = 1;
         // dd($request['data']->bunga);
         dd($request);
         Pinjaman::create([

@@ -41,8 +41,6 @@
                             <th> tunggakan</th>
                             <th>jumlah tunggakan</th>
                             <th>keterangan</th>
-                            <th>Status</th>
-                            <th colspan="2">Action</th>
                         </tr>
                     </thead>
                     @forelse ($pinjams as $pinjam)
@@ -64,23 +62,8 @@
                                 <td>{{ $pinjam->tunggakan }}</td>
                                 <td>{{ $pinjam->jml_tunggakan }}</td>
                                 <td>{{ $pinjam->keterangan }}</td>
-                                @if ($pinjam->status == 0)
-                                    <td><span class="badge badge-warning">Manual</span></td>
-                                @endif
-                                <td>
-                                    <form action="{{ route('admin.detaildata.status', $pinjam->id) }}" method="post">
-                                        @csrf
-                                        @method('PUT')
-                                        <button type="submit" class="btn btn-sm btn-success mb-1">Verified
-                                    </form>
 
-                                    <form action="{{ route('admin.pangkat.destroy', $pinjam->id) }}" method="post">
-                                        @csrf
-                                        @method('DELETE')
-                                        <button type="submit" class="btn btn-danger"
-                                            style="background-color: transparent; border: none;">Decline</button>
-                                    </form>
-                                </td>
+
                             </tr>
                         </tbody>
                     @empty

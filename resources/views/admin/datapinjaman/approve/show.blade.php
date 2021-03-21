@@ -6,8 +6,10 @@
         <a href="{{ route('admin.detaildata.approve.pdf', $kpr->id) }}" class="btn btn-danger">PDF</a>
     </div>
     <div class="card-body">
-        <div class="table-responsive">
-            <table class="table table-hover">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="table-responsive">
+                    <table class="table table-striped">
                         <tr>
                             <td>Nama</td>
                             <td>:</td>
@@ -95,8 +97,34 @@
                             <td>:</td>
                             <td>{{ $kpr->status }}</td>
                         </tr>
-            </table>
+                    </table>
+                </div>
+            </div>
+            <div class="col-md-12">
+                <div class="table-responsive">
+                    <table class="table table-striped">
+                        <tr>
+                            <th>Angsuran ke</th>
+                            <th>Angsuran Pokok</th>
+                            <th>Angsuran Bunga</th>
+                            <th>Sisa Pinjaman Pokok</th>
+                        </tr>
+                        @php
+                        $no = 1;
+                        @endphp
+                        @foreach ($all['bunga'] as $index => $value)
+                        <tr>
+                            <td>{{ $no++ }}</td>
+                            <td>{{ $all['bunga'][$index] }}</td>
+                            <td>{{ $all['pokok'][$index] }}</td>
+                            <td>{{ $all['pinjaman'][$index] }}</td>
+                        </tr>
+                        @endforeach
+                    </table>
+                </div>
+            </div>
         </div>
+
     </div>
 </div>
 @endsection

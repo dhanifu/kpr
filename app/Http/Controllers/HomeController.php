@@ -84,7 +84,7 @@ class HomeController extends Controller
         $no = 1;
         $angsuran_bunga = $besar_pinjaman * $bungapersen / 12;
         $angsuran_pokok = $besar_angsuran - $angsuran_bunga;
-        for ($i = 1; $i < 88; $i++) {
+        for ($i = 1; $i < $jangka; $i++) {
 
             if ($no == 13) {
                 $ang_bunga = $besar_pinjaman * $bungapersen / 12;
