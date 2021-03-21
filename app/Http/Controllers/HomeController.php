@@ -102,15 +102,15 @@ class HomeController extends Controller
         }
         // echo 'besar_angsuran '.$besar_angsuran;
         $array_all = ['bunga'=>$array1,
-        'pokok'=>$array2,
-        'pinjaman'=>$array3,
-    ];
+            'pokok'=>$array2,
+            'pinjaman'=>$array3,
+        ];
         // return response()->json($array_all);
         return view('admin.kalkulator.show',[
             'all' => $array_all,
             'besar_angsuran'=>$besar_angsuran,
             'no' => intval($jangka)
-            ]);
+        ]);
             // 'ang_bunga' => $array1,
             // 'ang_pokok' => $array2,
             // 'besar_pinjaman' => $array3
