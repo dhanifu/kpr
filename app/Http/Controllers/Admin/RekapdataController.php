@@ -37,7 +37,7 @@ class RekapdataController extends Controller
         [
             'jumlahpinjaman' => $jumlahpinjaman,
             'totaltunggakan' => $totaltunggakan,
-            'user' => User::whereIn('role', ['2', '3'])->count(),
+            'user' => Detailkpr::count(),
             'pengelola' => User::where('role', 1)->count(),
             'admin' => User::where('role', 0)->count(),
             'pangkats' => Pangkat::count()
@@ -69,7 +69,7 @@ class RekapdataController extends Controller
             [
                 'jumlahpinjaman' => $jumlahpinjaman,
                 'totaltunggakan' => $totaltunggakan,
-                'user' => User::whereIn('role', ['2', '3'])->count(),
+                'user' => Detailkpr::count(),
                 'pengelola' => User::where('role', 1)->count(),
                 'admin' => User::where('role', 0)->count(),
                 'pangkats' => Pangkat::count()

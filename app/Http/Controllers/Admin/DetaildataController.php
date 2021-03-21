@@ -6,6 +6,7 @@ use App\Detailkpr;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Pinjaman;
+use PDF;
 
 class DetaildataController extends Controller
 {
@@ -65,11 +66,26 @@ class DetaildataController extends Controller
         ]);
         return back();
     }
-    
+
     public function cari(Request $request)
     {
         $id = $request->cari;
         $pinjams = Detailkpr::where('nrp', 'like', "%" . $id ."%")->get();
         return view('admin.detaildata.angsuranke.index', compact('pinjams'));
+    }
+
+    public function show($id)
+    {
+        $kpr = Detailkpr::find($id);
+        return view('admin.datapinjaman.approve.show',compact('kpr'));
+    }
+    public function approve_pdf($id)
+    {
+
+        $kpr = Detailkpr::find($id);
+        $pdf = PDF::loadview('admin.datapinjaman.pdf',[
+            'kpr' => $kpr
+        ]);
+        return $pdf->stream();
     }
 }
