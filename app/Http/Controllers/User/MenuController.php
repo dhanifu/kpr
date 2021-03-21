@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers\User;
 
+use App\Angsuran;
 use App\Http\Controllers\Controller;
+use App\Pinjaman;
 use Illuminate\Http\Request;
 
 class MenuController extends Controller
@@ -29,13 +31,13 @@ class MenuController extends Controller
         // dd($besar_angsuran);
         //angsuran bunga = pinjaman pokok * bungapersen/ 12-24-36-48-60-72-84-96
         // $besar_angsuran = besarAngsuran($besar_pinjaman,$getAnuitas);
-        $array1 = [0 => null];
-        $array2 = [0 => null];
+        $array1 = [0 => 0];
+        $array2 = [0 => 0];
         $array3 = [0 => intval($besar_pinjaman)];
         $no = 1;
         $angsuran_bunga = $besar_pinjaman * $bungapersen / 12;
         $angsuran_pokok = $besar_angsuran - $angsuran_bunga;
-        for ($i = 1; $i < $jangka; $i++) {
+        for ($i = 1; $i < $jangka+1; $i++) {
 
             if ($no == 13) {
                 $ang_bunga = $besar_pinjaman * $bungapersen / 12;
@@ -58,13 +60,56 @@ class MenuController extends Controller
             'pinjaman' => $array3,
         ];
         // return response()->json($array_all);
+        $data = (object)$array_all;
+        $request->session()->put('data', $data);
         return view('user.pinjaman.show', [
             'besar_pinjaman' => $request->besar_pinjam,
             'bunga' => $request->bunga,
             'jangka' => $request->jangka,
             'all' => $array_all,
             'besar_angsuran' => $besar_angsuran,
-            'no' => intval($jangka)
+            'no' => intval($jangka),
+            'anuitas' => $anuitas
         ]);
+    }
+    public function store(Request $request)
+    {
+
+        $request['data'] = $request->session()->get('data');
+        $request = $request->all();
+        $pinjaman_id = 1;
+        // dd($request['data']->bunga);
+        // dd($request->all());
+        Pinjaman::create([
+
+            'besar_angsuran' => $request['besar_angsuran'],
+            'anuitas' => $request['anuitas'],
+            'pinjaman_id' => $pinjaman_id,
+            'nrp' => auth()->user()->nrp
+        ]);
+        $pinjaman = Pinjaman::where('nrp', auth()->user()->nrp)->get();
+        foreach ($pinjaman as $data) {
+            $pinjaman_id = $data->pinjaman_id;
+        }
+        foreach ($request['data']->pinjaman as $data) {
+            Pinjaman::create([
+                'pinjaman_pokok' => $data,
+                'besar_angsuran' => $request['besar_angsuran'],
+                'anuitas' => $request['anuitas'],
+                'pinjaman_id' => $pinjaman_id,
+                'nrp' => auth()->user()->nrp
+            ]);
+        }
+        foreach ($request['data']->pokok as $data) {
+            Pinjaman::where('nrp', auth()->user()->nrp)->update([
+                'pokok' => $data
+            ]);
+        }
+        foreach ($request['data']->bunga as $data) {
+            Pinjaman::where('nrp', auth()->user()->nrp)->update([
+                'bunga' => $data,
+            ]);
+        }
+        return back();
     }
 }

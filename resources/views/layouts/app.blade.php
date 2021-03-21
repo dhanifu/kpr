@@ -37,6 +37,8 @@
     <!-- Responsive css-->
     <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/responsive.css') }}">
 
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.6.0/Chart.bundle.js" charset="utf-8"></script>
+
     @stack('style')
     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 </head>

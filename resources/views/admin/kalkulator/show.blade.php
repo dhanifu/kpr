@@ -11,7 +11,7 @@
                         <div class="table-responsive">
                             <table class="table table-hover">
                                 <tr>
-                                  <th>no</th>
+                                  <th style="background-color:yellow;width:100px">no</th>
                                   @php
                                       for($i = 0; $i <= $no;$i++){
                                         echo '<td>'. $i .'</td>';
@@ -19,19 +19,28 @@
                                   @endphp
                                 </tr>
                                 <tr>
-                                    <th>bunga</th>
-                                    @foreach ($all['bunga'] as $data)
-                                        <td>{{ $data }}</td>
-                                    @endforeach
-                                </tr>
-                                <tr>
-                                    <th>pokok</th>
+                                    <th style="background-color:yellow;width:100px">Angsuran Pokok</th>
                                     @foreach ($all['pokok'] as $data)
                                         <td>{{ $data }}</td>
                                     @endforeach
                                 </tr>
                                 <tr>
-                                    <th>pinjaman</th>
+                                    <th style="background-color:yellow;width:100px">Angsuran Bunga</th>
+                                    @foreach ($all['bunga'] as $data)
+                                        <td>{{ $data }}</td>
+                                    @endforeach
+                                </tr>
+                                <tr>
+                                    <th style="background-color:yellow;width:100px">Besar Angsuran</th>
+                                    @php
+                                        echo '<td></td>';
+                                        for($i = 0; $i < $no;$i++){
+                                        echo '<td>'. $besar_angsuran .'</td>';
+                                        }
+                                    @endphp
+                                </tr>
+                                <tr>
+                                    <th style="background-color:yellow;width:100px">Sisa Pinjaman Pokok</th>
                                     @foreach ($all['pinjaman'] as $data)
                                         <td>{{ $data }}</td>
                                     @endforeach

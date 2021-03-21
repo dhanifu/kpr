@@ -1,16 +1,72 @@
 @extends('layouts.app', ['title' => 'KPR | Rekapdata Tahun' ])
 @section('content')
-<div class="row">
-    <div class="col-md-12">
+<div class="row second-chart-list third-news-update">
+    <div class="col-xl-9 xl-100 chart_data_left box-col-12">
         <div class="card">
-            <div class="card-header b-l-primary border-3">
-                <h5>Tahun</h5>
-                <div class="pt-4">
-                    <button type="button" class="btn btn-secondary btn-md" data-toggle="tooltip" data-placement="bottom" title="Total Tunggakan"><i data-feather="book-open"></i></button>
-                    <button type="button" class="btn btn-success btn-md" data-toggle="tooltip" data-placement="bottom" title="Statisk Customer"><i data-feather="bar-chart"></i></button>
-                    <button type="button" class="btn btn-info btn-md" data-toggle="tooltip" data-placement="bottom" title="Total Customer"><i data-feather="users"></i></button>
-                    <button type="button" class="btn btn-warning btn-md" data-toggle="tooltip" data-placement="bottom" title="Total Pinjaman"><i data-feather="book"></i></button>
+            <div class="card-body p-0">
+                <div class="row m-0 chart-main">
+                    <div class="col-xl-3 col-md-6 col-sm-6 p-0 box-col-6">
+                        <div class="media align-items-center">
+                            <div class="hospital-small-chart">
+                                <div class="small-bar">
+                                    <div class="small-chart flot-chart-container"></div>
+                                </div>
+                            </div>
+                            <div class="media-body">
+                                <div class="right-chart-content">
+                                    <h4>{{ $totaltunggakan }}</h4><span><u>Total Tunggakan</u></span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xl-3 col-md-6 col-sm-6 p-0 box-col-6">
+                        <div class="media align-items-center">
+                            <div class="hospital-small-chart">
+                                <div class="small-bar">
+                                    <div class="small-chart1 flot-chart-container"></div>
+                                </div>
+                            </div>
+                            <div class="media-body">
+                                <div class="right-chart-content">
+                                    <h4>{{ $user }}</h4><span><u>Total Customer</u></span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xl-3 col-md-6 col-sm-6 p-0 box-col-6">
+                        <div class="media align-items-center">
+                            <div class="hospital-small-chart">
+                                <div class="small-bar">
+                                    <div class="small-chart2 flot-chart-container"></div>
+                                </div>
+                            </div>
+                            <div class="media-body">
+                                <div class="right-chart-content">
+                                    <h4>{{ $jumlahpinjaman }}</h4><span><u>Total Pinjaman</u></span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-xl-12 col-md-12 box-col-12">
+        <div class="card">
+          <div class="card-header">
+            <h5>Statistik Customer</h5>
+          </div>
+          <div class="card-body chart-block">
+            <canvas id="myBarGraph"></canvas>
+          </div>
+        </div>
+    </div>
+    <div class="col-md-12">
+        {{-- <div class="card">
+            <div class="card-header b-l-primary border-3">
+                <h5>Statistik Tahun ini <button type="button" class="btn btn-success btn-md" data-toggle="tooltip" data-placement="bottom" title="Statisk Customer"><i data-feather="bar-chart"></i></button></h5>
                 <div class="d-flex justify-content-end">
                         <div class="input-group pt-4">
                             <div class="row">
@@ -29,17 +85,12 @@
                         <thead>
                             <tr>
                                 <th>#</th>
-                                <th>Jangka Waktu</th>
-                                <th>Jumlah Angsuran</th>
-                                <th>Angsuran Masuk</th>
-                                <th>Angsuran Tunggakan</th>
-                                <th>Jumlah Tunggakan</th>
-                                <th>Keteragan</th>
-                                <th>Angsuran Pokok</th>
-                                <th>Angsuran Bunga</th>
-                                <th>Besar Angsuran</th>
-                                <th>Pinjaman Pokok</th>
-                                <th>Anusitas</th>
+                                <th>Avatar</th>
+                                <th>Name</th>
+                                <th>E-Mail</th>
+                                <th>Username</th>
+                                <th>Password</th>
+                                <th>Action</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -51,7 +102,7 @@
             <div class="card-footer">
 
             </div>
-        </div>
+        </div> --}}
     </div>
 </div>
 {{-- add data modal --}}
@@ -104,7 +155,7 @@
                         <div class="col-md-6">
                             <div class="form-group">
                                 <label class="col-form-label" for="password">Password:</label>
-                                <input class="form-control" type="password" name="password" id="password" placeholder="********" required>
+                                <input class="form-control" type="password" name="password" id="password" placeholder="****" required>
                             </div>
                         </div>
                     </div>
@@ -118,4 +169,55 @@
         </div>
     </div>
 </div>
+
+<script>
+    var ctx = document.getElementById('myBarGraph').getContext('2d');
+    var chart = new Chart(ctx, {
+        // The type of chart we want to create
+        type: 'bar',
+// The data for our dataset
+        data: {
+            labels: ["Admin", "User Terverifikasi", "Belum Verifikasi", "Pengelola"],
+            datasets: [
+                {
+                    label: 'Status Verifikasi User',
+                    backgroundColor: {!! json_encode($chart->colours)!!} ,
+                    data:  {!! json_encode($chart->dataset)!!} ,
+                },
+            ]
+        },
+// Configuration options go here
+        options: {
+            scales: {
+                yAxes: [{
+                    ticks: {
+                        beginAtZero: true,
+                        callback: function(value) {if (value % 1 === 0) {return value;}}
+                    },
+                    scaleLabel: {
+                        display: false
+                    }
+                }]
+            },
+            legend: {
+                labels: {
+                    // This more specific font property overrides the global property
+                    fontColor: '#122C4B',
+                    fontFamily: "'Muli', sans-serif",
+                    padding: 25,
+                    boxWidth: 25,
+                    fontSize: 14,
+                }
+            },
+            layout: {
+                padding: {
+                    left: 10,
+                    right: 10,
+                    top: 0,
+                    bottom: 10
+                }
+            }
+        }
+    });
+</script>
 @endsection

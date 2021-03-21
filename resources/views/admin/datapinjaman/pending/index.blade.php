@@ -97,6 +97,9 @@
             <div>
             </div>
         </div>
+        <div class="card-footer">
+            {{$pinjams->links()}}
+        </div>
     </div>
     </div>
     </div>

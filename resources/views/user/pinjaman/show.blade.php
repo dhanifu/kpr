@@ -5,11 +5,15 @@
         <div class="col-sm-12">
             <div class="card">
                 <div class="card-header">
-                    <h5>Kalkulator KPR</h5>
-                    <p>Besar PInjaman{{ $besar_pinjaman }}</p>
-                    <p>Bunga {{ $bunga }}</p>
-                    <p>Jangka Waktu(bulan) {{ $jangka }}</p>
-                    <p>NRP User{{ auth()->user()->nrp }}</p>
+                    <h5>Pinjaman KPR</h5>
+                    <hr>
+                    <h4>Besar PInjaman</h4>
+                    <p>Rp.{{ $besar_pinjaman }}</p>
+                    <h4>Bunga</h4><p>Bunga {{ $bunga }}</p>
+                    <h4>Jangka Waktu</h4><p>Jangka Waktu(bulan) {{ $jangka }}</p>
+                    <h4>NRP User</h4><p>NRP User {{ auth()->user()->nrp }}</p>
+                    <h4>Besar Angsuran <p>{{ $besar_angsuran }}</p></h4>
+                    <h4>Anuitas <p>{{ $anuitas }}</p></h4>
                 </div>
                 <div class="card-body">
                     <div class="table-responsive">
@@ -37,7 +41,7 @@
                                 <th style="background-color:yellow;width:100px">Besar Angsuran</th>
                                 @php
                                 echo '<td></td>';
-                                for($i = 0; $i <= $no;$i++){ echo '<td>' . $besar_angsuran .'</td>';
+                                for($i = 0; $i < $no;$i++){ echo '<td>' . $besar_angsuran .'</td>';
                                     }
                                     @endphp
                             </tr>
@@ -51,8 +55,17 @@
                     </div>
                 </div>
                 <div class="card-footer">
-                    <a href="" class="btn btn-danger">Back</a>
-                    <a href="" class="btn btn-primary">Ajukan Pinjaman</a>
+                    <form action="{{ route('pinjaman.store') }}" method="post">
+                        @csrf
+                        <input type="hidden" value="{{ $besar_pinjaman }}" name="besar_pinjaman">
+                        <input type="hidden" value="{{ $bunga }}" name="bunga">
+                        <input type="hidden" value="{{ $jangka }}"name="jangka">
+                        <input type="hidden" value="{{ $besar_angsuran }}" name="besar_angsuran">
+                        <input type="hidden" value="{{ auth()->user()->nrp }}" name="nrp">
+                        <input type="hidden" value="{{ $anuitas }}" name="anuitas">
+                        <a href="{{route('home')}}" class="btn btn-danger">Back</a>
+                        <button type="submit" class="btn btn-primary">Ajukan Pinjaman</button>
+                    </form>
                 </div>
             </div>
         </div>

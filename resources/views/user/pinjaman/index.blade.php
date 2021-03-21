@@ -23,7 +23,7 @@
                                 <label for="validationCustomUsername">Bunga</label>
                                 <div class="input-group">
                                     <div class="input-group-prepend"><span class="input-group-text" id="inputGroupPrepend">%</span></div>
-                                    <input name="bunga" class="form-control" id="validationCustomUsername" type="number" placeholder="Bunga" aria-describedby="inputGroupPrepend" required="">
+                                    <input name="bunga" class="form-control" id="validationCustomUsername" type="number" placeholder="Bunga" aria-describedby="inputGroupPrepend" required="" value="6" readonly>
                                 </div>
                             </div>
                         </div>

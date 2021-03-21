@@ -56,6 +56,7 @@ class AccountController extends Controller
         return view('admin.account.verifikasi.index', [
             'accounts' => $account
         ]);
+
     }
 
     public function update_role($id)

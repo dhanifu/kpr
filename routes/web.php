@@ -42,7 +42,7 @@ Route::middleware('auth')->group(function () {
     Route::prefix('pinjaman')->name('pinjaman.')->namespace('User')->group(function () {
         Route::post('/set', 'MenuController@set')->name('set');
         Route::get('/get', 'MenuController@get')->name('get');
-        Route::get('/store', 'MenuController@store')->name('store');
+        Route::post('/store', 'MenuController@store')->name('store');
     });
     // admin
     Route::prefix('admin')->name('admin.')->namespace('Admin')->group(function () {
