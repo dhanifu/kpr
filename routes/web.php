@@ -4,8 +4,14 @@
 use Illuminate\Routing\Router;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Artisan;
 
 // login & register
+Route::get('cache', function(){
+    Artisan::call('optimize:clear');
+    Artisan::call('storage:link');
+});
+
 Route::middleware('guest')->group(function () {
     // user landing page
     Route::get('/', function () {

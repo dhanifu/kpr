@@ -14,7 +14,7 @@
                             </div>
                             <div class="media-body">
                                 <div class="right-chart-content">
-                                    <h4>{{ $totaltunggakan }}</h4><span><u>Total Tunggakan</u></span>
+                                    <h4>{{ "Rp." . number_format($totaltunggakan, 0,',','.') }}</h4><span><u>Total Tunggakan</u></span>
                                 </div>
                             </div>
                         </div>
@@ -42,7 +42,7 @@
                             </div>
                             <div class="media-body">
                                 <div class="right-chart-content">
-                                    <h4>{{ $jumlahpinjaman }}</h4><span><u>Total Pinjaman</u></span>
+                                    <h4>{{ "Rp." . number_format($jumlahpinjaman, 0,',','.') }}</h4><span><u>Total Pinjaman</u></span>
                                 </div>
                             </div>
                         </div>
