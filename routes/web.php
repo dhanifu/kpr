@@ -87,6 +87,7 @@ Route::middleware('auth')->group(function () {
             Route::put('/decline/{pinjam}', 'DetaildataController@statusdecline')->name('statusdecline');
             Route::get('/show/{id}', 'DetaildataController@show')->name('show');
             Route::get('/approve/pdf/{id}','detaildataController@approve_pdf')->name('approve.pdf');
+            Route::get('/{pinjam}/datatables', 'DetaildataController@datatablesGetIndex')->name('datatables');
         });
 
         Route::resource('pangkat', 'PangkatController');
