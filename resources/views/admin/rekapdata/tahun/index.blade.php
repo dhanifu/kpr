@@ -10,10 +10,11 @@
                 <div class="card-body">
                     <form class="form-group"action="{{ route('admin.rekapdata.index') }}" method="get">
                         <select name="tahun">
-                            <option value="2021">2021</option>
-                            <option value="2020">2020</option>
-                            <option value="2029">2019</option>
-                            <option value="2028">2018</option>
+                            @forelse ($years as $key => $year )
+                            <option value="{{ $year }}" {{ $year == $currentYear  ? 'selected' : '' }}>{{ $year }}</option>    
+                            @empty
+                                <option value="">Tidak Ada Tahun</option>
+                            @endforelse
                         </select>
                         <button>Cari</button>
                     </form>
@@ -42,10 +43,10 @@
                     </div>
                     <div class="row mb-5">
                         <div class="col-md-6">
-                            <h4>RP 000</h4><span><u>Total Pokok</u></span>
+                            <h4>{{ "Rp." . number_format($totalPokok, 0,',','.') }}</h4><span><u>Total Pokok</u></span>
                         </div>
                         <div class="col-md-6">
-                            <h4>RP 000</h4><span><u>Total Bunga</u></span>
+                            <h4>{{ "Rp." . number_format($totalBunga, 0,',','.') }}</h4><span><u>Total Bunga</u></span>
                         </div>
                     </div>
                 </div>

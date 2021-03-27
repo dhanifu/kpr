@@ -249,13 +249,18 @@ class RekapdataController extends Controller
         if (!$request->tahun) {
             $currentYear = date('Y');
         }
+        //select Dynamic years
+        $year = DB::table('kpr')->select(DB::raw('YEAR(tmt_angsuran) as year'))->distinct()->orderBy('tmt_angsuran')->get();
+        $years = $year->pluck('year');
         
 
         $data = Detailkpr::select('tmt_angsuran', 'jml_tunggakan', 'pinjaman', 'pokok', 'bunga')->whereYear('tmt_angsuran', $request->tahun);
         $totalTunggakan = $data->sum('jml_tunggakan');
         $totalPinjaman = $data->sum('pinjaman');
+        $totalPokok = $data->sum('pokok');
+        $totalBunga = $data->sum('bunga');
         $user = Detailkpr::count();
         
-        return view('admin.rekapdata.tahun.index', compact('currentYear', 'totalTunggakan', 'totalPinjaman', 'user'));
+        return view('admin.rekapdata.tahun.index', compact('currentYear', 'totalTunggakan', 'totalPinjaman','totalPokok','totalBunga', 'user', 'years'));
     }
 }
