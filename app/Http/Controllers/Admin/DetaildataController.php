@@ -7,6 +7,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Pinjaman;
 use PDF;
+use Carbon\Carbon;
 
 class DetaildataController extends Controller
 {
@@ -102,32 +103,45 @@ class DetaildataController extends Controller
         $array1 = [0 => null];
         $array2 = [0 => null];
         $array3 = [0 => intval($besar_pinjaman)];
+        $array4 = [0 => 0];
         $no = 1;
         $angsuran_bunga = $besar_pinjaman * $bungapersen / 12;
         $angsuran_pokok = $besar_angsuran - $angsuran_bunga;
-        for ($i = 1; $i < $jangka; $i++) {
+        for ($i = 1; $i <= $kpr->angsuran_masuk; $i++) {
 
             if ($no == 13) {
                 $ang_bunga = $besar_pinjaman * $bungapersen / 12;
-                $angsuran_bunga = round($ang_bunga, 2);
-                $angsuran_pokok = $besar_angsuran - $angsuran_bunga;
+                $angsuran_bunga = round($ang_bunga);
+                $angsuran_pokoks = $besar_angsuran - $angsuran_bunga;
+                $angsuran_pokok = round($angsuran_pokoks);
                 $no = 1;
             }
             $no++;
             array_push($array1, $angsuran_bunga);
             array_push($array2, $angsuran_pokok);
-
+            array_push($array4, $besar_angsuran);
 
             $besar_pinjaman -= $array2[$i];
             array_push($array3, $besar_pinjaman);
         }
+        $total_bunga = array_sum($array1);
+        $total_pokok = array_sum($array2);
+        
+        // BIKIN FUNGSI UPDATE DISINI
+        Detailkpr::where('id',$id)->update([
+            'pokok' => $total_pokok,
+            'bunga' => $total_bunga
+        ]);
         // echo 'besar_angsuran '.$besar_angsuran;
         $array_all = [
             'bunga' => $array1,
             'pokok' => $array2,
             'pinjaman' => $array3,
+            'besar_angsuran' => $array4
         ];
         return view('admin.datapinjaman.approve.show',[
+            'jangka' => $jangka,
+            'besar_angsuran' => $besar_angsuran,
             'kpr' => $kpr,
             'all' => $array_all
         ]);
@@ -159,10 +173,11 @@ class DetaildataController extends Controller
         $array1 = [0 => null];
         $array2 = [0 => null];
         $array3 = [0 => intval($besar_pinjaman)];
+        $array4 = [0 => 0];
         $no = 1;
         $angsuran_bunga = $besar_pinjaman * $bungapersen / 12;
         $angsuran_pokok = $besar_angsuran - $angsuran_bunga;
-        for ($i = 1; $i < $jangka; $i++) {
+        for ($i = 1; $i <= $kpr->angsuran_masuk; $i++) {
 
             if ($no == 13) {
                 $ang_bunga = $besar_pinjaman * $bungapersen / 12;
@@ -173,21 +188,47 @@ class DetaildataController extends Controller
             $no++;
             array_push($array1, $angsuran_bunga);
             array_push($array2, $angsuran_pokok);
-
+            array_push($array4, $besar_angsuran);
 
             $besar_pinjaman -= $array2[$i];
             array_push($array3, $besar_pinjaman);
         }
+        
         // echo 'besar_angsuran '.$besar_angsuran;
         $array_all = [
             'bunga' => $array1,
             'pokok' => $array2,
             'pinjaman' => $array3,
+            'besar_angsuran' => $array4
         ];
         $pdf = PDF::loadview('admin.datapinjaman.pdf', [
             'kpr' => $kpr,
-            'all' => $array_all
+            'besar_angsuran' => $besar_angsuran,
+            'all' => $array_all,
+            'tanggal' => Carbon::now()
         ]);
         return $pdf->stream();
+    }
+    
+    public function search_data_kpr()
+    {
+        $query = request('query');
+        $pinjam = Detailkpr::where('status', 1)->where("nama", "like", "%$query%")
+            ->orWhere("nrp", "like", "%$query%")
+            ->latest()->paginate(20);
+        return view('admin.datapinjaman.approve.index', [
+            'pinjams' => $pinjam
+        ]);
+    }
+
+    public function search_data_manual()
+    {
+        $query = request('query');
+        $pinjam = Detailkpr::where('status', 0)->where("nama", "like", "%$query%")
+            ->orWhere("nrp", "like", "%$query%")
+            ->latest()->paginate(20);
+        return view('admin.datapinjaman.pending.index', [
+            'pinjams' => $pinjam
+        ]);
     }
 }

@@ -14,7 +14,7 @@
     @endif
     @if(auth()->user()->role == "3" && auth()->user()->email_verified_at != null)
     <div class="card p-3">
-        <h1 class="badge badge-warning">Akun anda sedang di pending</h1>
+        <h1 class="badge badge-warning">Akun anda sedang dalam proses verifikasi</h1>
     </div>
     @endif
     @if(auth()->user()->role == "2" || auth()->user()->email_verified_at != null)
@@ -24,11 +24,13 @@
         </div>
         <div class="card-body">
             <form class="f1" method="post">
+                @csrf
                 <div class="f1-steps">
                     <div class="f1-progress">
                         <div class="f1-progress-line" data-now-value="16.66" data-number-of-steps="3"></div>
                     </div>
-                    @if(auth()->user()->role == "3" || auth()->user()->email_verified_at != null && auth()->user()->role == "2")
+                    @if(auth()->user()->role == "3" || auth()->user()->email_verified_at != null && auth()->user()->role
+                    == "2")
                     <div class="f1-step active">
                         <div class="f1-step-icon"><i class="fa fa-key"></i></div>
                         <p>Email</p>
@@ -65,11 +67,13 @@
                 <fieldset>
                     <div class="form-group mb-2">
                         <label for="f1-first-name">First Name</label>
-                        <input class="form-control" id="f1-first-name" type="text" name="f1-first-name" placeholder="name@example.com" required="">
+                        <input class="form-control" id="f1-first-name" type="text" name="f1-first-name"
+                            placeholder="name@example.com" required="">
                     </div>
                     <div class="form-group mb-2">
                         <label for="f1-last-name">Last name</label>
-                        <input class="f1-last-name form-control" id="f1-last-name" type="text" name="f1-last-name" placeholder="Last name..." required="">
+                        <input class="f1-last-name form-control" id="f1-last-name" type="text" name="f1-last-name"
+                            placeholder="Last name..." required="">
                     </div>
                     <div class="f1-buttons">
                         <button class="btn btn-primary btn-next" type="button">Next</button>
@@ -78,15 +82,18 @@
                 <fieldset>
                     <div class="form-group mb-2">
                         <label class="sr-only" for="f1-email">Email</label>
-                        <input class="f1-email form-control" id="f1-email" type="text" name="f1-email" placeholder="Email..." required="">
+                        <input class="f1-email form-control" id="f1-email" type="text" name="f1-email"
+                            placeholder="Email..." required="">
                     </div>
                     <div class="form-group mb-2">
                         <label class="sr-only" for="f1-password">Password</label>
-                        <input class="f1-password form-control" id="f1-password" type="password" name="f1-password" placeholder="Password..." required="">
+                        <input class="f1-password form-control" id="f1-password" type="password" name="f1-password"
+                            placeholder="Password..." required="">
                     </div>
                     <div class="form-group mb-2">
                         <label class="sr-only" for="f1-repeat-password">Repeat password</label>
-                        <input class="f1-repeat-password form-control" id="f1-repeat-password" type="password" name="f1-repeat-password" placeholder="Repeat password..." required="">
+                        <input class="f1-repeat-password form-control" id="f1-repeat-password" type="password"
+                            name="f1-repeat-password" placeholder="Repeat password..." required="">
                     </div>
                     <div class="f1-buttons">
                         <button class="btn btn-primary btn-previous" type="button">Previous</button>
@@ -116,86 +123,73 @@
     </div>
     @endif
     @if(auth()->user()->role == "0" || auth()->user()->role == "1")
-    <div class="row second-chart-list third-news-update">
-        <div class="col-xl-9 xl-100 chart_data_left box-col-12">
+    <div class="row">
+        <div class="col-md-12">
             <div class="card">
-                <div class="card-body p-0">
-                    <div class="row m-0 chart-main">
-                        <div class="col-xl-3 col-md-6 col-sm-6 p-0 box-col-6">
-                            <div class="media align-items-center">
-                                <div class="hospital-small-chart">
-                                    <div class="small-bar">
-                                        <div class="small-chart flot-chart-container"></div>
-                                    </div>
-                                </div>
-                                <div class="media-body">
-                                    <div class="right-chart-content">
-                                        <h4>{{ $pangkats }}</h4><span><u>Pangkat</u></span>
-                                    </div>
-                                </div>
-                            </div>
+                <div class="card-header">
+                    <h5>&middot;Rekap Data</h5>
+                </div>
+                <div class="card-body">
+                    <div class="row mb-5">
+                        <div class="col-md-4">
+                            <h4>{{ "Rp." . number_format($totaltunggakan, 0,',','.') }}</h4><span><u>Total
+                                    Tunggakan</u></span>
                         </div>
-                        <div class="col-xl-3 col-md-6 col-sm-6 p-0 box-col-6">
-                            <div class="media align-items-center">
-                                <div class="hospital-small-chart">
-                                    <div class="small-bar">
-                                        <div class="small-chart1 flot-chart-container"></div>
-                                    </div>
-                                </div>
-                                <div class="media-body">
-                                    <div class="right-chart-content">
-                                        <h4>{{ $user }}</h4><span><u>User</u></span>
-                                    </div>
-                                </div>
-                            </div>
+                        <div class="col-md-4">
+                            <h4>{{ $user }}</h4><span><u>Total Debitur</u></span>
                         </div>
-                        <div class="col-xl-3 col-md-6 col-sm-6 p-0 box-col-6">
-                            <div class="media align-items-center">
-                                <div class="hospital-small-chart">
-                                    <div class="small-bar">
-                                        <div class="small-chart2 flot-chart-container"></div>
-                                    </div>
-                                </div>
-                                <div class="media-body">
-                                    <div class="right-chart-content">
-                                        <h4>{{ $admin }}</h4><span><u>Admin</u></span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-xl-3 col-md-6 col-sm-6 p-0 box-col-6">
-                            <div class="media border-none align-items-center">
-                                <div class="hospital-small-chart">
-                                    <div class="small-bar">
-                                        <div class="small-chart3 flot-chart-container"></div>
-                                    </div>
-                                </div>
-                                <div class="media-body">
-                                    <div class="right-chart-content">
-                                        <h4>{{ $pengelola }}</h4><span><u>Pengelola</u></span>
-                                    </div>
-                                </div>
-                            </div>
+                        <div class="col-md-4">
+                            <h4>{{ "Rp." . number_format($jumlahpinjaman, 0,',','.') }}</h4><span><u>Total
+                                    Pinjaman</u></span>
                         </div>
                     </div>
-                </div>
-            </div>
-        </div>
-        <div class="col-xl-8 xl-100 dashboard-sec box-col-12">
-            <div class="card earning-card">
-                <div class="card-body p-0">
-                    <div class="row m-0">
-                        <div class="col-xl-3 earning-content p-0">
-                            <div class="row m-0 chart-left">
-                                <div class="col-xl-12 p-0 left_side_earning">
-                                    <h5>Dashboard</h5>
-                                </div>
-                            </div>
+                    <div class="row mb-5">
+                        <div class="col-md-6">
+                            <h4>{{ "Rp." . number_format($total_pokok, 0,',','.') }}</h4><span><u>Total Pokok</u></span>
                         </div>
-                        <div class="col-xl-12 col-md-12 box-col-12">
-                              <div class="card-body chart-block">
-                                <canvas id="myBarGraph"></canvas>
-                              </div>
+                        <div class="col-md-6">
+                            <h4>{{ "Rp." . number_format($total_bunga, 0,',','.') }}</h4><span><u>Total Bunga</u></span>
+                        </div>
+                    </div>
+                    <div class="row mb-5">
+                        <div class="col-md-6">
+                            <h4>{{ "Rp." . number_format($total_pokok_otomatis, 0,',','.') }}</h4><span><u>Total Pokok
+                                    (Hasil Hitung Otomatis)</u></span>
+                        </div>
+                        <div class="col-md-6">
+                            <h4>{{ "Rp." . number_format($total_bunga_otomatis, 0,',','.') }}</h4><span><u>Total Bunga
+                                    (Hasil Hitung Otomatis)</u></span>
+                        </div>
+                    </div>
+                    <div class="card-header">
+                        <h5>Rekap Data Tahun ini</h5>
+                    </div>
+                    <div class="row mb-5">
+                        <div class="col-md-4">
+                            <h4>{{ "Rp." . number_format($totaltunggakantahun, 0,',','.') }}</h4><span><u>Total
+                                    Tunggakan</u></span>
+                        </div>
+                        <div class="col-md-4">
+                            <h4>{{ $user }}</h4><span><u>Total Customer</u></span>
+                        </div>
+                        <div class="col-md-4">
+                            <h4>{{ "Rp." . number_format($jumlahpinjamantahun, 0,',','.') }}</h4><span><u>Total
+                                    Pinjaman</u></span>
+                        </div>
+                    </div>
+                    <div class="row mb-5">
+                        <div class="col-md-6">
+                            <h4>{{ "Rp." . number_format($total_pokok_tahun, 0,',','.') }}</h4><span><u>Total
+                                    Pokok</u></span>
+                        </div>
+                        <div class="col-md-6">
+                            <h4>{{ "Rp." . number_format($total_bunga_tahun, 0,',','.') }}</h4><span><u>Total
+                                    Bunga</u></span>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <canvas id="myBarGraph"></canvas>
                         </div>
                     </div>
                 </div>
@@ -206,29 +200,35 @@
 </div>
 @endsection
 @push('script')
-    <script>
-        var ctx = document.getElementById('myBarGraph').getContext('2d');
+<script>
+    var ctx = document.getElementById('myBarGraph').getContext('2d');
     var chart = new Chart(ctx, {
         // The type of chart we want to create
         type: 'bar',
-// The data for our dataset
+        // The data for our dataset
         data: {
-            labels: ["Admin", "User Terverifikasi", "Belum Verifikasi", "Pengelola"],
-            datasets: [
-                {
-                    label: 'Status Verifikasi User',
-                    backgroundColor: {!! json_encode($chart->colours)!!} ,
-                    data:  {!! json_encode($chart->dataset)!!} ,
+            labels: ["Admin", "Belum Verifikasi", "User Terverifikasi", "Pengelola"],
+            datasets: [{
+                label: 'Status Verifikasi User',
+                backgroundColor: {
+                    !!json_encode($chart - > colours) !!
                 },
-            ]
+                data: {
+                    !!json_encode($chart - > dataset) !!
+                },
+            }, ]
         },
-// Configuration options go here
+        // Configuration options go here
         options: {
             scales: {
                 yAxes: [{
                     ticks: {
                         beginAtZero: true,
-                        callback: function(value) {if (value % 1 === 0) {return value;}}
+                        callback: function (value) {
+                            if (value % 1 === 0) {
+                                return value;
+                            }
+                        }
                     },
                     scaleLabel: {
                         display: false
@@ -255,5 +255,6 @@
             }
         }
     });
-    </script>
+
+</script>
 @endpush
