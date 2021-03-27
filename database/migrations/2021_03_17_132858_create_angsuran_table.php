@@ -22,7 +22,7 @@ class CreateAngsuranTable extends Migration
             $table->integer('sisa_pinjaman_pokok');
             $table->integer('anuitas');
             $table->biginteger('nrp');
-            $table->foreignId('pinjaman_id')->references('id')->on('pinjaman')->onDelete('cascade');
+            $table->foreignId('pinjaman_id')->references('id')->on('pinjamans')->onDelete('cascade');
             $table->enum('status',['sudahbayar','belumbayar']);
             $table->timestamps();
         });
