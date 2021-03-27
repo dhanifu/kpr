@@ -10,6 +10,7 @@ use App\Detailkpr;
 use App\Chart;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\DB;
+use PhpOffice\PhpSpreadsheet\Shared\Date;
 
 class RekapdataController extends Controller
 {
@@ -61,8 +62,9 @@ class RekapdataController extends Controller
         $duapuluh = DB::table('kpr')->whereYear('tmt_angsuran', 2020);
         $duasatu = DB::table('kpr')->whereYear('tmt_angsuran', 2021);
 
+        $totaltunggakan = $tahunini->sum('jml_tunggakan');
         $data = Detailkpr::all();
-        // $jumlahpinjamantahun = $tahunini->sum('pinjaman');
+        $jumlahpinjaman = $tahunini->sum('pinjaman');
         // $totaltunggakantahun = $tahunini->sum('jml_tunggakan');
         $total_pokok_tahun = $tahunini->sum('pokok');
         $total_bunga_tahun = $tahunini->sum('bunga');
@@ -204,7 +206,7 @@ class RekapdataController extends Controller
             'admin.rekapdata.tahun.index',
             compact('chart'),
             [
-                // 'jumlahpinjaman' => $jumlahpinjaman,
+                'jumlahpinjaman' => $jumlahpinjaman,
                 'totaltunggakan' => $totaltunggakan,
                 'total_pokok_sembilan' => $total_pokok_sembilan,
                 'total_bunga_sembilan' => $total_bunga_sembilan,
@@ -232,11 +234,28 @@ class RekapdataController extends Controller
                 'total_bunga_duapuluh' => $total_bunga_duapuluh,
                 'total_pokok_duasatu' => $total_pokok_duasatu,
                 'total_bunga_duasatu' => $total_bunga_duasatu,
+                'tahun' => $year,
                 'user' => Detailkpr::count(),
                 'pengelola' => User::where('role', 1)->count(),
                 'admin' => User::where('role', 0)->count(),
                 'pangkats' => Pangkat::count()
             ]
         );
+    }
+
+    public function index(Request $request)
+    {
+        $currentYear = $request->tahun;
+        if (!$request->tahun) {
+            $currentYear = date('Y');
+        }
+        
+
+        $data = Detailkpr::select('tmt_angsuran', 'jml_tunggakan', 'pinjaman', 'pokok', 'bunga')->whereYear('tmt_angsuran', $request->tahun);
+        $totalTunggakan = $data->sum('jml_tunggakan');
+        $totalPinjaman = $data->sum('pinjaman');
+        $user = Detailkpr::count();
+        
+        return view('admin.rekapdata.tahun.index', compact('currentYear', 'totalTunggakan', 'totalPinjaman', 'user'));
     }
 }
