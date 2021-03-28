@@ -88,6 +88,8 @@
     <script src="{{ asset('assets/js/icons/feather-icon/feather-icon.js') }}"></script>
     <!-- Sidebar jquery-->
     <script src="{{ asset('assets/js/config.js') }}"></script>
+    <!-- Datatable -->
+    @stack('datatable')
     <!-- Plugins JS start-->
     <script src="{{ asset('assets/js/sidebar-menu.js') }}"></script>
     <script src="{{ asset('assets/js/chart/chartist/chartist.js') }}"></script>

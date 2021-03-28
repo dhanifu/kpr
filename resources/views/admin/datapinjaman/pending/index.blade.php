@@ -22,10 +22,10 @@
         </div>
         <div class="card-body">
             <div class="table-responsive">
-                <table class="table table-hover">
+                <table class="table table-hover table-bordered" width="100%">
                     <thead>
                         <tr>
-                        <th>id</th>
+                            <th>No</th>
                             <th>Nama</th>
                             <th>Pangkat</th>
                             <th>Corps</th>
@@ -43,45 +43,9 @@
                             <th>keterangan</th>
                         </tr>
                     </thead>
-                    @forelse ($pinjams as $pinjam)
-                        <tbody>
-                            <tr>
-                            <th>{{ $loop->iteration }}</th>
-                                <td>{{ $pinjam->nama }}</td>
-                                <td>{{ $pinjam->pangkat }}</td>
-                                <td>{{ $pinjam->corps }}</td>
-                                <td>{{ $pinjam->nrp }}</td>
-                                <td>{{ $pinjam->kesatuan }}</td>
-                                <td>{{ $pinjam->tahap }}</td>
-                                <td>{{ "IDR. " . number_format($pinjam->pinjaman, 0,',','.') }}</td>
-                                <td>{{ $pinjam->jk_waktu }}</td>
-                                <td>{{ $pinjam->tmt_angsuran }}</td>
-                                <td>{{ "Rp. " . number_format($pinjam->jml_angs, 0,',','.') }}</td>
-                                <td>{{ $pinjam->angs_ke }}</td>
-                                <td>{{ $pinjam->angsuran_masuk }}</td>
-                                <td>{{ $pinjam->tunggakan }}</td>
-                                <td>{{ $pinjam->jml_tunggakan }}</td>
-                                <td>{{ $pinjam->keterangan }}</td>
-
-
-                            </tr>
-                        </tbody>
-                    @empty
-                        <tbody>
-                            <tr>
-                                <th colspan="15" style="color: red; text-align: center;">Data Empty!</th>
-                            </tr>
-                        </tbody>
-                    @endforelse
+                    <tbody></tbody>
                 </table>
             </div>
-        </div>
-        <div class="card-footer">
-            <div>
-            </div>
-        </div>
-        <div class="card-footer">
-            {{$pinjams->links()}}
         </div>
     </div>
     </div>
@@ -89,3 +53,19 @@
 
 
 @endsection
+
+
+@push('style')
+    <link rel="stylesheet" href="{{ asset('assets/js/datatable/datatables.net-bs4/css/dataTables.bootstrap4.min.css') }}">
+@endpush
+
+@push('datatable')
+    <script src="{{ asset('assets/js/datatable/datatables.net/js/jquery.dataTables.min.js') }}"></script>
+    <script src="{{ asset('assets/js/datatable/datatables.net-bs4/js/dataTables.bootstrap4.min.js') }}"></script>
+    <script>
+        const pinjam = '{{ request()->pinjam }}'
+        const dataUrl = '{{ route('admin.detaildata.datatables', request()->pinjam) }}'
+        const csrf = '{{ csrf_token() }}'
+    </script>
+    <script src="{{ asset('datatables/admin/datapinjaman/pending.js') }}"></script>
+@endpush
