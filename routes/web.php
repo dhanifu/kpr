@@ -71,9 +71,10 @@ Route::middleware('auth')->group(function () {
             Route::get('/user/export/excel', 'AccountController@userExportExcel')->name('user.export.excel');
             Route::get('/user/export/pdf', 'AccountController@userExportPdf')->name('user.export.pdf');
         });
+
+        //rekap data
         Route::prefix('rekapdata')->name('rekapdata.')->group(function () {
-            Route::get('/Bulan', 'RekapdataController@getBulan')->name('bulan');
-            Route::get('/Tahun', 'RekapdataController@getTahun')->name('tahun');
+            Route::get('/', 'RekapdataController@index')->name('index');
         });
         Route::prefix('detaildata')->name('detaildata.')->group(function () {
             Route::get('/cari', 'DetaildataController@cari')->name('cariid');
